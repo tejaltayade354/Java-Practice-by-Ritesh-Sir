@@ -1,0 +1,134 @@
+java(16-11-2025)
+
+-example 12:
+-the instance of operator is used to check, if a reference belongs to a particular instance or not.
+
+class Ex12 {
+    public static void main(String[] args ){
+        String str=null;
+        if (str instanceof String){
+            System.out.println("Str is of string type");
+        }else{
+            System.out.println("Str is of string type");
+    }
+    }
+}
+
+//op:
+//Str is of string type
+
+-example 13:
+
+-arrays can be categorized mainly into 2 types:
+1) single dimensional array    1D
+2)Multidimensional array
+
+
+1) single dimensional array    1D
+-HERE, we have multiple rows and single column.But in 2 D or multidimensional array , we have multiple rows and multiple columns.
+-example 15:
+
+
+-IQ: Is it possible to create heterogeneous arrays?
+->   YES, using array of object type. and instance of .
+
+
+ class Ex15 {
+    public static void main(String[] args){
+int[][] a=new int [2][3];
+a[0][0]=10;
+a[0][1]=20;
+a[0][2]=30;
+a[1][0]=40;
+a[1][1]=50;
+a[1][2]=60;
+System.out.println(a.length);
+System.out.println(a[0].length);
+
+for(int i=0;i<a.length;i++){
+    for(int j=0;j<a[i].length; j++){
+        System.out.print(" "+a[i][j]);
+    }
+System.out.println();
+}   
+    }
+
+}
+
+op:
+
+2
+3
+ 10 20 30
+ 40 50 60
+
+class Ex16 {
+    public static void main(String[] args){
+        String[][] s={{"ish","war","ji"},{"shi","va","ji"}};
+for(int i=0;i<s.length;i++){
+    for(int j=0;j<s[i].length;j++){
+
+    System.out.print(s[i][j]+" ");
+    }
+System.out.println( );
+}
+    }
+}
+
+op:
+
+ish war ji 
+shi va ji
+
+
+-EXAMPLE 17:
+
+public class Ex17 {
+    public static void main(String[] args){
+        Object[] o=new Object[3];
+        o[0]=new String("cyber");
+        o[1]=new Integer(100);
+        o[2]=new Flipkart(101,"mobile");
+         for(Object oo: o){
+            if(oo instanceof String ){
+                String ss=(String) oo;
+                System.out.println(ss);
+            
+            }
+             else if(oo instanceof Integer ){
+                Integer ii=(Integer) oo;
+                System.out.println(ii);
+
+         }
+           else if(oo instanceof Flipkart){
+                Flipkart fk=(Flipkart) oo;
+                System.out.println(fk);          //ADDRESS
+                System.out.println(fk.prodid+"-"+fk.prodname);
+
+         }
+
+    }
+}
+}
+OP:
+
+cyber
+100
+Flipkart@5b80350b
+101-mobile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

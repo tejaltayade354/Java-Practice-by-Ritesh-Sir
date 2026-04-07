@@ -1,0 +1,310 @@
+java(04-11-2025)
+
+example10:
+
+-whenever the exception is not raised, it doesn't matter whatever it is written within the catch block; but it does matter in the catch block only when the exception is raised.
+
+ class example10 {
+    public static void main(String[] args)
+{
+    int[] a={10,20,30};
+    System.out.println("starttttttt");
+    try{
+         System.out.println("inside try block");
+        System.out.println(a[20]);
+        
+    }
+    catch(ArithmeticException np){
+      System.out.println("inside catch block");
+       System.out.print(a[2]);
+    }
+}}
+
+op:
+
+starttttttt
+inside try block
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 20
+        at example10.main(example10.java:8)
+
+example11:
+
+-the try block can generate difft types of exception but any point of time, it can generate Only one exception.
+-we can use one try block as well as a single catch block or multiple catch blocks.
+
+ class example11 {
+    public static void main(String[] args)
+{
+    int[] a={10,20,30};
+    System.out.println("starttttttt");
+    try{
+         System.out.println("inside try block");
+        System.out.println(a[2]);      //new ArrayIndexOutOfBoundsException(); 
+        System.out.println(10/0);    //new ArithmeticException();
+        
+    }
+    catch( ArrayIndexOutOfBoundsException np){        
+      
+       System.out.print("inside catch blocck- aiobe");
+    }
+    
+    catch(ArithmeticException np){
+      System.out.println("inside catch block-arithmetcexception");
+       
+    }
+System.out.println("endddddddddd");
+}
+}
+// op:
+
+starttttttt
+inside try block
+30
+inside catch block-arithmetcexception
+endddddddddd
+
+
+
+-whenever the exception raised within the try block, it will first go to the immediate catch block and if it is matched, it will be executed,  if it doesn't match then it will go to the next catch block.
+
+-as seen in the 11TH example, we can use multiple catch however at any point of time only 1 catch block will get executed.
+
+-due to multiple catch block, it wil increase the length of the code and we also have a impact to the memory consumption, and we reduce the speed of the program,   TO OVERCOME  this we go for the below approach.
+
+-example12:
+
+-As seen in the example, we may have n no of exception raised within the try block but we can handle it with respect to only catch block.
+
+ class example12 {
+    public static void main(String[] args)
+{System.out.println("starttttttt");
+    int[] a={10,20,30};
+    
+    try{
+         System.out.println("inside try block");
+        System.out.println(a[2]);      //new ArrayIndexOutOfBoundsException(); 
+        System.out.println(10/0);    //new ArithmeticException();
+        
+    }
+    
+    catch(Exception np){
+      System.out.println("inside catch block" +np);
+       
+    }
+System.out.println("endddddddddd");
+}
+}
+// op:
+
+starttttttt
+inside try block
+30
+inside catch blockjava.lang.ArithmeticException: / by zero
+endddddddddd
+
+IQ: Whenever we print the normal class reference variable, it will print the addresss but whenever print the exception reference  variable , it will never print the address, but it will print exception info,  WHY?
+
+--> BCOZ, toString() method is overridden in one of the exception class.
+
+
+
+IQ: How many ways are there to print Exception info?
+--> There are 3 approaches/ways:
+    1)toString()--> public String toString();
+    2)getMesage()-> public String getMessage(); 
+    3)printStackTrace()-> public void printStackTrace();
+
+IQ: Which is the default method called by JVM TO print the exception info/
+--> printStackTrace approach
+
+
+
+-example13:
+
+ class example13 {
+    public static void main(String[] args)
+{System.out.println("starttttttt");
+    
+    
+    try{
+         System.out.println("inside try block");
+        System.out.println(10/0);    //new ArithmeticException();
+    }
+    
+    catch(Exception np){
+      System.out.println("inside catch block" );
+
+      //approaches to print the exception info
+
+      System.out.println(np.toString() );     //-> 1 approach
+      System.out.println(np.getMessage() );   //-> 2 approach
+      np.printStackTrace() ;      //-> 3 approach
+      }
+System.out.println("endddddddddd");
+}
+}
+// op:
+
+starttttttt
+inside try block
+inside catch block
+java.lang.ArithmeticException: / by zero
+/ by zero
+java.lang.ArithmeticException: / by zero
+        at example13.main(example13.java:8)
+endddddddddd
+
+
+
+-example14:
+
+
+class example14 {
+   
+        static void m1(){
+            System.out.println("inside m1 method");
+            System.out.println(10/0);
+        }
+ public static void main(String[] args) {
+    System.out.println("start");
+    m1();
+    System.out.println("end");}
+}
+
+
+op
+
+start
+inside m1 method
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example14.m1(example14.java:5)
+        at example14.main(example14.java:9)
+
+-example 15/ 16:
+
+-it is possible to use multiple catch block, if the order is from child to parent .but we cannot use multiple catch block, if the order Is from parent to child(then we go for exception)
+
+ class example15 {
+    public static void main(String[] args)
+{
+        System.out.println("starttttttt");
+    int[] a={10,20,30};
+
+    try{
+         System.out.println("inside try block");
+         System.out.println(10/2);    //new ArithmeticException();
+        System.out.println(a[20]);      //new ArrayIndexOutOfBoundsException(); 
+    
+        
+    }
+    catch( ArithmeticException np){            //order is child to parent 
+      
+       System.out.print("inside catch blocck- aiobe- child class" );
+       System.out.println(np);
+    }
+    
+    catch(Exception np){
+      System.out.println("inside catch block- parent class");
+          System.out.println(np);
+    }
+System.out.println("endddddddddd");
+}
+}
+// op:
+
+starttttttt
+inside try block
+5
+inside catch block- parent class
+java.lang.ArrayIndexOutOfBoundsException: 20
+endddddddddd
+
+ class example16 {
+    public static void main(String[] args)
+{
+        System.out.println("starttttttt");
+    int[] a={10,20,30};
+
+    try{
+         System.out.println("inside try block");
+         System.out.println(10/2);    //new ArithmeticException();
+        System.out.println(a[20]);      //new ArrayIndexOutOfBoundsException(); 
+    
+        
+    }
+    catch( Exception np){            //order is child to parent 
+      
+       System.out.print("inside catch blocck- aiobe- parent class" );
+       System.out.println(np);
+    }
+    
+    catch(ArithmeticException np){
+      System.out.println("inside catch block- child class");
+          System.out.println(np);
+    }
+System.out.println("endddddddddd");
+}
+}
+// errrrrrror
+
+
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> javac example16.java
+example16.java:20: error: exception ArithmeticException has already been caught
+    catch(ArithmeticException np){
+    ^
+1 error
+
+
+example 17:
+
+-wed do not use statement after the catch  and before catch block
+
+
+ class example17{
+    public static void main(String[] args){
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(10/0);
+        }
+        System.out.println("after try block ,beforeeeeeeeeeee-->inside catch block");
+        catch(ArithmeticException ae){
+  System.out.println("inside catch block");
+       System.out.println(10/5);
+        }
+      
+         System.out.println("endddddddddd");
+    }
+   
+}
+//errrrrror
+
+example17.java:4: error: 'try' without 'catch', 'finally' or resource declarations
+        try{
+        ^
+example17.java:9: error: 'catch' without 'try'
+        catch(ArithmeticException ae){
+        ^
+2 errors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

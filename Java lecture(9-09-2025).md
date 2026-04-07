@@ -1,0 +1,517 @@
+Java lecture(9-09-2025)
+
+
+
+
+
+
+
+NON STATIC VARIABLES AND METHODS:
+
+
+
+-Variables which are declared outside the method  or constructors or blocks but within the class and is not prefixed with static keyword are called as NON-STATIC Variables.
+
+
+
+-To access a non static members(variable, method), we can access using object creation.
+
+
+
+-OBJECT CREATION SYNTAX:
+
+
+
+Classname variable=new Classname();  // NEW---> KEYWORD
+
+
+
+The new keyword will perform 3 operations:
+
+1. its meant to allocate the memory into heap area(object----->allocated memory ).
+2. It will then load all the nonstatic members of the respective class within the allocated memory in the object area,
+3. its responsible to generate the memory with the help of JVM.
+
+
+
+PROG:
+
+class nonstaticvar1
+
+{ int a=10;
+
+ 	public static void main(String\[] args)
+
+ 	{
+
+ 		//System.out.println(a);  // invalid approach of accesssing nonstatic varible--->direct
+
+ 		//System.out.println(nonstaticvar1.a);  // invalid approach of accesssing nonstatic varible--->classname
+
+ 
+
+ 		// object creation approach
+
+ 		nonstaticvar1 var=new nonstaticvar1();
+
+ 		System.out.println(var.a);  // valid approach of accesssing nonstaticvarible--->object creation
+
+ 	}
+
+}
+
+
+
+ ///output: 10
+
+
+
+IQ: When exactly nonstatic members are loaded in memory?
+
+->  During object creation.
+
+
+
+
+
+note:
+
+
+
+based on total no of new keywords, that much objects are created in heap/memory. If we create multiple objects for every object creation, non static members will get loaded. WHenever changes are made too one object, it will **never have an impact on other objects.**
+
+
+
+**program:
+class  nonstaticvar2**
+
+**{ int a =10;**
+
+
+
+\*\*public static void main(String\\\[] args)\*\* 
+
+	\*\*{\*\*
+
+		\*\*nonstaticvar2 var1=new nonstaticvar2();   // 1st object creation\*\*
+
+		
+
+		\*\*nonstaticvar2 var2=new nonstaticvar2();    //2nd object creation\*\*
+
+		
+
+		\*\*System.out.println("lets BEGIN todays success");\*\*
+
+		\*\*System.out.println(var1.a);\*\*
+
+		
+
+		\*\*System.out.println(var2.a);\*\*
+
+		
+
+		\*\*System.out.println(var1);\*\*
+
+		\*\*System.out.println(var2);\*\*
+
+		\*\*var1.a=100;  //changes made, but never have an impact on other objects.\*\*
+
+		\*\*var2.a=200;\*\*  
+
+		
+
+		\*\*System.out.println(var1.a);\*\*
+
+		\*\*System.out.println(var2.a);\*\*
+
+		\*\*System.out.println(" BREAK TIME  ");\*\*
+
+	\*\*}\*\*
+
+
+**}**
+
+
+
+
+
+
+
+**output:**
+
+
+
+**C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>java nonstaticvar2**
+
+**lets BEGIN todays success**
+
+**10**
+
+**10**
+
+**nonstaticvar2@722c41f4**
+
+**nonstaticvar2@5b80350b**
+
+**100**
+
+**200**
+
+**BREAK TIME**
+
+
+
+
+
+
+
+IQ: where exactly static members are created in the memory?
+
+--->Inside static pool.
+
+
+
+
+
+IQ: where exactly nonstatic members are created in the memory?
+
+--->Inside heap particularly in object area.
+
+
+
+
+
+IQ: where exactly local variables are created in the memory?
+
+--->Inside stack.
+
+
+
+PROG:
+
+class  nonstaticvar3
+
+{
+
+ 	int a=20;
+
+ 	static float b=20.5f;
+
+ 
+
+ 	public static void main(String\[] args)
+
+ 	{
+
+ 		System.out.println("start ");
+
+ 		int c=20;
+
+ 		nonstaticvar3 ref= new nonstaticvar3();
+
+ 		float result=ref.a+b+c;   /// ithe he kasa ala? b la ref.b ka nhi lihila?
+
+ 		System.out.println("THE RESULT: " +result);
+
+ 		System.out.println("break ");
+
+ 	}
+
+}
+
+
+
+
+
+
+
+output:
+
+
+
+C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>java nonstaticvar3
+
+start
+
+THE RESULT: 60.5
+
+break
+
+
+
+
+
+
+
+NOTE:
+
+
+
+\- to access non-static members of another class, we have to create an object.
+
+
+
+PROGRAM:
+class demo
+
+{
+
+ 	int a=10;
+
+ 	float b=20.5f;
+
+}
+
+
+
+class nonstaticvar4
+
+{
+
+ 	public static void main(String\[] args)
+
+ 	{
+
+ 		demo d=new demo();  // object create kela
+
+ 
+
+ 		System.out.println(d.a+d.b);
+
+ 	}
+
+}
+
+
+
+OUTPUT:
+
+
+
+
+
+C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>java nonstaticvar4
+
+30.5
+
+
+
+
+
+
+
+
+
+
+
+
+
+ASSIGNMENT NO 1:ACCESSING NON-STATIC MEMBERS OF ANOTHER CLASS
+class demo
+
+{
+
+ 	int a=10;
+
+}
+
+class sample
+
+{
+
+ 	float b=20.5f;
+
+}
+
+class Tech
+
+{
+
+ 	float result;
+
+}
+
+class  nonstaticvar5
+
+{
+
+  public static void main(String\[] args)
+
+ 	{
+
+ 	  demo d=new demo();
+
+ 	  sample s= new sample();    //APN ITHE 2 OBJECTS KA CREATE KEL, BCOZ EKCH OBJECT PN KARU SHAKTO ?----->nhi kru shakt bcoz te 3 classes ahe methods nhi ahe budhhu
+
+ 	  Tech t=new Tech();
+
+ 	   t.result=d.a+s.b;
+
+ 	   System.out.println("the RESULT:"  +t.result);
+
+ 
+
+ 
+
+ 	}
+
+}
+
+
+
+OUTPUT:
+
+
+
+C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>java nonstaticvar5
+
+the RESULT:30.5
+
+
+
+
+
+
+
+
+
+
+
+NOTE:
+
+-if a method is not prefixed with static keyword, then by default its become non static.
+
+
+
+-regardless the method is static or nonstatic, both the methods  will always be executed  in the **stack area.**
+
+
+
+**PROG1:**
+
+**class nonstaticmethod1**
+
+**{**
+
+\*\*public static void main(String\\\[] args)\*\* 
+
+	\*\*{nonstaticmethod1 ref=new nonstaticmethod1();\*\*
+
+	\*\*ref.m1(); // call kel . operator\*\*
+
+		
+
+	\*\*}\*\*
+
+	\*\*void m1(){\*\*    // is it nonstatic method?--->i think yes?
+
+		\*\*System.out.println("Inside m1 method");\*\*
+
+	\*\*}\*\*
+
+
+**}**
+
+
+
+
+
+
+
+**C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>**
+
+**C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>java nonstaticmethod1**
+
+**Inside m1 method**
+
+
+
+**prog:**
+
+**class sample**
+
+**{**
+
+\*\*void m1(){\*\*
+
+		\*\*System.out.println("INSIDE M1 METHOD");\*\*
+
+     \*\*}\*\*
+
+
+
+	\*\*void m2(){\*\*
+
+		\*\*System.out.println("INSIDE M2 METHOD");\*\*
+
+    \*\*}\*\*
+
+	\*\*void m3(){\*\*
+
+		\*\*System.out.println("INSIDE M3 METHOD");\*\*
+
+    \*\*}\*\*
+
+
+**}**
+
+
+
+**class nonstaticmethod2**
+
+**{**
+
+
+
+\*\*public static void main(String\\\[] args)\*\* 
+
+	\*\*{ sample s1=new sample();\*\*
+
+	\*\*s1.m1();\*\*
+
+	\*\*s1.m2();\*\*
+
+	\*\*s1.m3();\*\*
+
+		
+
+	\*\*}\*\*
+
+
+**}**
+
+
+
+
+
+**output:**
+
+
+
+
+
+**C:\\Users\\Tejal\\CCSP12 J AUGUST\\BASICS>java nonstaticmethod2**
+
+**INSIDE M1 METHOD**
+
+**INSIDE M2 METHOD**
+
+**INSIDE M3 METHOD**
+
+
+
+
+
+assignment 2:
+
+
+
+sample add= new sample();
+
+ 	sample multiply=new sample();
+
+ 	float result1= add.x+add.y;
+
+ 	 float result2= multiply.x+multiply.y;
+

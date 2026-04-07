@@ -1,0 +1,114 @@
+java(26-11-2025)
+
+-ArrayList 23:
+
+package collection.list;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayList23 {
+    public static void main(String[] args){
+        ArrayList<String> al=new ArrayList<String>();
+        al.add("TEJAL");    al.add("UTTAMRAO");      al.add("TAYADE");
+        System.out.println(al);
+        Collections.sort(al);
+        System.out.println(al);
+    }
+}
+
+
+/*
+op:
+[TEJAL, UTTAMRAO, TAYADE]
+[TAYADE, TEJAL, UTTAMRAO]
+ */
+
+
+
+
+-ArrayList 24:  + Swiggy :
+
+-Using comparable at  any point of time, we can sort with respect to 1 obj.
+-Whenever we use comparable the sorting logics and business logics are maintained commonly, which is not considered as good coding practice.
+-To overcome above challenges, we will prefer to go for comparator.
+
+
+
+package collection.list;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayList24 {
+    public static void main(String[] args){
+        ArrayList<Swiggy> al=new ArrayList<Swiggy>();
+        al.add(new Swiggy(102,"waffle"));
+        al.add(new Swiggy(103,"tea"));
+        al.add(new Swiggy(104,"dosa"));
+        Collections.sort(al);     //sort()  ------>internally calls compareTo()-----> Swiggy class(custom class)
+        for(Swiggy s:al){
+            System.out.println(s.prodId+" - " +s.prodName);
+        }
+    }
+}
+/*           based on the prodId-------> if we have to compare based on prodName then we use prodName instead of prodId
+//    but only 1 is used at a time
+package collection.list;
+ */
+/*
+
+public class Swiggy implements Comparable {
+    int prodId;
+    String prodName;
+    int status;
+
+    Swiggy(int prodId, String prodName) {
+        this.prodId = prodId;
+        this.prodName = prodName;
+    }
+
+    public int compareTo(Object o) {
+        Swiggy s = (Swiggy) o;
+/*
+        if (prodId == s.prodId) {
+            status = 0;
+        } else if (prodId > s.prodId) {
+            status = 1;
+
+        } else if (prodId < s.prodId) {
+            status = -1;
+
+        }/*
+//now use below :   //when following 2nd approach(sorting based on prodName)
+
+        int status=prodName.compareTo(s.prodName);
+        return status;
+    }
+}
+
+
+
+/*
+//when following first approach((sorting based on prodId))
+op:
+
+102 - waffle
+103 - tea
+104 - dosa
+
+//when following 2nd approach(sorting based on prodName)
+104 - dosa
+103 - tea
+102 - waffle
+
+*/
+
+
+
+benefits of using comparator:
+-With the help of comparator, we can sort w.r.t multiple objects at any point of time.
+-Using comparator, we maintain separate business logics and separate sorting logics.
+
+
+
+

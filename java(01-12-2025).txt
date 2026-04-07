@@ -1,0 +1,209 @@
+java(01-12-2025)
+
+STACK:    extends java.util.Vector
+
+-introduced in version in 1.0.
+-insertion order is maintained,
+-homogenous and heterogenous allowed.
+-duplicates allowed.
+-methods are synchronized.
+-Data structure is based on stack.
+-All cursors are applicable.
+
+
+
+-methods of stack:
+1)public E push(E):
+- The push method is responsible to push / add the object or element within the stack.
+
+2)public synchronized pop(E);
+-the pop method is responsible to not only return the object or element, but will also remove the  object from the stack.
+
+
+3)public synchronized peek(E);
+the peek method returns the object or the element.
+
+4)public  Boolean empty();
+- the empty method is responsible to check whether the stack is empty or not. if empty then -> true otherwise false.
+
+
+5) public synchronized int search(java.lang.Object)
+-it considers the top of the stack as a reference 0.
+-from the reference point till the bottom of the stack, it maintains a distance of a difference of 1.
+-example:
+
+ search(30)-->1        stack madhe top la ek gap aste(refernce)---0 mhnaun 1 cha difference.
+
+package collection.list;
+import java.util.Stack;
+import java.util.Vector;
+
+public class Stack2  {
+    public static void main(String[] args) {
+        Stack s1 = new Stack();
+        s1.push(100);
+        s1.push(200);
+        s1.push(300);
+        s1.push('c');      //push: used to add elements
+        System.out.println(s1);
+        System.out.println( s1.pop());                //top most element show karte+ delete karte,
+        System.out.println(s1);
+        System.out.println(s1.peek());                 //only shows the top most element
+        System.out.println(s1);
+        System.out.println(s1.search(200));  //------>it returns the distance difference from ref to that object
+        System.out.println(s1.empty());  //   ------->checks stack empty or not
+        s1.clear();
+        System.out.println(s1.empty());
+    }
+}
+
+//synchronized methods: pop(), peek(),search()
+
+op:
+
+[100, 200, 300, c]
+c
+[100, 200, 300]
+300
+[100, 200, 300]
+2
+false
+true
+
+
+
+SET classes: 
+                                  ----------------------------
+                                |    Collection(I) version 1.2 |
+                                  ----------------------------
+
+                                  ----------------------------
+                                 |       Set(I) version 1.2   |
+                                   ----------------------------
+
+
+                ----------------------------                       ----------------------------
+               | HashSet(C) ver 1.2          |                     |  SortedSet(I) V 1.2       |
+                -----------------------------                      -----------------------------
+               | LinkedHashSet(C) 1.4 ver    |                      |NavigableSet(I) 1.6 ver  |  
+                ----------------------------                       -----------------------------
+                                                                    |   TressSet(C)  ver 1.2   |                         
+                                                                    ----------------------------
+
+
+-	Differences between list classes and set classes.
+
+
+
+
+
+LIST:
+1)All list  classes will  allow insertion order to be maintained.
+2) All lis t classes will  allow homogeneous  /heterogenous data.
+3)All list classes will allow duplicate data.
+
+SET:
+1)All set classes will not allow insertion order to be maintained.
+2) All set classes will not allow homogeneous  /heterogenous data.
+3)All set classes will not allow duplicate data, (if we try to enter then the old data is replaced with new duplicate entered data, and no error is thrown) it is will not accept duplicate data, but it will return the same object, but it will not throw an error.
+
+1)HashSet:
+-it is a class and version - 1.2.
+- it will accept homo/ hetero both.
+-duplicates are not allowed.(it will also not give an errror)
+-insertion order is not maintained.
+-null insertion is possible.
+-NONSynchronized Methods.
+- data structure is based on hashTable.(how hash table works, homework)
+-only 1 cursor is applicable - iterator.
+
+-HashSet 1:
+
+package collection.set;
+import java.util.HashSet;
+public class HashSet1 {
+    public static void main(String[] args){
+HashSet hs1=new HashSet();
+hs1.add(70); hs1.add(50); hs1.add(60);hs1.add(30);
+System.out.println(hs1);
+hs1.add('x');hs1.add(true);hs1.add(null);
+System.out.println(hs1);
+
+    }
+}
+/*
+op:
+
+        [50, 70, 60, 30]
+        [null, 50, 70, x, 60, 30, true]
+
+*/
+
+-HashSet 2:
+
+package collection.set;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class HashSet2 {
+    public static void main(String[] args){
+  HashSet<String> hs1=new HashSet<String>();
+  hs1.add("tejal");hs1.add("cyber");hs1.add("training");hs1.add("success");
+  System.out.println(hs1);
+  Iterator<String> i=hs1.iterator();
+  while(i.hasNext()){
+      System.out.println(i.next());
+  }}
+}
+/*
+op:
+
+[cyber, tejal, success, training]
+cyber
+tejal
+success
+training
+*/
+
+-the user defined capacity  of hashset is 16.default load factorof the hashset -> 0.75
+-the load factor can also be called as filled ratio.
+-the load factor and filled ratio can be defined as a measurement  at which the collection changes the capacity.
+-The range factor or fill ratio is from 0.0 to 1.0 
+
+-constructors in hashset class:
+
+1)public java.util.Hashset() -> 16, default load factor-> 0.75
+2)public java.util.Hashset(int)  user defined capacity, default load factor
+3)public java.util.hashset(int, float);user defined capacity, user defined load factor
+s4)public java.util.hashset(collection);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

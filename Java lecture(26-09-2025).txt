@@ -1,0 +1,313 @@
+Java lecture(26-09-2025)
+
+example 10
+-constructors are never stored in a heap area. They are only executed during the object creation ,within the stack area.
+
+class Employe{
+    int empid;
+    String empname;
+    Employe(int empid,String empname)   //String always written with capital S
+    {
+        this.empid=empid;
+        this.empname=empname;
+    }
+    void displayinfo()
+    {
+        System.out.println("The Employe id is " +empid+ " and name is " +empname  );
+    }
+    
+}
+class example10 {
+    public static void main(String[] args){
+        Employe e1=new Employe(101, "JAGGU JASOOS");  //constructors are always executed during object creation.
+        e1.displayinfo();
+        Employe e2=new Employe(102, "KALIYA BOSS");
+        e2.displayinfo();
+    }
+}
+
+O/P
+
+The Employe id is 101 and name is JAGGU JASOOS
+The Employe id is 102 and name is KALIYA BOSS
+
+example 11
+-business logic implementation during  object creation.
+
+class hdfc
+{ int amountbal;
+    hdfc(int amountbal){
+                                    //business logic implementation
+       if(amountbal>=15000){
+         this.amountbal=amountbal; 
+        System.out.println("account creation successful");
+       }
+       else{
+        System.out.println("invalid account amount, account creation failed.");
+       }
+    }
+    int getamountbalance(){
+        return amountbal;
+}
+}
+class example11 {
+    public static void main(String[] args){
+    hdfc a1=new hdfc(15000);
+    int currentba1= a1.getamountbalance();
+    System.out.println("account current balance is: " +currentba1);
+}
+}
+
+O/P
+
+account creation successful
+account current balance is: 15000
+
+example12
+-this statement or this method is used to call another constructor within the same class.
+-hence by creating one object, it is possible to execute multiple  constructor within the same class using this keyword.
+-also it holds the address of the current object .
+
+class example12{
+     example12(){
+        this(24);
+        System.out.println("imside 0 argument constructor");
+
+}
+  example12(int a){
+    System.out.println("inside 1 argument constructor");
+}
+public static void main(String[] args){
+example12 e1=new example12(); 
+}
+}
+
+
+//this keyword holds the address of current object
+//this()--->statement/method is used to call another constructor within the same class.
+
+O/p
+
+inside 1 argument constructor
+imside 0 argument constructor
+
+
+example13
+this statement should always be the first statement within the constructor. if we add after SOP  then it will throw an error. 
+
+class example13{
+     example13(){
+        //this(24); correctway--->this method /statement should be the first statement in constructor.
+        System.out.println("inside 0 argument constructor");
+        this(24);  //error we got-->Constructor call must be the first statement in a constructor(this method /statement should be the first statement in constructor.)
+}
+  example13(int a){
+    System.out.println("inside 1 argument constructor");
+}
+public static void main(String[] args){
+new example13(); 
+}
+}
+
+
+
+example 14:
+how do we execute 3 or more constructor with a single object creation?
+
+class example14{
+     example14(){
+        this(24);   //calling 1 argument constructor
+        System.out.println("imside 0 argument constructor");
+        
+}
+  example14(int a){
+    this(3,5.1f);      //calling 2 argument constructor
+    System.out.println("inside 1 argument constructor");
+}
+
+example14(int a,float b){
+    
+    System.out.println("inside 2 argument constructor");
+}
+public static void main(String[] args){
+new example14();                             //single object nameless creation is  calling the 0 argument contructor.
+}
+}
+
+o/print
+
+
+inside 2 argument constructor
+inside 1 argument constructor
+imside 0 argument constructor
+
+
+example15:
+recursive constructor calling is not supported by java.
+
+class example15{
+    example15(){
+     this(a);
+     System.out.println("Inside zero argument method.");
+}
+example15(int a){
+this();
+System.out.println("Inside two argument constructor");
+
+}
+
+public static void main(String[] args){
+new example15();
+}
+}
+
+
+
+example16:assignment: CREATE 2 CONSTRUCTOR IN 2 CLASSES AND CALL THEM USING 2 OBJECT CREATION.
+
+class demo1{
+    demo1(){
+    this(10);
+     System.out.println("inside 0 argument- DEMO1 "  );
+    }
+    demo1(int a){
+       System.out.println("inside 1 argument- DEMO1 "  +a);
+    }
+}
+class demo2{
+    demo2(){
+      this(4);
+       System.out.println("inside 0 argument- DEMO2 "  );
+    }
+    demo2(int b){
+      System.out.println("inside 1 argument-DEMO2 "  +b);
+    }
+}
+
+
+class example16 {
+    public static void main(String[] args) {
+    new demo1();
+    new demo2();
+ 
+   }
+}
+
+o/p:
+inside 1 argument- DEMO1 10
+inside 0 argument- DEMO1
+inside 1 argument-DEMO2 4
+inside 0 argument- DEMO2
+
+example 17:
+if we create any constructor, then the compiler will never create default empty implementation, zero argument constructor. hence example 17 is giving error.
+
+class example17 {
+    example17(int a){
+         //it will give error bcoz if we created a constructor, then java compiler by default do not create a constructor.
+    }
+    public static void main(String[]args){
+        new example17();  //  we called zero argument constructor, mhanun error ala, bcoz by default its not created by java compiler.
+    }
+
+}
+
+
+example 18:
+we can  use only one this statement in the single constructor.
+
+class example18 {
+    example18(){
+        this(45);
+        this(4,4.25f);      //error--->single this statement is allowed in one constructor.
+    }
+    example18(int a){
+
+    }
+    example18(int a, float b){
+        
+    }
+    public static void main(String[] args0){
+
+        new example18();
+    }
+}
+
+
+example 19:
+this statement can only be used within a constructor, we cant use in method, bcoz it will throw error.
+
+class example19 {
+    example19(){
+         System.out.println("inside 0 argu constructor");
+         
+    }
+    void m1(){
+        this();             // this statement cant be used in methods.
+        System.out.println("inside m1 method");
+    }
+    public static void main(String[]args){
+   example19 e1= new example19();  
+   e1.m1();
+    }
+
+}
+
+
+class example20 {
+  int a;
+    example20(int a){
+        this();   // this statement in constructor
+        this.a=a;       //this keyword in constructor
+        System.out.println("inside 1 argument constructor" +this.a);// prints 10
+ 
+    }
+    
+    example20(){
+             System.out.println("inside 0 argument constructor" +this.a);// prints 0
+        
+    }
+
+    
+    public static void main(String[] args){
+     example20 e1= new example20(10);
+     
+    }
+    
+}
+
+o/p:
+
+inside 0 argument constructor0
+inside 1 argument constructor10
+
+
+
+class example21 {
+  int a;
+    example21(int a){
+        this();                                                                    // this statement in constructor
+        this.a=a;                                                                       //this keyword in constructor
+        System.out.println("inside 1 argument constructor" +this.a);// prints 10
+ 
+    }
+    
+    example21(){
+             System.out.println("inside 0 argument constructor" +this.a);// prints 0
+        
+    }
+     void m1(int a){ 
+        this.a=a;                                            //we can use this keyword in method but cant use this statement in methods.
+        System.out.println("inside m1 method a: " +this.a);
+}
+    
+    public static void main(String[] args){
+     example21 e1= new example21(10);
+e1.m1(100);
+    } 
+}
+
+o/p:
+inside 0 argument constructor0
+inside 1 argument constructor10
+inside m1 method a: 100

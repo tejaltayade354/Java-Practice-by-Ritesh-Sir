@@ -1,0 +1,800 @@
+java(28-11-2025)
+
+double linklist structure involves- 
+each node will store the address of the next node  as well as previous node 
+-both in forward as well as in reverse direction.(traversing)
+
+LinkedList1 :
+
+package collection.list;
+import java.util.LinkedList;
+public class LinkedList1 {                            //homogeneous data
+    public static void main(String[] args ){
+        LinkedList ll=new LinkedList();
+        ll.add(2000); ll.add(25);ll.add(1000);
+        System.out.println(ll);
+        ll.add(true);ll.add('x');ll.add(null);          //heterogeneous data, null allowed,
+        ll.add('x');                                     //duplicates also allowed
+        System.out.println(ll);
+    }
+}
+
+
+/*
+
+op:
+[2000, 25, 1000]
+[2000, 25, 1000, true, x, null, x]
+
+*/
+
+-LinkedList 2:
+
+package collection.list;
+
+import java.util.LinkedList;
+
+public class LinkedList2 {
+    public static void main(String[] args){
+        LinkedList ll=new LinkedList();
+        ll.add(100);ll.add(200);ll.add(300);
+        System.out.println(ll);
+        //adding 1 linked list into another list  using Constructor based approach
+        LinkedList ll2=new LinkedList(ll);
+        ll2.add('x'); ll2.add(true);
+        System.out.println(ll2);
+        //adding using addAll()
+        LinkedList ll3=new LinkedList();
+        ll3.addAll(ll2);
+        ll3.add("ma i"); ll3.add(false);
+        System.out.println(ll3);
+
+    }
+}
+
+/*
+op:
+[100, 200, 300]
+[100, 200, 300, x, true]
+[100, 200, 300, x, true, ma i, false]
+
+
+ */
+
+-LinkedList 3:
+- extracting data using cursor:
+
+
+package collection.list;
+import java.util.LinkedList;
+import java.util.Iterator;
+public class LinkedList3 {
+    public static void main(String[] args){
+        LinkedList<Integer> ll=new LinkedList<Integer>();
+        ll.add(100); ll.add(200);
+        Iterator i=ll.iterator();
+        while(i.hasNext()){
+            System.out.println(i.next());
+        }
+    }
+}
+
+/*
+OP:
+
+100
+200
+
+ */
+
+-LinkedList 4
+
+package collection.list;
+
+import java.util.LinkedList;
+
+public class LinkedList4 {
+    public static void main(String[] args){
+        LinkedList<Integer> ll=new LinkedList<Integer>();
+        ll.add(100); ll.add(200);
+        System.out.println(ll);
+        ll.addFirst(21); ll.addLast(1);                  //addFirst() and addlast() method of linked list
+        System.out.println(ll);
+
+    }
+}
+/*
+OP:
+
+[100, 200]
+[21, 100, 200, 1]
+
+ */
+
+
+
+
+
+- there are 2 constructors supported by Linkedlist class.
+
+1)public java.util.LinkedList()
+2)public java.util.LinkedList(java.util.Collection)
+
+-IQ: Linkedlist implements majority of the characteristics of array list, then when should we go for arraylist and when for linked list?
+-> whenever there is need to add frequent data to the collection, we will not prefer to go for array list, we will prefer to go for linked list. reason: whenever we try to add any data to the array list , adding 1 data /elent will make the objects perform multiple rightshift operations, due to which it will consume more time to and may degrade the performance. hence in such situations we go for linked list.bxcoz to add 1 object, we will just have to we just have to 1 link between nodes, and it will be less time consuming, hence whenever we have to add multiple data frequently , we prefer to go for linkedlist, rather than array list.
+
+-whenever there are multiple read operations, in such situations, we will prefer to go for arraylist rather than linked list.
+-reason is: to extract the data from likedlist, we not only have to extract the node data, but we also have to read the address of the next node, hence not only it consumes more time to read node and address, but bczo of this , it will consume more memory. which reduces the speed of reading or extraction.
+- when it comes to array list, we only have to read the obj data. bcoz every obj data is next to each other.hence reading becomes faster.
+
+
+-Arraylist also implements RandomAccess bcoz of which it is responsible , to get extra power to the array list, to perform extract operation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vectors:
+-version- 1.0
+-homogeneous and heterogeneous allowed.
+-duplicates are allowed.
+-methods are synchronized.
+-insertion order maintained.
+-null are also allowed.
+-DATA structure is growable.
+-ALL 3 cursors are applicable.
+
+-vector 1:
+
+package collection.list;
+
+import java.util.Vector;
+ //VECTOR COLLECTION IMPLEMENTATION
+
+public class Vector1 {
+        public static void main(String[] args){
+            Vector v=new Vector();
+            v.add(100); v.add(200); v.add(300);
+            System.out.println(v);
+            v.add(100);
+            v.add(null);
+            v.add("tej");
+            v.add(false);
+            System.out.println(v);
+}}
+/*
+OP:
+[100, 200, 300]
+[100, 200, 300, 100, null, tej, false]
+
+ */
+
+-vector :
+
+package collection.list;
+
+import java.util.Vector;
+
+public class Vector2 {
+    public static void main(String[] args) {
+        Vector v = new Vector(4, 3);
+        v.add(100);
+        v.add(200);
+        v.add(300);
+        System.out.println(v);
+        System.out.println(v.size());              //3
+        System.out.println(v.capacity());           //4
+        v.add(100);
+        v.add(200);
+        v.add(300);
+        System.out.println(v);
+        System.out.println(v.size());              //6
+        System.out.println(v.capacity());          //7
+        v.add(100);
+        v.add(200);
+        v.add(300);
+        System.out.println(v);
+        System.out.println(v.size());              //9
+        System.out.println(v.capacity());          //10
+    }
+}
+/*
+OP:
+
+[100, 200, 300]
+3
+4
+[100, 200, 300, 100, 200, 300]
+6
+7
+[100, 200, 300, 100, 200, 300, 100, 200, 300]
+9
+10
+
+ */
+
+
+
+-constructors applicable here:
+
+1)public.java.util.Vector(); default capacity->10 but it will double automatic-> 20-> 30-> 40 
+2)public.java.util.Vector(int); userd efined capacity
+3)public.java.util.Vector(int, int);   user defined capacity    user  defined  increment
+4)public.java.util.Vector(java.util.colletion<? extends E>);  -> add one collection into another
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

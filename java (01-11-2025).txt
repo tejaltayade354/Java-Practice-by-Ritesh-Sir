@@ -1,0 +1,142 @@
+java (01-11-2025)
+
+-IQ: To split the string, using string tokenizer based on a specific delimiter, for that we need to use a string tokenizer Two argument constructor.
+
+public StringTokenizer(String, String);
+               String to be split, delimiter
+
+-CONCLUSION:
+-we in todays era, we don't use string tokenizer to split the string, but we use split method to split the string.
+
+
+Exceptions:
+
+-An exception can be defined as an unexpected event, which may occur during compile time or run time.
+
+-whenever an exception occurs, it will lead to 2 things :
+
+1) it will lead to abnormal termination.
+2) the remaining statements will not get executed.
+
+-   What are the different types of exceptions?
+--> There are mainly 3 types of exception, 1) UNCHECKED EXCEPTION,  2)CHECKED EXCEPTION,  3)ERROR 
+
+
+1)UNCHECKED EXCEPTION:
+- Whenever the compiler do not check the exception, but JVM checks such an exception is called as unchecked exception.
+
+example 1:
+
+-in java the expression 10/0 will lead to arithmetic exception.
+
+class example1{
+    public static void main(String[] args){
+        System.out.println("start ");         //print statements before exception
+        System.out.println(10/0);
+         System.out.println("enddddddddddddddd ");
+    }
+}
+
+op:
+
+start 
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example1.main(example1.java:4)
+
+-example 2:
+
+-exception raised is arraysindexoutofboundsexception.
+
+IQ: whenever the uncheck exception occurs in ur program, will ur program compiled?
+--> Yesssssssssssssssssssssssssssssssssssss
+
+ class example2 {
+    
+    public static void main(String[] args){
+        int[] a={10,20,30} ;
+        System.out.println("start ");
+       System.out.println(a[20]);               //unchecked exception means compile honarrrrr
+         System.out.println("enddddddddddddddd ");
+    }
+    
+}
+
+op:
+
+start 
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 20
+        at example2.main(example2.java:6)
+
+2) CHECKED EXCEPTION;
+-if the exception is checked by the compiler such exception is called as checked exception.
+
+example3:
+
+example is interrupted exception.
+- thread is a class, sleep() static method, 3000- milli seconds----> 3 sec
+
+ class example3{
+    //checked exception----checked by compiler
+    public static void main(String[] args){
+     
+        System.out.println("start ");
+        Thread.sleep(3000);//---> 3 sec           //main -> sleep , then how other parts of main work!
+         System.out.println("enddddddddddddddd ");
+    }
+    
+}
+
+op:
+Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+        Unhandled exception type InterruptedException
+
+        at example3.main(example3.java:7)
+
+
+
+
+-Q) whenever a checked exception occurs , will ur program compile ?
+--> no , 
+sss
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

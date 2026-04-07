@@ -1,0 +1,252 @@
+Java lecture(25-09-2025)
+
+CONSTRUCTORS:
+- Constuctors can be defined as special methods, which are meant to perform operation but do not have a return type.
+-rules to create a constructor:
+constructor name should be same as class name.
+they can accept arguments.
+But they do not have a return type.
+
+-constructors are always called during object creation.(example 1 point.)
+
+example 1:
+class Example1{
+    Example1()
+    {
+        System.out.println("inside zero argument constructor");
+
+    }
+    public static void main(String[] args){
+           System.out.println("start");
+            Example1 ref= new Example1();     // constructors are always called during object creation. 
+             System.out.println("end");
+    }
+}
+
+//op
+
+start
+inside zero argument constructor
+end
+
+
+example 2:
+-To return the control from the constructor, we use return statement.
+-if we don't add return statement, then compiler by default add return statement.
+
+class Example2{
+    Example2()
+    {
+        System.out.println("inside zero argument constructor");
+     return;           // to return the control only.         if we dont then compiler will by default add return statement.
+    }
+    public static void main(String[] args){
+           System.out.println("start");
+            Example1 ref = new Example1();
+             System.out.println("end");
+    }
+}
+
+//op
+
+
+
+example3: how many times can a constructor we called?
+-based on no of times we create an object or based on no of times we use new keyword that many no of times the constructor will get executed.
+-3 object create karayche example madhe.
+
+
+ class example3 {
+     example3(){
+        System.out.println("inside zero argument contructor");
+     }
+    public static void main(String[] args) {
+        example3 var1= new example3();
+        example3 var2= new example3();
+        example3 var3= new example3();
+    }
+}
+o/p:
+inside zero argument contructor
+inside zero argument contructor
+inside zero argument contructor
+
+example 4:
+-we can create multiple constructors, but minimum 1 constructor within a java class.
+
+class Example4{
+    Example4()
+    {
+        System.out.println("inside zero argument constructor1");
+    
+    }
+    Example4(int a)         //parameterized contructor    also we can cfeate multiple constructors but minimum 1.
+    {
+        System.out.println("inside one argument constructor2");
+    
+    }
+    public static void main(String[] args){
+            System.out.println("start");
+            Example4 ref = new Example4();
+            Example4 ref1= new Example4(5);
+            System.out.println("end");
+    }
+}
+
+//op
+start
+inside zero argument constructor1
+inside one argument constructor2
+end
+
+
+example 5:
+IMP NOTE: if we do not create any  constructor, only then java compiler will create a constructor.
+whenever java compiler creates the constructor, it will always create default, zero argument, empty implementation constructor.
+class Example1{
+    /*Example1()
+    {
+        //default,empty implimentation,zero argumented constructor by compiler");
+
+    }*/
+    public static void main(String[] args){
+           System.out.println("start");
+            Example1 ref = new Example1();
+             System.out.println("end");
+    }
+}
+
+//op
+error
+
+example 6:
+-duplicate constructors are not allowed within a class.
+
+class Example6{
+    Example6()
+    {
+        System.out.println("inside zero argument constructor");
+
+    }
+    Example6()
+    {
+        System.out.println("inside zero argument constructor");    //duplicate constructor, mhanun error milegaaaa.
+
+    }
+    public static void main(String[] args){
+           System.out.println("start");
+            Example6 ref= new Example6();
+             System.out.println("end");
+    }
+}
+
+//op
+
+ 
+example 7:
+IQ: Is it possible to call constructor from another class?
+-> yes, it is possible by creating the object of that class.
+
+
+class fin{
+    fin()
+    {
+        System.out.println("inside fin zero argument constructor");
+
+    }
+}
+class demo{
+    demo()
+    {
+        System.out.println("inside demo 0 argument constructor");   
+
+    }
+}
+class example7
+{
+    public static void main(String[] args){
+            System.out.println("start");
+            fin ref= new fin();
+            demo obj2=new demo();
+            System.out.println("end");
+    }
+}
+
+//op
+start
+inside fin zero argument constructor
+inside demo 0 argument constructor
+end
+
+What are the difft types of constructors?
+--->  There are mainly 3 types of constructors:
+
+TYPES OF CONSTRUCTOR:
+Default
+zero argument
+parameterized or argud constructor.
+ 
+EXAMPLE 8
+IQ:  What is the use of contructors in real time?
+---> in real times, the constructors are primarily used to perform 2 imp operations: 1) To initialize the non static members IN CONSTRUCTOR.
+2)To implement the business logics during object creation.
+
+class example8
+{
+    int a;  //  initially without declaring 0----> then we made 10 in constructor 10
+    example8(){
+        System.out.println("inside demo constructor " +a);
+       a=10;   // non static member initialization
+    }
+    void m1(){
+        System.out.println("inside m1 method " +a);
+        
+    }
+    
+    public static void main(String[] args){
+        example8 ref=new example8();
+        ref.m1();
+        System.out.println();
+    }
+}
+
+
+inside demo constructor 0
+inside m1 method 10
+
+
+
+EXAMPLE 9:
+ WE CAN use this keyword within a constructor.
+
+
+class example9
+{
+    int a; // 0-->100
+    example9(int a){
+        System.out.println("inside example 9 (local val)constructor " +a);
+       this.a=a;  //bcoz of this , m1 also print a  value 100 // if this not used then its printing 0.
+    }
+    void m1(){
+        System.out.println("inside m1 method " +a);
+        
+    }
+    
+    public static void main(String[] args){
+        example9 ref=new example9(100);
+        ref.m1();
+        
+    }
+}
+
+
+inside  inside example 9 (local val)constructor 100
+inside m1 method 100
+
+
+
+
+
+
+
+

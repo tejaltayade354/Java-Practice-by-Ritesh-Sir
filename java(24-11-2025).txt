@@ -1,0 +1,388 @@
+java(24-11-2025)
+
+-ArrayList 13:
+
+- IQ: What are the difft approaches to extract data from collection?
+-> 1) for each loop,
+   2) get method  -> it takes index as argument and returns the object.   ex: Objec oo=al.get(0);
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList13 {
+public static void main(String[] args){
+    ArrayList al=new ArrayList();
+    al.add(100);  al.add(200);  al.add(300);
+    System.out.println(al);
+
+    // 1st way to extract data from collection
+    for(Object o:al){
+        Integer i=(Integer)o;
+        System.out.println(i);
+    }
+    //2nd way to extract data from collection
+    Object oo=al.get(0);     //get method dont know which type of object is Integer thats why we are doing downcasting in below line.
+    Integer ii=(Integer)oo;
+    System.out.println(ii);
+
+
+}
+
+}/*
+op:
+
+        [100, 200, 300]
+        100
+        200
+        300
+        100
+*/
+
+-ArrayList 14:
+
+package collection.list;
+import java.util.ArrayList;
+class ArrayList14 {
+    public static void main(String[] args){
+        //when collection is made generic, we know only homogeneous data , only integers stored, hence no need to do downcasting
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        al.add(100);  al.add(200);  al.add(300);
+        System.out.println(al);
+        // 1st way to extract data from collection
+        for(Integer i:al){
+            System.out.println(i);
+        }
+        //2nd way to extract data from collection
+        Integer ii=al.get(0);     //get method dont know which type of object is Integer thats why we are doing downcasting in below line.
+        System.out.println(ii);
+    }
+
+}/*
+op:
+
+        [100, 200, 300]
+        100
+        200
+        300
+        100
+*/ 
+
+CURSORS:
+- cursors are also meant to extract the data from collection.
+-When u already have for and get method to extract data from collection, then what is the need for  cusor)?
+-> cursors are not only meant to extract the data from collection, but they are also used to manipulate the data in collection.
+
+-What are the difft types of cursors?
+->Cursors can be categorized mainly into 3 types:
+  1)Enumeration   (version-1.0) (I)
+  2)Iterator      (version-1.2) (I)
+  3)List Iterator (version-1.2) (I)
+
+1)Enumeration   (version-1.0) (I)
+-IT is an INTERFACE.
+-Enumeration cursors primarily works on legacy collections like vector and stack.
+-Enumeration cursor can only perform read operation.
+-Enumeration cursor can only perform operations in the forward direction.(it  is a unidirectional cursor.)
+-It is not a universal cursor.(only appliacable to legacy collection---> vector and stack)
+
+Enumeration 1:
+
+package collection.list;
+import  java.util.Vector;
+import java.util.Enumeration;
+public class Enumeration1 {
+    public static void main(String[] args){
+        Vector v=new Vector();
+        v.add(100); v.add(200); v.add(300);
+        Enumeration e=v.elements(); //returns the vector address, and they are returned  hence we have to store the objects or elments hence enumeration e
+        while(e.hasMoreElements()){   //checks present or not -returns true if present , if not present then false
+           Integer i= (Integer)e.nextElement();
+           System.out.println(i);
+        }
+    }
+}/*
+
+op:
+100
+200
+300
+
+*/
+
+2)Iterator cursor(1.2 version )(I-> INTERFACE) :
+- It is a universal cursor.(applicable to most of the collections)
+- the Iterator cursor  can perform not only read operations but can also perform remove operation.
+- Both read and remove operations can be performed only in the forward direction.(uni-directional) hence it is also called as unidirectional cursor.
+
+Iterator 1:
+
+package collection.list;
+import java.util.ArrayList;
+import java.util.Iterator;
+public class Iterator1 {
+    public static void main(String[] args){
+    ArrayList al=new ArrayList();
+    al.add("tejal");  al.add("uttamrao");  al.add("tayade" );
+     Iterator i=al.iterator();
+     while(i.hasNext()){
+       String ss=(String)i.next();
+       System.out.println(ss);
+    }
+}
+
+}
+  /*
+  op:
+tejal
+uttamrao
+tayade
+
+   */
+
+
+3)List Iterator ((1.2 version )(I-> INTERFACE))
+
+-List Iterator cursor is only applicable to list classes.(arraylist, linked list, vector, stack)
+
+-With the help of listiterator, we can perform read operations, set operation, and remove operation.
+- they can perform operation in forward and backward direction, hence it is called as bidirectional cursor.
+
+ListIterator1:
+
+package collection.list;
+import java.util.ArrayList;
+import java.util.ListIterator;
+public class ListIterator1 {
+    public static void main(String[] args){
+        ArrayList al=new ArrayList();
+        al.add("tejal");  al.add("uttamRao");  al.add("tayade" );
+        ListIterator li=al.listIterator();
+        while(li.hasNext()){
+            String ss=(String)li.next();
+            System.out.println(ss);
+        }
+    }
+
+}
+  /*
+  op:
+tejal
+uttamRao
+tayade
+
+   */ 
+
+
+-ArrayList 15:
+
+package collection.list;
+import java.util.ArrayList;
+import java.util.Iterator;
+public class ArrayList15 {
+    public static void main(String[] args){
+        //"""NORMAL COLLECTION''''
+
+        ArrayList al=new ArrayList();
+        al.add("a"); al.add("b"); al.add("c");
+        //Iterator cursor
+        Iterator i=al.iterator();     //iterator
+        while(i.hasNext()){         //hasNext(): checks objects or elements are present or not in coollection,
+           String s= (String)i.next();  //here the iterator next() dont know the type of object, thats why downcasting
+            System.out.println(s);           //next(): extracts the objects from collection.
+        }//""""""GENERIC COLLECTION'''
+
+        ArrayList<String> al2=new ArrayList<String>();
+        al2.add("X"); al2.add("Y"); al2.add("Z");
+        //Iterator cursor
+        Iterator ii=al2.iterator();
+        while(ii.hasNext()){
+            String ss= (String)ii.next();  //here the iterator  next() dont know the type of object, thats why downcasting
+            System.out.println(ss);
+        }
+    }
+}
+/*
+op
+a
+b
+c
+X
+Y
+Z
+
+ */
+
+
+TYPES OF CURSORS:
+
+cursors can also be categorized mainly into 2 types:
+-1) normal cursors
+-2) generic cursors
+
+
+
+-ArrayList 16:
+
+package collection.list;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayList16 {
+    public static   void main(String[] args){
+        //collection  generic
+        ArrayList<String> al2=new ArrayList<String>();
+        al2.add("a"); al2.add("Y"); al2.add("Z");
+        //normal Iterator
+        Iterator ii=al2.iterator();
+        while(ii.hasNext()){
+            String ss= (String)ii.next();  //here the iterator  next() dont know the type of object, thats why downcasting
+            System.out.println(ss);
+        }
+        //generic Iterator  -----> no need of downcasting, as iterator knows the collection have same type data(String type objects)
+        Iterator<String> iii=al2.iterator();
+        while(iii.hasNext()){
+            //here the iterator  next() dont know the type of object, thats why downcasting
+            System.out.println(iii.next());
+        }
+
+    }
+}
+/*
+op:
+a
+Y
+Z
+a
+Y
+Z
+
+ */
+
+-ArrayList17:
+
+package collection.list;
+
+import java.util.Iterator;
+import java.util.ArrayList;
+public class ArrayList17 {
+    public static void main(String[] args){
+        ArrayList<String> al=new ArrayList<String>();
+        al.add("hp"); al.add("lenovo"); al.add("acer"); al.add("dell");
+        System.out.println(al);
+        Iterator<String> i=al.iterator();
+        while(i.hasNext()){
+            String info=i.next();
+            if(info.equals("acer")){
+                i.remove();
+            }
+        }
+      for(String ss:al){
+          System.out.println(ss);
+      }
+    }
+}
+
+/*
+op:
+
+[hp, lenovo, acer, dell]
+hp
+lenovo
+dell
+ */
+
+
+
+
+Assignment 1:
+
+-WRITE A java program, to remove data  within collection with the help of cursors
+
+-ArrayList17:
+
+package collection.list;
+
+import java.util.Iterator;
+import java.util.ArrayList;
+public class ArrayList17 {
+    public static void main(String[] args){
+        ArrayList<String> al=new ArrayList<String>();
+        al.add("hp"); al.add("lenovo"); al.add("acer"); al.add("dell");
+        System.out.println(al);
+        Iterator<String> i=al.iterator();
+        while(i.hasNext()){
+            String info=i.next();
+            if(info.equals("acer")){
+                i.remove();
+            }
+        }
+      for(String ss:al){
+          System.out.println(ss);
+      }
+    }
+}
+
+/*
+op:
+
+[hp, lenovo, acer, dell]
+hp
+lenovo
+dell
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+java (10-10-2025)
+
+ABSTRACTION:
+-Abstraction is a process of highliting the services and hiding the implementation, this complete process is called as abstraction.
+-Abstraction can be achieved in 2 ways:
+1) Abstract classes
+2) Interfaces
+
+-NORMAL CLASS:
+-If a class contains a method, it has both declaration and implementation then such methods are called as normal methods.
+-If a class contains a normal methods, then we say the class is a normal class.
+
+
+1) ABSTRACT CLASS:
+-If a class contains a method which has only declaration(void m1();) but no body or implementation , such methods are called as abstract method.
+-If a class contains an abstract method, then the class automatically becomes an ABSTRACT CLASS.
+
+-example 1:
+
+-Only declaring a method, without implementation cannot make a method as abstract, we need to prefix the abstract keyword during the method declaration.
+-If the method is abstract, then automatically the class also becomes abstract.
+-To make  a class abstract, we also need to prefix the keyword called as abstract.
+-Whenever we compile an abstract class, it will generate a .class file.
+
+
+ abstract class exampel1{
+    abstract void m1();        //  only method declaration is needed for abstract method
+}
+
+
+-example 2 :
+-If a class contains an abstract method, then this method has to be implemented in the child class.
+-If the child class contains an abstract method, then the child class automatically becomes abstract.
+-To ensure the child class is not abstract, we need to provide implementation of the method by overidding.
+-TO ensure child class is not an abstract class, we need to override.
+-To achieve abstraction, we need to satisfy 2 conditions:
+1) There should exist IS-A relationship between the classes or inheritance between the classes.
+2) We need to implement overriding.(POLYMORPHISM)
+
+
+abstract class hdfcapp {
+    abstract void transfer();
+}
+class hdfcserver extends hdfcapp{
+    void transfer(){
+System.out.println("logics to amount transfter to hdfc server ");
+    }
+}
+class example2 {
+    public static void main(String[] args) {
+    
+    hdfcserver c1=new hdfcserver();
+    c1.transfer();
+    hdfcapp c2=new hdfcserver();
+    c2.transfer();
+    }
+}
+
+o/p:
+
+logics to amount transfter to hdfc server 
+logics to amount transfter to hdfc server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

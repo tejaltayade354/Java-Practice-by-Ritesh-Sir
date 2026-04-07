@@ -1,0 +1,311 @@
+Java lecture(29-09-2025)
+
+non static blocks/Instance blocks:
+- non static blocks are nothing but code in pair of curly brackets.
+
+-syntax:
+
+
+{
+
+//statements
+
+}
+
+
+EXAMPLE1:
+1) how do we execute non static blocks?
+->  To execute non static blocks, we need to create an object.
+
+
+
+class example1 {
+{
+    System.out.println("inside non static block");
+}
+    public static void main(String[] args){
+    System.out.println("MAIN ME HU ");
+    example1 e1=new example1();
+    System.out.println("me sampavto");
+
+
+
+    }
+    
+}
+
+
+2) when exactly are non static blocks are executed?
+-> During object creation.
+
+
+
+EXAMPLE2:
+1) How many times a non static block will get executed?
+-->Based on no of times we create objects, or new keyword encountered that many no of times non static block will get executed.
+
+class example2 {
+    {
+        System.out.println("Inside nonstatic block.");
+    }
+    public static void main(String[] args){
+
+        example2 e1=new example2();
+        example2 e2=new example2();
+        example2 e3=new example2();
+    }
+    
+}
+
+O/P:
+Inside nonstatic block.
+Inside nonstatic block.
+Inside nonstatic block.
+
+EXAMPLE3:
+
+-we can create multiple nonstatic blocks within a java class.
+-when we have multiple non static blocks, then the nonstatic blocks will executed from top to bottom.(order will be from top to bottom).
+
+class example3 {
+    {
+System.out.println("inside non static block- 1");  // nonstatic blocks are executed from top to bottom order.
+    }
+    {
+System.out.println("inside non static block- 2");
+    }
+    public static void main(String[] args){
+        example3 e1= new example3();
+    }
+}
+
+
+EXAMPLE4:
+
+IQ: both constructors and non static blocks are executed during object creation, BUT out  of both which one will get executed first?
+--> First nonstatic blocks will get executed first and only then constructors get executed.
+
+
+    
+During object creation, whenever the control is given to the constructor, the constructor first checks whether any instance blocks are present within a respective class, if they are present then it will execute the instance block first. And only after that, it will then execute the constructors.
+
+ class example4 {
+    {
+System.out.println("Inside non static block.");
+    }
+    example4(){
+        System.out.println("Inside zero argument Constructor");
+
+    }
+    public static void main(String[] args){
+        System.out.println("START");
+        example4 e1=new example4();
+          System.out.println("END");
+    }
+}
+
+
+OP
+
+START
+Inside non static block.
+Inside zero argument Constructor
+END
+
+EXAMPLE5:
+
+class example5 {
+    {
+        System.out.println("INside non static block-1");
+    }
+    {
+          System.out.println("Inside non static block-2");
+    }
+example5(){
+      System.out.println("Inside zero argument constructor");
+}
+public static void main(String[] args){
+    example5 e1= new example5();
+    example5 e2= new example5();  //both contructors and nonstatic blocks will get executed 2 times bcoz 2 objects
+    
+}
+}
+
+o/p:
+INside non static block-1
+Inside non static block-2
+Inside zero argument constructor
+INside non static block-1
+Inside non static block-2
+Inside zero argument constructor
+
+
+
+
+IQ: what is the primary use of instance/non static block IN real time?
+-> Instance blocks are primarily used for 2 purposes-
+1)To initialize a nonstatic members during object creation.(implementation in example 6)
+2)To implement business logic during the object creation.(implementation in example7)
+   to verify adhar, we created nonstatic block to implement business logic. 
+
+class example6 {
+    int a;
+    {
+        System.out.println("the value of a :" +a);
+        a=100;
+        System.out.println("The value of a : "+a);
+    }
+    public static void main(String[] args){
+       
+        example6 e1=new example6();
+    }
+}
+
+o/p:
+
+the value of a :0
+The value of a : 100  
+
+-Example7:
+
+
+ class hdfc {
+    int acountbal;
+    {
+        System.out.println("logiic to verify adhar otp");
+    }
+    hdfc(int acountbal)
+    { 
+        if(acountbal>=10000){
+            this.acountbal=acountbal;
+            System.out.println("account creation sccessful");
+        }
+        else{
+            System.out.println("account creation failed, not enoug amount");
+        }
+    }
+
+    int getacountbal(){
+            return acountbal;
+    }
+ }
+    class example7{
+
+    public static void main(String[] args){
+        System.out.println("lets start with account creation");
+        hdfc a1=new hdfc(52000);
+        int currentbalnce=a1.getacountbal();
+        System.out.println("account current balnce is: " +currentbalnce);
+    }
+}
+o/p:
+lets start with account creation
+logiic to verify adhar otp
+account creation sccessful
+account current balnce is: 52000
+
+
+EXAMPLE8:
+
+-instance blocks are always executed in the stack memory.
+-instance blocks are never saved in heap memory, they are only called during object creation.
+
+IQ: When instance block and constructors perform the same operation then what's the difference?
+->  The instance block logics are applicable to all objects and constructors, but constructor logics are applicable only to the respective object as well as to respective constructor.
+
+
+ class example8 {
+    int a;
+
+    {
+        System.out.println("Inside nonstatic bloack-a :" +a);
+        a=10;
+    }
+    example8(){
+        System.out.println("before Inside 0 arg constructor a: " +a);
+    
+        a=100;
+
+        System.out.println("afterr Inside 0 arg constructor a: " +a);
+    }
+
+       example8(int x){                                                      // constructor logics are only applicable to respective constructor, and object.
+        System.out.println("before Inside 1 arg constructor a: " +a);
+    
+        a=x;
+
+        System.out.println("afterr Inside 1 arg constructor a: " +a);
+    }
+    public static void main(String[] args){
+        example8 e1=new example8();
+        example8 e2=new example8(1000);
+    }
+}
+
+o/p:
+Inside nonstatic bloack-a :0
+before Inside 0 arg constructor a: 10
+afterr Inside 0 arg constructor a: 100
+Inside nonstatic bloack-a :0
+before Inside 1 arg constructor a: 10
+afterr Inside 1 arg constructor a: 1000
+PS C:\Users\Tejal\CCSP12 J AUGUST\NONSTATIC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

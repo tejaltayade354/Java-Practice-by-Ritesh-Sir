@@ -1,0 +1,255 @@
+java(29-10-2025)
+
+-String methods:
+-example14:
+
+class ex14{
+    public static void main(String[] args ){
+     String s1="cybersuccess";
+     System.out.println(s1.charAt(2));  //accepts index value, returns character at specified index.
+     //System.out.println(s1.charAt(20)); //gives stringoutofboundexception
+     System.out.println(s1.indexOf("e")); //accepts charcater and returns first occurence character index .
+     System.out.println(s1.indexOf("z"));  //returns -1 ---------->why?
+     System.out.println(s1.lastIndexOf("e"));  //first accepts the character, returns  last index of character
+     System.out.println(s1.lastIndexOf("z"));  //returns -1
+    }
+}
+o:p
+
+b
+3
+-1
+9
+-1
+
+CharAt()
+- it accepts the index value, and returns the character at the specified index.
+
+
+
+-indexOF()
+-this method will accept the specific character and will return the first occurrence of the character index value.
+
+
+
+-lastIndexOf()
+-This method again accepts a character and will return the last index of the respective character.
+
+
+-example 15:
+
+ class ex15 {
+    public static void main(String[] args) {
+        String s2="CyberSuccess";
+        System.out.println(s2.startsWith("Cyb"));
+        System.out.println(s2.startsWith("xyz"));
+        System.out.println(s2.endsWith("ess"));
+        System.out.println(s2.endsWith("abc"));
+        System.out.println(s2.contains("Succ"));
+        System.out.println(s2.contains("ccc"));
+        System.out.println(s2.isEmpty());
+        String s3="";
+        System.out.println(s3.isEmpty());
+    }
+
+}
+
+
+op:
+
+true
+false
+true
+false
+true
+false
+false
+true
+
+-startsWith()
+-this method checks for the prefix sequence within the starting of the string if it matches, it will return true else it will return false.
+
+
+-endsWith()
+-it will check if the suffix of the string is matching or not at the end of the string, and based on that it will return a Boolean value.
+
+-contains()
+it will check whether a character sequence is present anywhere within the string, based on which it will either return true or will return false.
+
+
+-isEmpty()
+-this method will be responsible to check, if a string is empty or not based on which it will return a Boolean value.
+
+
+-example16:
+
+SUBSTRING:
+- A substring can be defined as extracting a part of the string is called as substring.
+
+substring(int beginIndex)
+-this method, it will start extracting the string from the begin index till the end of the string.
+
+substring(int beginIndex, int endIndex)
+-in the substring, the begin index and the end index, it will start extracting from the begin index and will extract till the end index -1.
+
+toUpperIndex()
+-This will be responsible to convert lower case string to the uppercase.after that return the respective string.
+
+toLowerIndex()
+-This will be responsible to convert upperer case string to the lowercase.after that return the respective string.
+
+trim()
+-the trim method will be responsible to trim the spaces on either side of the string, and after trimming it will return the string.
+
+-note: trim method will not trim the spaces in betn the string.
+
+ class ex16 {
+    public static void main(String[] args) {
+       String s1="CyberSuccessTraining";
+       
+       System.out.println(s1.substring(5));
+     //  System.out.println(s1.substring(50));  -------> StringIndexOutOfBoundsException:
+       System.out.println(s1.substring(5,12));
+       System.out.println(s1.toUpperCase());
+       System.out.println(s1.toLowerCase());
+       String s2=" eye ";
+       System.out.println(s2.length());
+       System.out.println(s2);
+       String s3=s2.trim();
+       System.out.println(s3.length());
+       System.out.println(s3);
+
+    }
+}
+
+/*
+o/p:
+
+SuccessTraining
+Success
+CYBERSUCCESSTRAINING
+cybersuccesstraining
+5
+ eye
+3
+eye
+
+ */
+
+
+example17:
+
+class ex17 {
+public static void main(String[] args) {
+int[] a={10,20,30};
+System.out.println(a[0]);
+System.out.println(a[1]);
+System.out.println(a[2]);
+}    
+}
+/*
+ split,length
+ public String[] split(String regex)
+ */
+
+ o/p
+
+10
+20
+30
+
+
+
+split method:
+
+syntax:
+
+String[] split(String regex)
+
+-split method return type is a string array.
+
+
+-example18:
+
+ARRAYS:
+
+-A variable at any point of time can store only 1 value, but  an ARRAY can store multiple values.
+-values are stored in indexed order. 
+-arrays can store only homogenous values.
+
+
+class ex18 {
+public static void main(String[] args) {
+int[] a={10,20,30};
+for(int i=0;i <= 2; i++)
+{
+System.out.println(a[i]);
+}
+}}
+
+o:p
+
+10
+20
+30
+
+-example19
+
+class ex19 {
+public static void main(String[] args) {
+int[] a={10,20,30};
+System.out.println(a.length);
+for(int i=0;i <= 2; i++)
+{
+System.out.println(a[i]);
+}
+}}
+
+o:p
+3
+10
+20
+30
+
+
+
+
+-example20:
+-array of string values and length 
+
+class ex20 {
+    public static void main(String[] args) {
+        String[] a={"systrn","guiihg","mtej"};
+System.out.println(a.length);
+for(int i=0;i <= 2; i++)
+{
+System.out.println(a[i]);
+}
+    }
+}
+
+
+op:
+
+3
+systrn
+guiihg
+mtej
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

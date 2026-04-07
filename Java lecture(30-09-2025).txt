@@ -1,0 +1,253 @@
+Java lecture(30-09-2025)
+
+
+static blocks:
+
+-syntax of static blocks:
+
+static
+{
+  //statements
+}
+
+Example1:
+
+-static blocks are executed during class loading , there is no need to create an object to call static block.
+-static blocks are executed before main when they are part of the same class.
+
+class example1 {
+    static{
+        System.out.println("inside static block");           //static blocks are executed before main
+    }
+    public static  void main(String[] args){
+
+        System.out.println("start");
+        System.out.println("endddddddddddddd");
+        // no need of object creation for executing static block, they are executed during class loading.
+    }
+}
+
+
+op:
+
+inside static block
+start
+endddddddddddddd
+
+Example2:
+-we can create min 1 static block or we can create n no of static blocks.
+-If there are multiple static block, then the order of execution will be from top to bottom.
+
+class example2 {
+    static{
+        System.out.println("inside static block-1");           //static blocks are executed before main
+    }
+    static{
+        System.out.println("inside static block-2");           //static blocks are executed before main  ////// from top to bottom order
+    }
+    public static  void main(String[] args){
+
+        System.out.println("start");
+        System.out.println("endddddddddddddd");
+        
+    }
+}
+o/p:
+
+
+inside static block-1
+inside static block-2
+start
+endddddddddddddd
+
+
+Example3:
+-A class during the execution could be loaded only once, hence static blocks are executed only once.
+-but the non static blocks will get executed multiple times, bcoz we can create multiple objects.
+
+class example3 {
+    static{
+        System.out.println("inside static block-1");           //static blocks are executed before main only once as class loads only once
+    }
+    {
+        System.out.println("inside non-static block");           //nonstatic blocks are executed same no times we create objects.  
+    }
+    public static  void main(String[] args){
+example3 e1= new example3();
+example3 e2= new example3();
+        System.out.println("start");
+        System.out.println("endddddddddddddd");
+        
+    }
+}
+
+
+inside static block-1
+inside non-static block
+inside non-static block
+start
+endddddddddddddd
+
+example4:
+what is the output of following code?
+-it gets complied, but not executed.
+-if the would have been executed previous to 1.7 java version, then this code would have been executed, but after 1.7 version it was made mandatory that main should be present during the execution.
+
+
+class example4 {
+    static{
+        System.out.println("inside static block");   //
+    }
+}
+
+Example5:
+1) when do we use static blocks?
+-> Static blocks are primarily used for 2 reasons:
+1-To initialize the static variables during class loading time.
+2-To implement the business logics during class loading time.(example 7 implementation.)
+
+
+ class example5 {
+    static int a ;
+    static{
+        System.out.println("the value of a " +a);
+         a=10;
+    }
+    public static void main(String[] args) {
+        System.out.println("styart");
+        System.out.println("the value of a  " +a);
+          System.out.println("end");
+    }
+}
+
+o/p:
+the value of a 0
+styart
+the value of a  10
+end
+
+Example6:
+-if a program contains multiple classes, all multiple classes will not be loaded at the same time in the memory.
+-Whenever JVM finds there is dependency on another class, only and only then JVM will call/invoke class loaders of other classes.
+
+
+Example7:
+
+
+
+
+Example8:
+assignment to check knowledge:
+
+
+
+Assignments:
+1)constructor 
+    initialize static variables.
+         call static methods
+               create objects
+                   call non static methods
+
+
+Same for Non static blocks and static blocks.
+
+
+
+
+
+OOP:
+
+q1) What are main pillars of oop?
+--> there are mainly  4 pillars:
+     1)INHERITANCE, 2)POLYMORPHISM, 3)ABSTRACTION, 4)ENCAPSULATION.
+
+1) INHERITANCE:
+-The class which acquires the members of another class, this process is called inheritance.
+-To achieve inheritance there should be is-a relationship between classes.
+- To implement inheritance , min there should be 2 classes.
+-To represent is-a relationship in java, we use extends keyword.
+-BENEFITS of inheritance:
+reusability:
+duplication less- duplicate code used is none.
+length less- length of the code is reduced.
+memory less- memory usage is less/optimized.
+execution time is also less,
+speed of application is faster.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

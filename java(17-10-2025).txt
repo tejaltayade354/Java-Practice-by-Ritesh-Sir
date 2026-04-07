@@ -1,0 +1,209 @@
+java(17-10-2025)
+
+-Q1) How many string classes are there supported by java?
+---> 1)string class
+     2)String Buffer
+     3)String builder
+     4)String Tokenizer
+
+-Q2) What is String?
+---> String can be defined as sequence of characters no and special characters within a part of (" ") is called String.
+
+
+1) STRING CLASS:
+-  string class is also part of java.lang package.
+
+Q3) How many ways are there to create String based object?
+--> 1)Without new keyword
+    2)With new keyword
+
+Q4) What is the diff between creating obj with and without new keyword?
+--> Whenever we create string based object without new keyword, it will create an object within string constant pool.But before creating obj within string constant pool ,it will check object is present or not. If object is not present  then only it will create the object.
+if the object is already present, it will redirect the reference to the existing object.
+
+-example 1:
+
+-s and s1 are pointing towards same object because duplicate object not allowed.
+
+class ex1{
+
+public static void main(String[] args){
+String s="cyber";
+String s1="ayber";
+String s2="cyber";
+System.out.println(s);
+System.out.println(s1);
+System.out.println(s2);
+}
+}
+
+op:
+
+cyber
+ayber
+cyber
+
+Q) In string constant pool can we create duplicate object or duplicate object allowed?
+-> NO, CANNOT allow duplicate object.
+
+
+2) WITH NEW KEYWORD.
+-Whenever we create new object using  new keyword regardless the object is dulicate or not, the respective object will be created as part of heap memory.
+
+-example 2:
+
+-with new keyword, duplicate object is allowed.
+
+ class ex2 {
+    public static void main(String[] args) {
+        String s1=new String("Cyber");
+        String s2=new String("ayber");
+        String s3=new String("Cyber");
+         //string objects s1 and s3 are not pointing to same area in heap bcoz we used new keyword.
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+    }
+}
+
+o:p
+
+Cyber
+ayber
+Cyber
+
+
+-example 3:
+
+-To perform comparison with respect to string we use double equalto operator(==).
+
+-equalsto(==) operator will by default perform reference  comparison.
+
+ class ex3 {
+    public static void main(String[] args) {
+        String s1="cyber";
+        String s2="ayber";
+         String s3="cyber";
+         System.out.println(s1==s2);
+         System.out.println(s3==s2);
+         System.out.println(s1==s3);                         //here, without new keyword, s1 and s3 will be pointing to same area .
+         String ss1=new String("Cyber");
+        String ss2=new String("ayber");
+        String ss3=new String("Cyber");
+        System.out.println(ss1==ss2);
+         System.out.println(ss3==ss2);
+         System.out.println(ss1==ss3);       //false -->but why?   //bcoz in memory s1 and s3 are pointing to different area
+    }
+}
+
+op:
+
+false
+false
+true
+false
+false
+false
+
+
+
+-example4:
+
+-whenever we create object of class and call the method toString() it return address
+-when u print reference directly java automatically call the toString() method of the object class.
+-if we don't create our own toString() method, it will use this one by default, so it prints:
+1)the classname
+2)the @symbol
+3)A Unicode value(hashcode) in hexadecimal format. Actually it is no real memory address it is just unique value.
+
+ class ex4 {
+    public static void main(String[] args ){
+        ex4 ref=new ex4();
+        System.out.println(ref);
+        System.out.println(ref.toString());
+        String str=new String("tejal is pro coder");
+        System.out.println(str);
+    }
+}
+
+o:p
+
+ex4@722c41f4
+ex4@722c41f4
+tejal is pro coder
+
+-example5:
+
+-Whenever we create obj of class and call the method toString() it return the address and for creating a class string1, it can override the toString()and it changes its behaviour, so it will return the value and after calling the tostring () method by string1 it will return the value.
+
+
+ 
+ /* 
+ class object{
+    public String toString();
+ }   
+    */
+ class string1{
+    String str;
+    string1(String str){
+           this.str=str;
+
+    }
+    public String toString(){
+          return str;
+    }
+ }
+ class ex5 {
+    public static void main(String[] args){
+        ex5 ref=new ex5();
+        System.out.println(ref);
+        System.out.println(ref.toString());     //toString ->  object  -> address
+        String s1=new String("Tejal");
+        System.out.println(s1);
+        System.out.println(s1.toString());       //toString  ->  String1 -> value
+    }
+}
+
+op:
+
+ex5@722c41f4
+ex5@722c41f4
+Tejal
+Tejal
+
+
+-example 6:
+
+write a program to check username having min 7 characters to allow for login.
+
+class ex6{
+    public static void main(String[] args){
+String username="CyberSuccess";
+ int size= username.length();
+ if(username.length()>=7)
+ {
+    System.out.println("login successful");
+}
+else
+   {System.out.println("enter valid username");
+  }
+ }
+}
+
+op:
+
+login successful
+
+
+-example7:
+
+-string class are called immutable classes bcoz its obj data will never go and change.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,200 @@
+example13:
+-it is possible to create a static block inside abstract class.
+
+abstract class sample{
+static{                                                          //static block inside abstrsact class
+    System.out.println("inside static block-sample");
+}
+}
+class demo extends sample {
+    static{
+        System.out.println("inside static block -demo"); //pahile parent static block execute honar
+    }
+}
+class example13
+{
+    public static void main(String[] args){
+        demo d=new demo();
+
+    }
+}
+
+
+inside static block-sample                                                                                            
+inside static block -demo
+
+example 14:
+
+imp q1) IS it possible to create a main method in abstract class?
+----->  yes.
+
+abstract class example14 {
+    public static void main(String[] args){
+        System.out.println("we can create main method in abstract class.");
+    }
+}
+
+//op:
+
+
+//we can create main method in abstract class.
+
+
+IQ: What is the difference between normal class, abstract class, interfaces(considering 2classes or interfaces)?
+-->           
+           normal class----declaration, implementation.
+                           declaration, implementation.
+----------------------------------------------------------------------------------
+           abstract class----declaration.
+                           declaration, implementation.
+----------------------------------------------------------------------------------
+           interfaces    ----declaration.
+                             declaration.
+
+INTERFACES:
+-As seen in the above diagram, we can say that interfaces by nature are more abstract with respect to abstract class.
+-To make interface we have to use interface.
+
+
+example15:
+
+-any method declaration within an interface is by default public and abstract.
+
+
+interface it1
+{
+    void m1();  // method inside interfaces are by deafault public and abstract     //method declaration
+}
+class demo implements it1
+{
+public void m1(){                   //thats why public access modifier is used.
+    System.out.println("inside m1 method");
+}
+}
+class example15 {
+    public static void main(String[] args) {
+        demo d= new demo();
+        //it1 I1= new it1();    --------->              //invalid- cant create object of interfaces.
+        it1 a=new demo();       --------------->  // VALID
+        d.m1();
+    }
+}
+
+op:
+
+//inside m1 method
+
+
+- As an method is public and abstract in an interface, hence while overriding the access level should be public. 
+-SEE BELOW EXAMPLE:
+
+
+interface it1
+{
+    void m1();  // method inside interfaces are by deafault public and abstract     //method declaration
+}
+class demo implements it1
+{
+public void m1(){                   //thats why public access level  is used.
+    System.out.println("inside m1 method");
+}
+}
+class example15 {
+    public static void main(String[] args) {
+        demo d= new demo();
+        //it1 I1= new it1();    --------->              //cant create object of interfaces.
+        d.m1();
+    }
+}
+
+op:
+
+//inside m1 method
+
+-We cannot create a object of interface, bcoz interface by nature are highly abstract.
+-we can hold the reference  of child class using parent interface.(polymorphism)
+
+-example17:
+
+interface bank
+{
+    void banking();       
+    void finance();
+    void insurance();
+}
+abstract class goabanking implements bank{
+    public void banking(){
+        System.out.println("banking logics to be implemented");
+    }
+}
+abstract class goafinance extends goabanking{
+    public void finance(){
+        System.out.println("finance logics to be implemented");
+    }
+}
+class goainsurance extends goafinance{
+    public void insurance(){
+        System.out.println("insurance logics to be implemented");
+    }
+}
+class example17 {
+    public static void main(String[] args) {
+        goainsurance cust1=new goainsurance();
+        cust1.banking();
+        cust1.finance();
+        cust1.insurance();
+    }
+}
+
+op:
+
+banking logics to be implemented
+finance logics to be implemented
+insurance logics to be implemented
+
+
+
+-Interface can be inherited by another interface using keyword extends.
+
+example 18:
+
+interface hdfcbank{
+    void bankaccount();
+} 
+interface hdfcloans extends hdfcbank{
+     void bankloans();
+}
+class cus1 implements hdfcbank{
+    public void bankaccount(){
+        System.out.println("open savings account");
+    }
+}
+class cus2 implements hdfcloans{
+    public void bankaccount(){
+        System.out.println("open current account");
+    }
+    public void bankloans(){
+        System.out.println("apply for business loans ");
+    }
+}
+
+class example18 {
+    public static void main(String[] args){
+    cus1 c1=new cus1();
+    c1.bankaccount();
+    cus2 c2=new cus2();
+    c2.bankaccount();
+    c2.bankloans();
+}
+}
+
+op:
+
+open savings account
+open current account
+apply for business loans
+
+
+
+
+

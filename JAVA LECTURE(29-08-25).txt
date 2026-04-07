@@ -1,0 +1,188 @@
+JAVA LECTURE(29-08-25)
+
+LOOPING STATEMENT:
+-A loop can be defined as repeating a statement or instruction no of times, itself is called as a loop or iteration.
+-There are three looping statement or iteration statements supported by java.
+ 1)for (again 3 types -for i, nested for, for each )
+ 2)while
+ 3)do-while
+
+1) For loop 
+- For loop categorized into 3 types: 1) for i    2) nested for     3)for each(will discussed in arrays and collections)
+
+-SYNTAX:
+
+    for(declaration/initialization; condition; increment/decrement)
+        {
+          //statements to be executed;
+        }
+
+
+-INCREMENT AND DECREMENT OPERATORS:
+operaters  can be  categorized into 2 types-1) increment operator
+                                            2) decrement operator
+- increment and decrement operators can be categorized into 2 types- 1) pre-increment    2)post increment           
+                                                                   - 1) pre-decrement    2) post decrement        
+  
+1) pre-increment  ++i  and post increment i++ :         
+- The pre and post increment operators will increment the value of i or any other variable by 1.
+
+prog:
+
+1) pre-increment AND post-increment          
+
+
+class   IncPrePost1
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		System.out.println(i);//1
+		//preincrement - first increment i value by 1 and then print value of i
+		System.out.println(++i);// increments, gives 2  then prints 1
+		//post increment- first print the i and then increment the value of i
+		System.out.println(i++);// first prints i means 2 then increment the value , we get 3
+		System.out.println(i);//3
+        }
+}
+
+
+
+IQ:
+write a java prog to print no from 1 to 3 used in the for loop.
+ans: program--
+
+class for1
+{
+  public static void main(String[] args)
+  {
+    for(int i=1;i<=3;i++)
+    { System.out.println("THE VALUE OF i IS:" +i);
+    }
+    
+  }
+}
+
+
+
+
+ques 1) Within the for loop execution, how many times the declaration and initialization happens?
+---->   ONLY ONCE.
+
+ ques 2) Within the for loop, how many times will the condition be checked?
+ ---->   based on total no of iterations plus 1.
+
+ ques 3)within the for loop, will increment and decrement happens?
+---->    based on total no of iterations.
+
+IQ: write a java program from 1 to 3 in descending order.
+---->             
+class for2
+{
+  public static void main(String[] args)
+  {
+    for(int i=3;i>=1;i--)
+    { System.out.println("THE VALUE OF i IS:" +i);
+    }
+    
+  }
+} 
+
+IQ: write a java program to check, if no 3 exist between 1 to 5 iterations.
+---->
+
+class for3
+{
+	public static void main(String[] args)
+	{
+		for(int i=1;i<=5;i++){
+			System.out.println(i);
+			if(i==3){
+				break;
+			}
+			System.out.println("THE VALUE OF i IS:" +i);
+		}
+	}
+}
+
+
+declaration and initialization:
+- declaration and initialization is not mandatory in for statement.
+
+class   For4
+{
+	public static void main(String[] args) 
+	{
+
+		System.out.println("START@ cyber cusse");
+                 int i=3;
+
+                for(i < = 5;i++)
+                {
+		System.out.println(" the value of i is "  +i);
+                }
+		System.out.println("START@ STOP");
+        }
+}
+
+NOTE:
+we can use minimum 1 or multiple statements separated by comma "," in the declaration as well as initialization stage.
+ class for5
+{
+  public static void main(String[] args)
+  {
+   int i=1;
+   for(System.out.println("one"),System.out.println("Two");i<=5;i++)
+   {
+   System.out.println("The value of i:" +i);
+   }
+  }
+}
+
+
+
+CONDITION STAGE IN FOR LOOP:
+
+- condition is not mandatory.
+- if we do not set any condition, then the compiler will by default set the condition as TRUE.
+class for6
+{
+  public static void main(String[] args)
+  {
+   
+   for(int i=1; ;i++)
+   {
+   System.out.println("The value of i:" +i);
+   }
+  }
+}
+
+
+-statements are not allowed within the condition.
+class   For7
+{
+	public static void main(String[] args) 
+
+	{
+
+		for(int i=1;System.out,println("two") ;i++){   // invalid
+                       }
+        }
+}
+
+INCREMENT AND DECREMENT:
+-Increment and Decrement is not mandatory.
+-In the below code, as i value is not incremented and decremented hence the i value willl never change and the condition will never change and hence it will go in the infinite loop.
+
+class   For8
+{
+	public static void main(String[] args) 
+	{
+
+		for(int i=1;i<=5;)           // infinite loop 
+
+                {   System.out.println(i);
+                }
+        }
+}
+

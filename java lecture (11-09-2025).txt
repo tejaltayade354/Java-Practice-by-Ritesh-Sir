@@ -1,0 +1,7 @@
+java lecture (11-09-2025)
+
+locals- return by, pass by values
+
+
+
+q

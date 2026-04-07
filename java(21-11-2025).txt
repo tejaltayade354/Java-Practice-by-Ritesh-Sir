@@ -1,0 +1,334 @@
+java(21-11-2025)
+
+
+normal collection
+
+ArrayList al=new ArrayList();
+
+Generic collection
+
+ArrayList<integer> al=new ArrayList<integer>();
+
+ArrayList 5:
+
+package collection.list;
+
+import java.util.ArrayList;
+public class ArrayList5 {
+    public static void main(String[] args){
+        ArrayList <Integer> al=new ArrayList<Integer>();
+        al.add(100);
+        al.add(200);
+        al.add(300);
+        //al.add("samay"); --> argument mismatched, java.lang.String cannot be converted to java.lang.Integer
+        System.out.println(al);
+
+    }
+
+   }
+ //op:[100, 200, 300]
+
+ArrayList 6:
+if the collections are made genric, the benefits are:
+1) we are able to achieve type safety.(only homogeneous data will be  stored)
+2) Making the collections generic will avoid, using multiple instanceof and downcasting statements.`
+
+IQ: if u are using collections in generic form, then why not go for arrays bcoz arrays also store homogeneous data?
+-> the collections are always preferred  bcoz arrays still continued to have a limitations:
+    1) arrays are fixed in size.
+    2) size do not change during the runtime.
+    3) it does not support the concept of methods.
+
+-whenever we print a collection, it will internally call the toString() method.
+-The toString() method is overridden in all collection class.Hence whenever we print the collection class, it wil not only call the toString method of collection class, but it will also call toString method of the objects present within the collection.
+
+
+-ArrayList7:
+
+package collection.list;
+
+import java.util.ArrayList;
+
+class Sample{
+    public String toString(){
+        return "cyber success";
+    }
+}
+public class ArrayList7 {
+    public static void main(String[] args){
+        ArrayList al=new ArrayList();
+        System.out.println(al);       //only prints []
+        al.add(98);//int-->Integer-->toString()
+        al.add(4.5f);//float-->Float-->toString()
+        al.add('c');//char-->Character-->toString()
+        al.add(true);//bool-->Boolean-->toString()
+        al.add(new Sample());//-->Sample-->toString()
+        System.out.println(al);  // here also, al only prints [], and values are printed bcoz toString() method is overidden.
+
+    }
+}
+/*
+op:
+[]
+[98, 4.5, c, true, cyber success]
+
+ */
+
+ArrayList8:
+
+public void add(int, E):
+public int size();
+public E remove(int);
+public Boolean remove(java.lang.Object);
+
+
+- the add method cannot only add single object, but can also add and element at specified index.
+- the size method returns the current size of the collection, without the index.
+- the remove method, can remove the element either based n index or based on object.
+
+package collection.list;
+
+
+
+import java.util.ArrayList;
+
+public class ArrayList8 {
+    public static void main(String[] args){
+        ArrayList al=new ArrayList();
+        al.add(100);  al.add(100.7f);  al.add('x');  al.add(true);
+        System.out.println(al);
+        al.add(2,67); //ref.add(index, element)
+        System.out.println(al);
+        System.out.println(al.size()); //size of arraylist
+        al.remove(2); //remove(index)--> takes inputs
+        System.out.println(al);
+        Integer i=100;
+        al.remove(i);   //  remove(object)     //takes object     //100 ---> removed
+        System.out.println(al);
+    }
+}
+
+/*
+op:
+[100, 100.7, x, true]
+[100, 100.7, 67, x, true]
+5
+[100, 100.7, x, true]
+[100.7, x, true]
+
+Process finished with exit code 0
+
+ */
+
+
+ArrayList9:
+
+public boolean is Empty();
+public void clear();
+
+-isEmpty():
+- method will return true or false based on  the data or object is stored or not.
+
+-clear():
+- the clear method is responsible to clear  complete data within the collection.
+
+-contains():
+- the contains method  will check if the collection contains specific object or not, and based on that will return a Boolean data.
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList9 {
+    public static void main(String[] args){
+        ArrayList al=new ArrayList();
+        al.add(100);  al.add(100.7f);  al.add('x');  al.add(true);
+        System.out.println(al.isEmpty());       //checks empty or not----> false
+        al.clear()          ;                     //clears everything
+        System.out.println(al.isEmpty());        // prints true as we used clear()
+        al.add(100);  al.add(100.7f);  al.add('x');  al.add(true);
+        System.out.println(al);
+         //checks arraylist contains the value or not.
+        System.out.println(al.contains(100));     //true
+        System.out.println(al.contains(1000));// false
+
+    }
+}
+/*
+op:
+false
+true
+[100, 100.7, x, true]
+true
+false
+
+ */
+
+-ArrayList10:
+
+IQ: How do we add 1 collection into another collection?
+->  by using addAll(collection) method.
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList10 {
+    public static void main(String[] args) {
+        ArrayList al = new ArrayList();
+        al.add(100);al.add(100.7f);al.add('x');al.add(true);
+        System.out.println(al);
+        ArrayList al2 = new ArrayList();
+        al2.addAll(al);                      //addAll() takes collection as input to merge collection
+        al2.add('a'); al2.add('b'); al2.add('c');
+        System.out.println(al2);
+
+
+    }
+}
+/*
+op:
+[100, 100.7, x, true]
+[100, 100.7, x, true, a, b, c]
+ */
+
+ArrayList11:
+
+
+containAll() method will check if 1 collection is present in another collection or not.
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList11 {
+    public static void main(String[] args) {
+        ArrayList al = new ArrayList();
+        al.add(100);al.add(100.7f);al.add('x');al.add(true);
+        System.out.println(al);
+        ArrayList al2 = new ArrayList();
+        al2.addAll(al);                       //addAll() takes collection as input to merge collection
+        al2.add('a'); al2.add('b'); al2.add('c');
+        System.out.println(al2);;
+        System.out.println(al2.containsAll(al));        //checks collection present or not
+        Integer i=100;
+        al2.remove(i);                            //removes  one element
+        System.out.println(al2.containsAll(al));
+
+    }
+}
+/*
+op:
+
+[100, 100.7, x, true]
+[100, 100.7, x, true, a, b, c]
+true
+false
+ */
+
+ArrayList12:
+
+removeAll() method will remove the complete collection
+
+theRetainAll() method will not only remove one only collection but also retain the other collection.( performs 2 operations-  by retainAll()  method)
+
+
+
+
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList12 {
+    public static void main(String[] args) {
+        ArrayList al = new ArrayList();
+        al.add(100);
+        al.add(100.7f);
+        al.add('x');
+        al.add(true);
+        System.out.println(al);
+        ArrayList al2 = new ArrayList();
+        al2.addAll(al);                       //addAll() takes collection as input to merge collection
+        al2.add('a');
+        al2.add('b');
+        al2.add('c');
+        System.out.println(al2);
+        //al2.removeAll(al);       //removes a collection
+        System.out.println(al2);
+
+        al2.retainAll(al);        //2 operations: remove 1 collection(al2), and retains /keeps al as it is
+        System.out.println(al2);
+
+
+    }
+}
+/*
+op:
+
+[100, 100.7, x, true]
+[100, 100.7, x, true, a, b, c]
+[100, 100.7, x, true, a, b, c]
+[100, 100.7, x, true]
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

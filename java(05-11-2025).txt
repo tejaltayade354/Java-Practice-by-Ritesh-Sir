@@ -1,0 +1,481 @@
+java(05-11-2025)
+
+-example 18:
+
+-if an exception is generated within the try block, then it will be handled by the catch block.
+-if an exception is generated within catch block, then it will lead to abnormal termination.
+
+class example18{
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+         System.out.println(10/0);
+        }
+        catch(ArithmeticException ae){
+          System.out.println("inside catch block");
+          System.out.println(10/0);        //abnormal termination-> exception iccuring in catchblock
+        } System.out.println("enddddd");
+    }
+}
+
+op:
+
+start
+inside try block
+inside catch block
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example18.main(example18.java:10)
+
+
+
+-example 19:
+
+-try-catch block inside try block and catch block.
+
+class example19 {
+    public static void main(String[] args){
+
+        System.out.println("starttttttttttttttt");
+        int[] a={10,20,30,40};
+        try{
+       System.out.println("inside-outer   try block");
+       try{
+         System.out.println("inside outer try-inner   try block");
+            System.out.println(10/0);
+       }
+        catch(ArithmeticException ae){
+  System.out.println("inside outer try -inner catch block");
+        } 
+        System.out.println(a[20]);    }         //exception -aiofbe
+        catch(ArrayIndexOutOfBoundsException ai){
+  System.out.println("inside outer -catch block");
+       try{
+         System.out.println("inside  outer catch-inner try block");
+            System.out.println(10/0);
+       }
+        catch(ArithmeticException ae){
+  System.out.println("inside outer-inner catch block");
+       
+        }
+        }
+         System.out.println("endddddddddd");
+    }
+}
+
+
+op:
+
+starttttttttttttttt
+inside-outer   try block
+inside outer try-inner   try block
+inside outer try -inner catch block
+inside outer -catch block
+inside  outer catch-inner try block
+inside outer-inner catch block
+endddddddddd
+
+
+
+finally block:
+
+-finally block is used, to execute the statements or instructions before JVM shutsDown, under normal or abnormal condition.
+
+-Where do we use final blocks in real time?
+->We use finally blocks: to destroy objects in the memory, to close database connectivity, to close streams .
+
+-example20:
+class example20 {
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+        }
+        catch(ArithmeticException ae){
+          System.out.println("inside catch block");
+        } 
+        finally{                  //used to execute the statements before JVM shutsdown.-and it finally block executes in normal and abnormal both terminations of prog.
+            System.out.println("inside finally block");
+        }
+        System.out.println("enddddd");
+    }}
+
+
+    op:
+
+start
+inside try block
+inside finally block
+enddddd
+
+
+-example21:
+
+
+class example21 {
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+         System.out.println(10/0);
+        }
+        catch(ArithmeticException ae){
+          System.out.println("inside catch block");        //cstch execute zala, bcoz exception occured.
+        } 
+        finally{                  //used to execute the statements before JVM shutsdown.-and it finally block executes in normal and abnormal both terminations of prog.
+            System.out.println("inside finally block");
+        }
+        System.out.println("enddddd");
+    }}
+
+
+   // op:
+start
+inside try block
+inside catch block
+inside finally block
+enddddd
+
+
+-example22:
+
+class example22 {
+    public static void main(String[] args){
+        int[] a={10,20,25};
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(a[20]);
+    
+        }
+        catch(ArrayIndexOutOfBoundsException ae){
+            System.out.println("inside catch block");
+               System.out.println(a[2]);
+               System.out.println(10/0);          //abnormal termination, phirbhi finally executed.           //cant occur in catch block, only exceptions are handled in catch block
+        }
+        finally{
+            System.out.println("inside finnally block");
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+
+
+
+op:
+
+starttttttttttttttt
+inside try block
+inside catch block
+25
+inside finnally block
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example22.main(example22.java:13)
+
+-example23:
+
+-its not mandatory, that we always have to use a catch block along with try, we can also use try and finally block together.
+
+
+class example22 {
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+        }
+        finally{                  //we can also use try and finally block together.
+            System.out.println("inside finally block");
+        }
+        System.out.println("enddddd");
+    }}
+
+
+op:
+
+start
+inside try block
+inside finally block
+enddddd
+
+-example24:
+
+-finally block, at any point of time cannot handle exceptions, it can only be handled with the help of catch block.
+
+class example24 {
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+         System.out.println(10/0);
+        }
+        finally{                  //we can also use try and finally block together.
+            System.out.println("inside finally block");       //finally block cant handle exceptions-------------->that's why abnormal termination
+        }
+        System.out.println("enddddd");
+    }}
+
+
+//op:
+
+
+start
+inside try block
+inside finally block
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example24.main(example24.java:6)
+
+-example25:
+
+-exception generated within a try  block, can be handled by the catch block, but if an exception is generated within a finally block, it will lead to abnormal termination, hence to avoid that we can use the inner try-catch block inside finally block.
+
+public class example25 {
+    public static void main(String[] args) {
+       
+        int[] a={10,20,25};
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(a[20]);
+    
+        }
+        catch(ArrayIndexOutOfBoundsException ae){
+            System.out.println("inside catch block");
+               System.out.println(a[2]);
+               }
+        finally{
+            System.out.println("inside finnally block");
+            try{
+            System.out.println("inside finally-wala try block");
+                System.out.println(10/0); 
+            }
+                 catch(ArithmeticException ue){
+            System.out.println("inside finally- catch block");
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+    }
+
+op:
+
+starttttttttttttttt
+inside try block
+inside catch block
+25
+inside finnally block
+inside finally-wala try block
+inside finally- catch block
+endddddddddd
+
+
+-example26:
+
+IQ: At what situation , the finally block will not get executed?
+->  With the help of exit() method from System class, the finally block will not get executed.Under normal and abnormal situations, the JVM will internally invoke finally block, but we are using exit method of system class inside try or catch, that's why JVM cant call the finally block.(JVM do not have rights to call finally block.)
+
+class example26 {
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+           System.exit(0);       //situation->when finally block will not executed
+           System.out.println(10/0);
+        }
+        catch(ArithmeticException ae){
+          System.out.println("inside catch block");        
+            } 
+        finally{          
+            
+            System.out.println("inside finally block");
+        }
+        System.out.println("enddddd");
+    }}
+
+
+op:
+
+start
+inside try block
+
+
+class example26 {
+    public static void main(String[] args) {
+         System.out.println("start");
+        try{
+         System.out.println("inside try block");
+          // System.exit(0);       //situation->when finally block will not executed
+           System.out.println(10/0);
+        }
+        catch(ArithmeticException ae){
+          System.out.println("inside catch block"); 
+          System.exit(0);     //exit method of system class used in catch also  //situation->when finally block will not executed
+       
+            } 
+        finally{          
+            
+            System.out.println("inside finally block");
+        }
+        System.out.println("enddddd");          //why this is not in op?
+    }}
+
+
+op:
+
+start
+inside try block
+inside catch block
+
+
+
+-exxample27:
+
+-only if the exception is raised within the try block, the finally block will get executed.
+ But if the exception is not raised within try block, then the finally block will not get executed.
+
+class example27{
+    public static void main(String[] args) {
+         System.out.println("start");
+              System.out.println(10/0);         //if exception is not occured in try block,->finally block wil not executed.
+        try{
+         System.out.println("inside try block");
+        }
+        catch(ArithmeticException ae){
+          System.out.println("inside catch block"); 
+         
+            } 
+        finally{      
+            System.out.println("inside finally block");     
+        System.out.println("enddddd");
+    }}
+
+}
+
+//op:
+
+start
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example27.main(example27.java:4)
+
+
+
+
+throws keyword:
+
+- the throes keyword is responsible to delegate(pospone) the exception but cant handle the exception.
+- the try-catch block can only handle the exception. An exception can be raised either during compilation or runtime, but it can be handled only during runtime.
+
+
+-only checked exceptions are delegated, unchecked exceptions are not delegated.(tire puncture example)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

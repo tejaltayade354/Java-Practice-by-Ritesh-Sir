@@ -1,0 +1,266 @@
+java(20-11-2025)
+
+- all collection classes comes under  the package called java.util.
+
+-example 1:
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList1 {
+    public static void main(String[] args){
+        ArrayList al= new ArrayList();
+        al.add(100); //int-------> Integer---------> AUTOBOXING
+        al.add(200); al.add(300);  //homogenous data is allowed to store in collection
+        System.out.println(al);
+        al.add('x');al.add(10.2f);            //heterogeneous data is allowed to store in collection
+        System.out.println(al);
+        al.add(100); al.add(200);                 //duplicate data is also allowed.
+        System.out.println(al);
+        al.add(null);                             //null is also allowed.
+        System.out.println(al);
+    }
+}
+
+/*
+op:
+[100, 200, 300]
+[100, 200, 300, x, 10.2]
+[100, 200, 300, x, 10.2, 100, 200]
+[100, 200, 300, x, 10.2, 100, 200, null]
+
+Process finished with exit code 0
+ */
+
+-example 2;
+-while extracting the data from collection, we will be using the for each loop.
+-when the for loop has to extract the data from collection, we have to update the for loop, that extracted should be upcasted.(for loop la nhi mahit , kontya type ch data extract karat ahe, mhanun for(object o : al), means upcaste kel), it is up to the user, to downcast the data, based on the type of the data.
+
+- collections are used to store custom data./heterogenous  data .
+
+package collection.list;
+import java.util.ArrayList;
+public class ArrayList2 {
+public static void main(String[] args){
+    ArrayList al=new ArrayList();
+    al.add("hp");
+    al.add("lenovo");
+    al.add("dell");
+    for(Object o:al){ ////for loop to extract teh data----> and we write object means we are doing upcasting as string wants to behave as object class
+        String s=(String)o;
+        System.out.println(s);
+    }
+
+
+}
+}
+/*
+op
+
+hp
+lenovo
+dell
+ */
+
+
+-example 3:
+
+
+-swiggy class is created within same folder.then executed this prog
+
+
+
+package collection.list;
+import java.util.ArrayList;
+
+public class ArrayList3 {
+    public static void main(String[] args){
+        Swiggy cus1=new Swiggy(101,"PIZZA");
+        Swiggy cus2=new Swiggy(101,"ICECREAM");
+        Swiggy cus3=new Swiggy(101,"PAV BHAJI");
+        ArrayList al=new ArrayList();
+        al.add(cus1);
+        al.add(cus2);
+        al.add(cus3);
+        for(Object o: al)
+        {
+            Swiggy s=(Swiggy)o;
+            System.out.println(s.prodId +" - "+s.prodName );
+        }
+
+    }
+}
+
+/*
+op:
+
+101 - PIZZA
+101 - ICECREAM
+101 - PAV BHAJI
+ */
+
+-example 4:
+
+
+
+-as seen in array list 4, the collection can store any type of data( heterogeneous type of data/homogeneous data ) due to which there are 2 major problems encountered.
+1) data is not type safe: normal collections cannot store or cannot guaranty only a specific type of data to be stored, which will result in manipulation in the data.
+2)because of using heterogenous collections, for every object, we have to check instanceof operation and we have to perform downcasting, due to this , it will increase the length of the code, which will impact on the memory(more consumption) and excetution(slower), hence in real time, we prefer to use collections in a homogeneus way, rather than heterogenous , hence to make the collections homogeneous we use generics.
+
+-generics were introduced in version 1.5V, which made collections more stronger.
+
+
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList4 {
+    public static void main(String[] args){
+
+        ArrayList al=new ArrayList();
+        al.add(new Swiggy(101,"PIZZA"));
+        al.add(new RedBus(101,"shampy"));
+        al.add(new Emp(101,"Pajji"));
+        for(Object o:al){
+            if(o instanceof Swiggy){
+                Swiggy s=(Swiggy)o;
+                System.out.println(s.prodId+" - "+s.prodName );
+            }
+            else if(o instanceof RedBus){
+                RedBus r=(RedBus)o;
+                System.out.println(r.ticketId+" - "+r.passengerName );
+            }
+            else if(o instanceof Emp){
+                Emp e=(Emp)o;
+                System.out.println(e.empId+" - "+e.empName );
+            }
+        }
+
+    }
+}
+/*
+op:
+
+101 - PIZZA
+101 - shampy
+101 - Pajji
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

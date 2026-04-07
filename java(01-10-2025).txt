@@ -1,0 +1,282 @@
+JAVA (1-10-2025)
+
+
+OOP:
+
+q1) What are main pillars of oop?
+--> there are mainly  4 pillars:
+     1)INHERITANCE, 2)POLYMORPHISM, 3)ABSTRACTION, 4)ENCAPSULATION.
+
+1) INHERITANCE:
+-The class which acquires the members of another class, this process is called inheritance.
+-To achieve inheritance there should be is-a relationship between classes.
+- To implement inheritance , min there should be 2 classes.
+-To represent is-a relationship in java, we use extends keyword.
+-BENEFITS of inheritance:
+reusability:
+duplication less- duplicate code used is none.
+length less- length of the code is reduced.
+memory less- memory usage is less/optimized.
+execution time is also less.
+speed of application is faster.
+
+
+
+
+implementation of inheritance:
+
+example1:
+-under the concept of inheritance, we can create both parent and child class object.
+-if we create the object of the parent, we can access parent class member. But if u create an object of the child, we can access both  that is parent class member and child class member.
+
+
+
+class A
+{
+int a=5;
+
+
+}
+class B extends A
+{
+float b=5.2f;
+
+}
+class example1
+{
+    public static void main(String[] args){
+        A a1=new A();
+        System.out.println(a1.a);
+        //System.out.println(a1.b);  // it will give compilation error.
+        B b1=new B();               //class B can access Class A members bcoz of extends keyword.
+        System.out.println(b1.b);
+       System.out.println(b1.a); 
+       
+
+    }
+}
+
+o/p:
+
+5
+5.2
+5
+
+q1) In real time, under concept of inheritance, which object creation is prefarable? and why?
+--->Child class, bcoz we can access both parent and child class members.
+
+-Types of Inheritance:
+There are total 5 types of inheritance.
+1)Single 
+2)multilevel
+3)Hirarchial 
+4)Multiple
+5)Hybrid
+example2:
+-Variables are part of inheritance.
+-methods are part of inheritance as well.
+
+single inheritance:
+-class extends only 1 class.
+
+
+
+class A
+{      
+    int a=5;
+    void m1(){
+         System.out.println("the value of a in m1 method: " +a); 
+        }
+}
+class B extends A
+{
+    float b=5.2f;
+    void m2(){       
+    System.out.println("the value of b in m2 method: " +b); 
+       }
+}
+class example2 
+{
+    public static void main(String[] args)
+    {
+        A a1=new A();
+        a1.m1();
+        B  b1=new B();
+        b1.m1();
+        b1.m2();
+
+    }
+}
+
+o/p:
+the value of a in m1 method: 5
+the value of a in m1 method: 5
+the value of b in m2 method: 5.2
+
+
+Example3:
+
+2)multilevel inheritance:
+-Both single and multilevel inheritance is supported by java.
+
+class A
+{      
+    int a=5;
+    void m1(){
+         System.out.println("the value of a in m1 method: " +a); 
+        }
+}
+class B extends A
+{
+    float b=5.2f;
+    void m2(){       
+    System.out.println("the value of b in m2 method: " +b); 
+       }
+}
+class C extends B
+{
+    char c='i';
+    void m3(){       
+    System.out.println("the value of c in m3 method: " +c); 
+       }
+}
+class example3 
+{
+    public static void main(String[] args)
+    {
+        A a1=new A();
+        a1.m1();  System.out.println("--------------------------------------" ); 
+        B  b1=new B();
+        b1.m1();
+        b1.m2();System.out.println("--------------------------------------" );
+        C  c1=new C();
+        c1.m1();
+        c1.m2();
+        c1.m3();
+System.out.println("--------------------------------------" );
+
+    }
+}
+o/p:
+
+the value of a in m1 method: 5
+--------------------------------------
+the value of a in m1 method: 5
+the value of b in m2 method: 5.2
+--------------------------------------
+the value of a in m1 method: 5
+the value of b in m2 method: 5.2
+the value of c in m3 method: i
+--------------------------------------
+
+
+Example4:
+
+3)Hirarchical inheritance(HI):
+-HI supported by java.
+-single parent, multiple child.
+
+class A
+{      
+    int a=5;
+    void m1(){
+         System.out.println("the value of a in m1 method: " +a); 
+        }
+}
+class B extends A
+{
+    float b=5.2f;
+    void m2(){       
+    System.out.println("the value of b in m2 method: " +b); 
+       }
+}
+class C extends A
+{
+    char c='i';
+    void m3(){       
+    System.out.println("the value of c in m3 method: " +c); 
+       }
+}
+
+class D extends A
+{
+    boolean d=true;
+    void m4(){       
+    System.out.println("the value of d in m4 method: " +d); 
+       }
+}
+class example4
+{
+    public static void main(String[] args)
+    {
+        A a1=new A();
+        a1.m1();  System.out.println("--------------------------------------" ); 
+        B  b1=new B();
+        b1.m1();
+        b1.m2();System.out.println("--------------------------------------" );
+        C  c1=new C();
+        c1.m1();
+        c1.m3();System.out.println("--------------------------------------" );
+        D d1=new D();
+        d1.m1();
+        d1.m4();
+
+    }
+}
+
+o/p:
+
+the value of a in m1 method: 5
+--------------------------------------
+the value of a in m1 method: 5
+the value of b in m2 method: 5.2
+--------------------------------------
+the value of a in m1 method: 5
+the value of c in m3 method: i
+--------------------------------------
+the value of a in m1 method: 5
+the value of d in m4 method: true
+
+
+Example5:
+
+Multiple Inheritance:
+-it is not supported by java at class level, bcoz there will be ambiguity of methods, as methods have same name in differnt class, so the problem is which method to execute. thats why not supported by java.(method name same ho, ya difft ho, still not supported bcoz we can change method name in future.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

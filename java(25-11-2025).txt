@@ -1,0 +1,261 @@
+java(25-11-2025)
+
+-ArrrayList 18:
+
+-implementation of bidirectional cursor.
+-hasPrevious() and previous() method is used to backward approach.
+
+-Whenever we create a cursor, it will always point at a top of the collection.
+-If we have to use least iterator in the reverse order, then we have to read the collection in the forward direction and then only it is possible to read in backward direction.
+
+package collection.list;
+
+import java.util.ArrayList;
+import  java.util.ListIterator;
+public class ArrayList18 {
+    public static void main(String[] args){
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        al.add(100);  al.add(200); al.add(300); al.add(400);
+       // System.out.println(al);
+        ListIterator li=al.listIterator();
+        System.out.println("-------------------BIDIRECTIONAL CURSOR---------------------");
+
+        System.out.println("--------FORWARD OBJECTS-------");
+        while(li.hasNext()){
+            System.out.println(li.next());
+        }
+        System.out.println("----------BACKWARD OBJECTS---------");
+        while(li.hasPrevious()){
+            System.out.println(li.previous());
+        }
+
+    }
+}
+
+/*
+OP:
+
+-------------------BIDIRECTIONAL CURSOR---------------------
+--------FORWARD OBJECTS-------
+100
+200
+300
+400
+----------BACKWARD OBJECTS---------
+400
+300
+200
+100
+
+
+ */
+
+-ArrayList 19:
+
+- list iterator add, remove and set method, when collections are generic.
+-List Iterator not only meant to perform list iteration, but also meant to perform add, remove, and set.
+
+package collection.list;
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ArrayList19 {
+    public static void main(String[] args){
+        ArrayList<Swiggy> al=new ArrayList<Swiggy>();      //custom arrayalist
+        al.add(new Swiggy(101,"cheesecake"));
+        al.add(new Swiggy(102,"nutella_waffle"));
+        al.add(new Swiggy(103,"strawberry_shake"));
+        ListIterator<Swiggy> li=al.listIterator();   //custom listIterator
+        li.add(new Swiggy(104,"momos"));//using custom listIterator to add object-------> appears first in collection
+        while(li.hasNext()) {//here we check elements/objects present or not, then we remove object using string equals()------->bcoz we want to compare string
+            Swiggy s = li.next();
+            if (s.prodName.equals("cheesecake")) {         //remove method of list iterator
+                li.remove();
+            }
+            if (s.prodName.equals("strawberry_shake")) {
+                li.set(new Swiggy(105, "plain_coffee"));    //replaces, and previous id of shake is deleted and that orderr replaced by coffee
+
+            }
+        }
+            for(Swiggy ss:al){    //to extract the collection
+                System.out.println("product id : "+ss.prodId+",  product_name : "+ ss.prodName);
+            }
+
+    }
+}
+
+
+/*
+op:
+product id : 104,  product_name : momos
+product id : 102,  product_name : nutella_waffle
+product id : 105,  product_name : plain_coffee
+ */
+
+
+-ArrayList 20:
+
+IQ: How do we convert collections to arrays and how do we convert arrays to collection?
+
+- to convert collection to array, we use toArray(type[] a).
+
+-To convert an array in collection, we need to use  a class called AS arrays, along with a static method called as asList(arr) method.//accepts array and convert it to collection. and as it is converting to collection hence we use list (collection ) to store it.
+
+package collection.list;
+
+import java.util.ArrayList;
+
+public class ArrayList20 {
+    public static void main(String[] args){
+        System.out.println("Example of converting collection to array");
+            ArrayList<String> al=new ArrayList<String>();
+            al.add("hp"); al.add("lenovo"); al.add("acer"); al.add("dell");
+            System.out.println(al);
+            String[] s=al.toArray(new String[al.size()]);    //ToArray(type[] a)
+
+        for(int i=0;i<s.length;i++)
+        {
+            System.out.println(s[i]);
+        }
+    }
+}
+/*
+
+op
+
+Example of converting collection to array
+[hp, lenovo, acer, dell]
+hp
+lenovo
+acer
+dell
+
+ */
+
+-ArrayList 21:
+
+package collection.list;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayList21 {
+    public  static void main(String[] args){
+        String[] s={"hp", "lenovo", "acer", "dell"}; // we have to connvet array to collection
+        List l=Arrays.asList(s);   //asList(type[] s)
+        ArrayList<String> al=new ArrayList<String>();
+        al.addAll(l);
+
+        for(String ss:al){
+            System.out.println(ss);
+        }
+    }
+}
+/*
+ op:
+ 
+ hp
+lenovo
+acer
+dell
+ */
+
+
+-ArrayList 22:
+
+-to perform sort operations, we have to use a method called as sort().
+-but the sort method is part of a class called as collections.(note it is a class, not a interface).
+- it is a part of package  called as java.util
+-whenever the sort method is called, internally it will invoke/call a method called as compareTo() method and that compareTo() method will be called based on whichever object class is being sorted. 
+- //this compareTo() method comes from Comparable interface.
+
+-the compareTo() method is  implemented within the Integer class but it is inherited from Comparable interface.
+-Comparable interface is part of java.lang.
+
+
+package collection.list;
+
+import java.util.ArrayList;
+import java.util.Collections;
+public class ArrayList22 {
+    public  static  void main(String[] args){
+        ArrayList<Integer> al=new ArrayList<Integer>();
+        al.add(700);  al.add(200); al.add(800); al.add(400);
+        System.out.println("before sorting the collection :" +al);
+        Collections.sort(al);
+        System.out.println("after sorting the collection :" +al);
+    }
+}
+
+/*
+op:
+before sorting the collection :[700, 200, 800, 400]
+after sorting the collection :[200, 400, 700, 800]
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

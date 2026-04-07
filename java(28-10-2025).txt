@@ -1,0 +1,36 @@
+java(28-10-2025)(after diwali)
+
+-String classes are called as immutable classes.bcoz its object data will never go and change.
+
+STRING BUFFER:
+-string buffer is also part of java.lang package.
+
+-example8;
+- we can only create an object of string buffer with new keyword.
+
+
+-whenever we print the string buffer variable, it will print the value, bcoz it is overridden from object class.
+
+
+example9:
+
+-in string buffer classes the object data can go and change, such a behaviour is called as mutable behaviour. Hence string buffer classes are said to be mutable classes.
+
+IQ: write a java program, if a given string is a palindrome or not.
+
+
+example10:
+-To compare 2 strings content, we go for equals method.
+
+-what is the difference between == operator and equals method?
+-> the == operator will always perform reference comparison whereas the equals method, if it is  part of string class, it will perform content comparison, but the equals method is  not part of stringbuffer, will always perform reference comparison.
+
+
+ques: How do we convert string to stringbuffer and viseversa?
+ans:  to convert string to stringbuffer, we use constructor based approach,   but
+      to convert stringbuffer to string we use constructor based or toString method approach.
+      we can also check using reverse method, if reverse hot ahe then its a stringbuffer. and nhi zala tr string.
+
+now I will do palindrome,
+
+

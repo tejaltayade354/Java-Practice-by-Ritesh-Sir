@@ -1,0 +1,275 @@
+java(12-11-2025)
+
+parsexxxxx :
+
+-to convert string data to primitive type, we use the parsexxxxx method.
+
+-example7:
+
+class Example8 {
+    public static void main(String[] args){
+        String s1="100";
+          String s2="200";
+          System.out.println(s1+s2);
+        int i1= Integer.parseInt(s1);
+        int i2= Integer.parseInt(s2);
+        System.out.println(i1+i2);
+    }
+}
+
+op:
+
+100200
+300
+
+Boxing and Unboxing Operation:
+
+-Directly converting a primitive data in the form of wrapper objects is called as Boxing Operation.
+-Directly converting a wrapper object to primitive type is called as Unboxing Operation. 
+
+imp note:
+Boxing and Unboxing feature is by default used in collections, which makes the collections more stronger.
+
+-Example 8:
+
+class Example9 {
+    public static void main(String[] args){
+
+    //boxing
+    Integer i1=98;
+    System.out.println(i1);
+    System.out.println(i1.toString());
+    //unboxing
+    float f1=new Float(67.5f);        //- compiler rewrites as (new Float(67.5f)).floatValue();
+- 
+
+    System.out.println(f1);
+   // System.out.println(f1.toString()); //-----> - Invalid call: f1.toString() fails because f1 is primitive, not an object.
+
+}}
+
+
+OP;
+
+98
+98
+67.5
+
+INNER CLASSES/NESTED CLASSES:
+-A class within a class, is called as inner class.
+-Java does support concept of inner classes, but java doenot support the concept of inner methods.
+
+-diagram in book.
+
+IQ: In real time, when do we go for the concept of inner classes?
+-> 1) Whenever there is interdependency features betn features or classes, we go for, the concept                                    of inner class.
+   2) For one time usage of the classes, we go for inner classes.(example-bank and bank account.)
+
+-example 1:
+
+class Outer{
+    class Inner{
+                          //after compilation -> Outer$Inner.class is also created along with Example1.class and Outer.class
+    }
+}
+class Example1{
+    public static void main(String[] args) {
+        
+    }
+}
+
+-example2:
+
+class Outer1{
+    int a=5;
+    class Inner1{
+        float b=56.9f;
+    }
+}class Example2 {
+    public static void main(String[] args) {
+        
+    
+    Outer1 o1=new Outer1();
+    Outer1.Inner1 i1=o1.new Inner1();
+    System.out.println(o1.a);    //accesing a using o1 ref variable of outer class
+    System.out.println(i1.b);    //accesing a using i1 ref variable of inner class 
+    
+}}
+
+/* 
+op:
+
+5
+56.9
+
+ */
+
+-example3 a: this approach is less used in industry.we can use direct object of inner class approach in example 3b.
+
+ class Outer1{
+    int a=5;          // but inner clas members are not accesible in outer class, exa-> we cant access b using o1 ref variable
+        
+    class Inner1{
+        float b=56.9f;
+        void m1(){
+            System.out.println(a+b);      //outer class members are accessible in inner class, 
+    }
+  }
+}class Example3 {
+    public static void main(String[] args) {
+        
+    
+    Outer1 o1=new Outer1();
+    Outer1.Inner1 i1=o1.new Inner1();
+    System.out.println(o1.a);    //accesing a using o1 ref variable of outer class
+   // System.out.println(o1.b);         // / but inner clas members are not accesible in outer class,
+    System.out.println(i1.b);    //accesing a using i1 ref variable of inner class 
+    i1.m1();           //outer class members are accessible in inner class, 
+    
+}}
+
+/* 
+op:
+
+5
+56.9
+61.9
+ */
+
+-Inner classes are categorized mainly into 2 types:
+1)Static inner classes
+2)Nonstatic inner classes.
+-there are 3 types of classes in non static inner classes:
+1)normal inner classes.
+2)method local
+3) Anonymous
+
+1)normal inner classes:
+-whenever we compile a java prog, regardless, whether it is a normal class, or inner class, it will generate a .class(dot class) file.
+-whenever a inner class .class file is generated, it will contain a $(dollar ) symbol, which will involve outer class name and inner class name.(Outer$Inner.class)
+
+-example 3b:
+
+ class Outer1{
+    int a=5;          // but inner clas members are not accesible in outer class, exa-> we cant access b using o1 ref variable
+        
+    class Inner1{
+        float b=56.9f;
+        void m1(){
+            System.out.println(a+b);      //outer class members are accessible in inner class, 
+    }
+  }
+}class Example3 {
+    public static void main(String[] args) {
+        
+    /*
+    Outer1 o1=new Outer1();
+    Outer1.Inner1 i1=o1.new Inner1();
+    System.out.println(o1.a);    //accesing a using o1 ref variable of outer class
+   // System.out.println(o1.b);         // / but inner clas members are not accesible in outer class,
+    System.out.println(i1.b);    //accesing a using i1 ref variable of inner class 
+    i1.m1();           //outer class members are accessible in inner class, 
+    */
+
+   new Outer1().new Inner1().m1();          //used most apprach of calling nembers of inner class directly
+}}
+
+/* 
+op:
+61.9
+ */
+
+-The outer class members can be accessed directly within the inner class ,but inner class members cannot be accessed directly within outer class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

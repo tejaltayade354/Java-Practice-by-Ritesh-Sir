@@ -1,0 +1,92 @@
+Java lecture(4-09-2025)
+
+ 
+
+METHODS:
+
+-A method can be defined as set of statements which are meant to perform certain operations.
+-Benefits of methods:
+1.	reuse the code: we can avoid duplicate code.
+2.	The code length will be less.
+3.	the memory consumption is less. 
+4.	will take less time for execution.
+5.	speed will be fast.
+
+SYNTAX OF METHOD:
+
+[ACCESS MODIFIERS][MODIFIERS] RETURN TYPE        METHOD NAME([VARIABLES/ARGUMENTS/PARAMETER])
+{
+[RETURN]
+
+}
+
+-Methods can be categorized into two types:
+1.	Static Methods
+2.	Non-static Methods
+
+Return statement:
+-the return statement is meant to return the control back to the caller method.
+-  to access static methods within a single class there are 3 approaches: directly, classname, object creation.
+-  the return statement should always be the last statement within the method.
+- there should be only 1 return statement at the end of the method. ( example 3 error denar tyat 2 veda return statement use kel ahe )
+
+
+program1:
+class example1
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+program2:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+program 3:
+
+
+
+
+program 4:
+
+if we donot write the return statement, then the compiler will set the return statement.
+-the main method after the execution, will also have to return the coontrol back to the JVM.
+-A method will use void as a return type, Whenever it only used to return the control, without any data or information.
+In java program, minimum we can create 1 method or multiple methods.
+
+example 4:
+

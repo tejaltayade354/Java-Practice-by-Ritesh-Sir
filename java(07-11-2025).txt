@@ -1,0 +1,230 @@
+java(07-11-2025)
+
+-example38:
+
+-whenever we create an object of an exception class, java will treat that as a normal object creation. Hence to inform JVM, it is not a normal object  creation, it is a type of an exception, we use throw keyword.
+
+class example38 {
+    public static void main(String[] args){
+      //  System.out.println(10/0);  //exception caught, we get / by zero in op, but now we want to display "divide by 0", for that we have to create object of that exception class and pass details we want to print.
+       throw new ArithmeticException("Divide by 0");                           // throw keyword tells JVM that its not normal obj creation, its a exception.
+    }
+}
+
+
+op:
+
+
+Exception in thread "main" java.lang.ArithmeticException: Divide by 0
+        at example38.main(example38.java:4)
+
+
+-example 39:
+
+class hdfc{
+    int acountbal;
+    hdfc(int acountbal){
+        if(acountbal>=10000){
+             this.acountbal=acountbal;
+        }else{
+            throw new ArithmeticException("invalid amount, reenter valid amount plz");  
+        }
+    }
+}
+
+
+class example39 {
+public static void main(String[] args) {
+    hdfc cust1=new hdfc(5000);
+}    
+}
+
+op:
+
+
+Exception in thread "main" java.lang.ArithmeticException: invalid amount, reenter valid amount plz
+        at hdfc.<init>(example39.java:7)
+        at example39.main(example39.java:15)
+
+Custom Exceptions:
+
+exceptions can be categorized mainly into 2 types:
+
+- predefined exceptions
+  user defined exception(customized exceptions)
+
+1)predefined exceptions
+
+- they are created by oracle or java.
+
+
+2) user defined exception(customized exceptions)
+- created by users.
+-user defined exceptions are categorized into 2 types:
+1) custom checked 
+2) custom unchecked
+
+-1) custom checked:
+- they are also catehgorized into 2 types, 0 arg constructor, arg constructer.
+
+-1) custom unchecked:
+- they are also categorized into 2 types, 0 arg constructor, arg constructer.
+
+
+- if we have to create a custom exception, then we have to extends Exception. class(checked)
+
+
+
+-example 40:
+based on 0 argument constructor.
+
+
+
+
+-example 41 :
+
+madhe throw use kel hot, at main and  method line no 3 
+
+
+
+class flipk{
+    int productdeliverypin=411604;
+    void ProdDeliStatus(int pin){
+         if(pin==productdeliverypin)
+         {
+            throw new nodeliverable("unable to deliver at that pincode ");   // compile time ->checked user defined exception
+         }
+         else{
+            System.out.println("delivery within a week");
+         }
+    }
+
+
+}
+class example41 {
+    public static void main(String[] args) {
+    flipk p1=new flipk();
+    p1.ProdDeliStatus(411604);
+}
+}
+
+// first see nodelivarable class extends exception 
+//op:
+
+/*
+example41.java:7: error: unreported exception nodeliverable; must be caught or declared to be thrown
+            throw new nodeliverable("unable to deliver at that pincode ");   // compile time ->checked user defined exception
+            ^
+1 error */
+
+
+
+
+
+
+
+-example42:
+
+class redbus{
+     String nobus="kerala";
+       void bookmybus(String location){
+        if(nobus.equals(location))
+        {
+             throw new NoBusFound();      
+              }
+         
+       else{
+        System.out.println("bus is available");
+       }
+} 
+ 
+}
+ class example42 {
+    public static void main(String[] args) {
+    redbus cust1=new redbus();
+    cust1.bookmybus("kerala");
+}
+ }
+
+ //once check NoBusFound class extends runtimeexception
+
+ //and we get the unchecked user defined exception after execution of prog
+
+ PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> javac example42.java
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> java example42
+Exception in thread "main" NoBusFound: nobusfound
+        at redbus.bookmybus(example42.java:6)
+        at example42.main(example42.java:18)
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS>
+
+
+-example 43:
+class mmt{
+     String noflight="kerala";
+       void bookmyflight(String m1){
+        if(noflight.equals(m1))
+        {
+             throw new NoFlightFound("no flight available");      
+              }
+         
+       else{
+        System.out.println("flight is available");
+       }
+} 
+ 
+}
+ class example43 {
+    public static void main(String[] args) {
+    mmt cust1=new mmt();
+    cust1.bookmyflight("kerala");
+}
+ }
+
+ //once check NoFlightFound class extends runtimeexception
+
+ //and we get the unchecked user defined , arged  exception after execution of prog
+
+ PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> java example43
+Exception in thread "main" NoFlightFound: no flight available
+        at mmt.bookmyflight(example43.java:6)
+        at example43.main(example43.java:18)
+
+
+
+
+
+-to create an unchecked exception, the respective class has to extend RuntimeException.
+
+-example44:
+
+-errors of type exception , are not handled.
+- examples--->OutOfmemoryError, VirtualMemoryError, StackOverflowError
+
+
+ class example44 {
+public static void main(String[] args) {
+    int[] a=new int[1000000000];        // gives space exception
+}    
+}
+
+
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+        at example44.main(example44.java:3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

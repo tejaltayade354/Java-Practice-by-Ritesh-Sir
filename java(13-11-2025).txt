@@ -1,0 +1,328 @@
+java(13-11-2025)
+
+-example 4:
+
+
+-accesing inner class member in outer class method using inner class object in method of outer class
+
+class Outer{
+    int a=3;
+    void m1(){
+        System.out.println("Inside m1 method");
+        //accesing inner class member in outer class method using inner class object in method of outer class
+        Inner i=new Inner();
+         System.out.println(a+i.b);
+
+    }
+    class Inner {
+        float b=56.2f;
+    }
+}
+
+class Example4 {
+    public static void main(String[] args){
+    new Outer().m1();
+    }
+}
+
+op:
+
+Inside m1 method
+59.2
+
+-example 5:
+-accessing private members of outer class, in method of inner class.
+
+class Outer{
+    private int a=3;
+    private float b=56.2f;
+    
+    class Inner{
+
+    void m1(){
+        System.out.println("Inside m1 method");
+       //accessing private members of outer class
+         System.out.println(a+b);
+
+    }
+} 
+}
+class Example5 {
+    public static void main(String[] args){
+    new Outer().new Inner().m1();  //calling method in inner class using direct approach
+    }
+}
+
+op:
+Inside m1 method
+59.2
+
+-example 6:
+
+accesing the inner class private members in outer class method.
+
+class Outer{
+    void m1(){
+        System.out.println("inside m1 in outer class");
+        Inner i=new Inner();
+        System.out.println(i.a+i.b);
+    }
+    class Inner{
+         private int a=7;
+         private int b=93;
+
+    }
+
+}class Example6 {
+    public static void main(String[] args) {
+//   -------> approach 1;
+
+   /* Outer o=new Outer();
+    o.m1();
+    */ 
+    //-------> approach 2;    -----------------> most used
+
+
+    //direct approach of object creation and calling method in one line
+    new Outer().m1();
+}
+}
+
+op:
+
+inside m1 in outer class
+100
+
+-example 7:
+
+- to access the inner class object, we use this keyword.
+-but to access, outer class instance variable when both the variables names are same, in such a situation, we go for outer.this
+
+
+
+class Outer{
+    int a=3;
+class Inner {
+    int a=33;
+    void m1(int a){               //all variables have same name
+        
+        System.out.println("Inside m1 method");
+      
+        System.out.println(a);     // ->  333
+        
+        System.out.println(this.a);     // -> 33
+        
+        System.out.println(Outer.this.a);    // ->   3 
+
+
+    }
+      
+    }
+}
+
+class Example7 {
+    public static void main(String[] args){
+    new Outer().new Inner().m1(333);
+    }
+}
+
+
+op:
+
+
+333
+33
+3
+
+
+-example8:
+
+class Outer{
+    void test(){
+        System.out.println("inside test outer method");
+    }
+    class Inner{
+    void test(){
+        System.out.println("inside test inner method");
+    }
+     void m1(){
+        System.out.println("inside m1-->  inner method");
+        test();       //priority-> my city ipl team
+        Outer.this.test();           //now call method in outer class having name test
+    } 
+}
+}
+class Example8 {
+    public static void main(String[] args){
+    new Outer().new Inner().m1();        
+
+    }
+}
+op:
+
+inside m1-->  inner method
+inside test inner method
+inside test outer method
+
+
+
+-but to access, outer class instance methods when both the methods names are same, in such a situation, we go for outer.this.methodname().
+
+
+-even when the methods name are same in a inner and outer class, we can use the approach of outer.this
+
+-example9:
+
+-it is possible to access a nonstatic and static members from the outer class to the inner class.
+-we cannot declare static members within the inner class, as by nature, the inner classes are
+ nonstatic.
+
+class Outer{
+    static char a='x';
+    
+    class Inner{
+    //static char b='y';         why? error det ahe-----> but it will give is difined by sir.
+     void m1(){
+        System.out.println("inside m1--> method and char is :" +a);
+        //System.out.println(b);
+}
+}}
+class Example9 {
+    public static void main(String[] args){
+    new Outer().new Inner().m1();        
+
+    }
+}
+//op:
+
+inside m1--> method and char is :x
+
+
+
+-example 10:
+
+
+-it is possible to extend the inner class to the outer class using keyword extends.
+
+
+class Outer{
+    int a=3;
+class Inner extends Outer {
+    int a=33;
+    void m1(int a){               //all variables have same name
+        
+        System.out.println("Inside m1 method");
+      
+        System.out.println(a);     // ->  333
+        
+        System.out.println(this.a);     // -> 33
+        
+        System.out.println(super.a);    // ->   3        //inheritance is supported.
+
+
+    }
+      
+    }
+}
+class Example10 {
+    public static void main(String[] args){
+    new Outer().new Inner().m1(333);
+    }
+}
+
+op;
+
+333
+33
+3
+
+2) Method Local Inner Class
+
+-A class declared or created within a method, such a class is called as Method local inner class.
+
+-when the method is called within the stack , only then the following steps can be implemented.
+-1) the class can be declared and the object can be created.
+2)With the help of object, we can make changes to the respective class members.
+3)Once the method leaves the stack, the object will also eligible for disruption.(gets destroyed)
+
+
+-example 11:
+
+
+-Whenever we compile, a method local inner class,  it will generate the .class file.
+And in that  .class file,  a numeric 1 will be added after $ and before inner(Outer$1Inner.class )
+
+class Outer{
+ void m1(){
+    System.out.println("inside m1 of outer");
+    
+    class Inner{
+           boolean status=true;
+    }
+    Inner i=new Inner();
+    System.out.println(i.status);
+ }
+
+}class Example11 {
+    public static void main(String[] args) {
+    new Outer().m1();
+}}
+
+op:
+
+inside m1 of outer
+true
+
+-example 12:
+
+-if there are 2 difft methods(in outer and inner class), and class having same name as the inner class, java will create 2.class files as mentioned below.
+Outer$1Inner.class
+Outer$2Inner.class
+
+class Outer{
+ void m1(){
+    System.out.println("inside m1 of outer");
+    
+    class Inner{
+           boolean status=true;
+    }
+    Inner i=new Inner();
+    System.out.println(i.status);
+ }
+ void m2(){
+    System.out.println("inside m2 of outer");
+    
+    class Inner{
+           char u='a';
+    }
+    Inner i=new Inner();
+    System.out.println(i.u);
+ }
+
+
+}class Example12 {
+    public static void main(String[] args) {
+    Outer o=new Outer();
+    o.m1();
+    o.m2();
+}}
+
+//op:
+
+
+inside m1 of outer
+true
+inside m2 of outer
+a
+
+
+
+
+
+
+
+
+
+
+
+

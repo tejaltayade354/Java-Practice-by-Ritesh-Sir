@@ -1,0 +1,396 @@
+java (13-10-2025)
+
+
+example 3:
+
+- we cannot create an object of an abstract class. But we can create an object of an normal class.
+
+abstract class sample{
+   abstract void  m1();
+} 
+class demo extends sample
+{       void m1(){
+    System.out.println("inside m1 method");
+}
+
+}
+class example3 {
+    public static void main(String[] args){
+        demo d=new demo();
+        d.m1();
+        sample s=new sample();       //error denar, we cant create the abstract class object           //sample is abstract class.
+    }
+}
+
+
+error: sample is abstract; cannot be instantiated
+        sample s=new sample();       //error denar, we cant create the abstract class object
+                 ^
+1 error
+
+
+
+ass1: (example 4:)
+
+abstract class sample {
+    abstract void m1();          //2 abstract methods in parent class----->incomplete methods
+    abstract void m2();
+
+}
+class demo extends sample
+{                                           //implementation of them in child class--->this 2 are complete methods
+    void m1(){
+        System.out.println("inside m 1");
+    }
+void m2(){
+        System.out.println("inside m 2");
+    }
+}
+
+class assign
+{public static void main(String[] args){
+    sample d=new demo();                         //single object calling
+    d.m1();
+    d.m2();
+
+}}
+
+
+//op:
+
+//        inside m 1
+//        inside m 2
+
+
+
+-example5:
+
+-an abstract class can contain both complete as well as incomplete methods, hence it is said that abstract class are not 100% abstract.
+
+-The abstract class is not allowed to create an object, but it(abstract reference) can hold the address of the child object.
+
+abstract class sample{
+   abstract void  m1();
+   void m2(){
+    System.out.println("inside m2 method");
+   }
+} 
+class demo extends sample
+{       void m1(){
+    System.out.println("inside m1 method");
+}
+
+}
+class example5 {
+    public static void main(String[] args){
+        sample d=new demo();
+        d.m1();
+        d.m2();
+        
+    }
+}
+/* 
+op:
+
+inside m1 method                                                                                                
+inside m2 method
+
+*/
+
+example6:
+-At the mobile app, client or browser, WHatever validations happen they all come under client side validation.
+-At client side validation, we only check the format and at server side, we always perform
+server side validation(data entered correct or not)
+- At the server side we always check whether the data is correct or not.
+
+abstract class hdfcapp{                     //abstract class
+    abstract void checkpindata();              //abstract method
+         void checkpinformat(int pin){
+                    if(pin==4){
+                      System.out.println("valid pin format");
+                         }
+                    else{
+                         System.out.println("INvalid pin format");
+                        }
+    }
+}
+class hdfcserver extends hdfcapp
+{ 
+     void checkpindata(){
+    System.out.println("logics to check pin data and connect to sql server ");
+}
+}
+class example6 {
+    public static void main(String[] args) {
+        hdfcapp cus1=new hdfcserver();          //upcasting
+    
+        cus1.checkpinformat(4);
+        cus1.checkpindata();
+
+    }
+    
+}
+/* 
+
+o/p:
+
+logics to check pin data and connect to sql server 
+valid pin format
+
+*/
+
+example7:
+
+-one abstract class can extend another abstract class.
+-its not mandatory that the normal class should extend abstract class.
+
+abstract class sample{
+   abstract void m1();
+    abstract void m2();
+} 
+abstract class demo extends sample          //abstract class can also inherites the abstract another classs.
+{       void m1(){
+    System.out.println("inside m1 method");
+}
+}
+class demo1 extends demo
+{       void m2(){
+    System.out.println("inside m2 method");
+}
+}
+class example7 {
+    public static void main(String[] args){
+        demo1 d=new demo1();
+        d.m1();
+        d.m2();
+        
+    }
+}
+/* 
+op:
+
+inside m1 method                                                                                                
+inside m2 method
+
+*/
+
+-Example 8:
+
+IQ:
+-we can create variables within a abstract class.(leave inheritance and polymorphism for this example.)
+
+-variables are not part of abstraction.
+
+class sample
+{
+    int a=45;      //variablles are also declaredd in abstract class, but they are not part of abstraction.
+}
+class demo extends sample
+{
+    int b=5;
+}
+class example8 {
+    public static void main(String[] args) {
+        //upcasting
+        sample s=new demo();
+          System.out.println(s.a);      //45
+          //downcasting
+          demo d=(demo)s;
+          System.out.println(d.b);           //5
+        System.out.println(d.a+d.b);               //print 50
+    }
+}
+
+45
+5
+50
+
+
+-example 9:
+-constructors are allowed within abstract class.
+
+
+abstract class sample{
+    sample(){
+        System.out.println("inside 0 argument sample constructor");
+    }
+}
+class demo extends sample{
+    demo(){
+        super();            // to call parent class constructor
+        System.out.println("inside 0 argument demo constructor");
+    }
+}
+class example9 {
+    public static void main (String[] args){
+ demo d=new demo();
+}
+}
+
+
+op:
+
+inside 0 argument sample constructor
+inside 0 argument demo constructor
+
+-iq: HOW DO YOU EXECUTE PARENT CLASS CONSTRUCTOR?
+---> USING super statement within the child class, we can call the parent class constructor.
+
+-assg2:example10:
+- only methods are part of abstraction, variables and constructors are not part of abstraction, but still variables and constructors are used within the abstraction.
+
+abstract class sample {
+     sample(){
+        this(10);
+       System.out.println("m1- parent");
+     }
+    sample(int a){
+  System.out.println("m2- parent");
+    }
+
+}
+class demo extends sample
+{
+     demo(){
+        super();
+    
+  System.out.println("m1- child");
+     }
+    demo(int b){
+        this();
+          System.out.println("m2- child");
+    }
+}
+
+class ass2
+{
+  public static void main(String[] args){
+    demo d=new demo(15);
+  
+}}
+
+o/p:
+
+m2- parent
+m1- parent
+m1- child
+m2- child
+
+
+
+
+
+-example11:
+
+abstract class sample {
+    
+    sample(int a){
+  System.out.println("m2- parent");
+    }
+
+}
+class demo extends sample
+{
+     demo(){
+        super(10);
+    
+  System.out.println("m1- child");
+     }
+   
+    }
+class example11
+{
+  public static void main(String[] args)
+  {
+    demo d=new demo();
+  
+}}
+
+m2- parent
+m1- child
+
+-example 12:
+
+-Instance blocks are allowed within abstract class.
+
+abstract class cyber{
+{
+ System.out.println("cyber non static block");
+}
+    cyber(){
+System.out.println("cyber constructor");
+}
+    
+} 
+class success extends cyber         //abstract class can also inherites the abstract another classs.
+{
+    {
+ System.out.println("success non static block");
+}
+    success(){
+     super();
+  System.out.println("success constructor");
+
+}
+}
+class example12 {
+    public static void main(String[] args){
+        success d=new success();
+       
+        
+    }
+}
+
+op:
+
+cyber non static block
+cyber constructor
+success non static block
+success constructor
+
+
+
+
+IQ: difference between normal & abstract classs.
+
+NORMAL CLASS-
+1) we can create an object.
+2) In a normal class, we can only create complete methods .
+
+ABSTRACT CLASS-
+1)In abstract class, we CANNOT create an object.
+2) In abstract class, we can create an complete and incomplete method too.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

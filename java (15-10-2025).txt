@@ -1,0 +1,224 @@
+java (15-10-2025)
+
+-example 20:
+
+-whenever the class have to inherited from a class and interface then first we  extends and then go for implements.
+
+interface samp
+{ void m1();
+}
+class demo{
+    void m2(){
+System.out.println("inside m2");
+}
+}
+//class ds  implements samp extends demo{------------------>invalidddddd
+class ds extends demo implements samp{-------------------------------------------------->VALID
+
+    void dsm(){
+System.out.println("inheriting class and interface then 1- go for extends then 2- go for implements");}
+
+
+    public void m1(){
+    System.out.println("inside m1");
+}
+    } 
+class example20{
+public static void main(String[] args){
+ds r=new ds();
+r.m1();
+r.m2();
+r.dsm();
+}
+}
+
+o/p:
+
+     
+inside m1
+inside m2
+inheriting class and interface then 1- go for extends then 2- go for implements
+
+-example21:
+
+-java doesnot support multiple inheritance at class level, but java supports multiple inheritance at INTERFACE level.
+
+interface it1{
+    interface it2{                 //inner interfaces
+        void m1();
+    }
+}
+class demo implements it1.it2{
+ public void m1(){System.out.println("inside m1 method");}
+}
+class example21 {
+    public static void main(String[] args){
+        demo d=new demo();
+        d.m1();
+
+    }
+}
+
+op:
+
+inside m1 method
+
+-example21:
+-java  supports inner interfaces, inner interfaces means interface within interface.
+
+interface it1{
+    interface it2{                 //inner interfaces
+        void m1();
+    }
+}
+class demo implements it1.it2{
+ public void m1(){System.out.println("inside m1 method");}
+}
+class example21 {
+    public static void main(String[] args){
+        demo d=new demo();
+        d.m1();
+
+    }
+}
+
+op:
+
+inside m1 method
+
+
+-example22:
+-within the class also,  we can create the interface.
+
+class examm1{
+    interface it1{  //interface within the class
+        void test();
+    }
+}
+class example22 {
+    public void test(){
+        System.out.println("inside test method");
+    }
+    public static void main(String[] args) {
+        example22 e1=new example22();
+        e1.test();
+    }
+}
+
+op:
+
+inside test method
+
+-EXAMPLE 23:
+-What is the output of following code?
+ 
+
+    interface it1{
+       abstract static void test();        //we cant make method abstract and static ,---> illegal combiination, static methods cant be overridden
+    }
+
+class example23 {
+    public static void main(String[] args) {
+     
+    }
+}
+
+op:
+
+error: illegal combination of modifiers: abstract and static
+       abstract static void test(); 
+
+
+illegal combination of modifiers, abstract and static method is illegal combination, because static method cannot be overridden.
+
+
+
+assihgnment:
+
+ques: check whether we are able to create constructors, static blocks or non static blocks inside the interfaces?
+----> NO
+
+example 24:
+
+-INSIDE JAVA 8, it is allowed to create a complete methods in interfaces.
+-here comes the java 8 default keyword, to inform the JVM  and compiler that we can create a complete method in interface.
+
+
+-whenever we prefix the method by default keyword within an interface, it is still by nature is considered as public.
+-the default keyword can only be used in interface, that is part of java 8 features.
+
+interface it1
+{
+    default void m1(){         //  in java 8, complete methods are allowed if  they are prefixed by default keyword.
+        System.out.println("inside m1 method");
+    }
+}
+class example24 implements it1{
+    public static void main(String[] args) {
+    example24 ref=new example24();
+    ref.m1();
+}
+}
+
+-example25:
+
+-STATIC methods are allowed in interface.
+
+interface it1
+{//abstract and public
+    void m2();
+    //static and public method 
+   static void m1(){       //------------->static methods are allowed in intrfaces.
+     System.out.println("inside m1 method");
+    }
+}
+class example25 implements it1{
+    public void m2(){                                   //method within interface is by default abstract and public
+        System.out.println("inside m2 method");
+    }
+    public static void main(String[] args) {
+    example25 ref=new example25();
+    ref.m2();  //we can call abstract and public method in interface using object creation but we cant callstatic method in interface using obj
+     it1.m1();    //we can call static method using interface name.methodname
+}
+}op:
+
+inside m2 method
+inside m1 method
+
+-example26:
+-we cannot  call static method in interface using classname. 
+
+
+-example27:
+
+-a class we provide empty implementation  to interface is called adapter class.
+
+interface amazon{
+    void productcategory();
+    void addtocart();
+    void searchproducts();
+
+}
+class amazonadapterclass implements amazon{                   //adapter class
+    public void productcategory(){}                                 
+    public void addtocart(){}
+    public void searchproducts(){}
+}
+class amazonprodcat extends amazonadapterclass{
+   public void productcategory(){
+        System.out.println("logics for product category");
+    }
+}
+class example27{
+    public static void main(String[] args) {
+        amazonprodcat cust=new amazonprodcat();
+        cust.productcategory();
+        
+    }
+}
+
+op:
+
+logics for product category
+

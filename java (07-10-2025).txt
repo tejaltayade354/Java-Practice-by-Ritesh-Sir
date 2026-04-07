@@ -1,0 +1,480 @@
+java (07-10-2025)
+
+overriding:
+-to achieve overriding there are 2 conditions is to be made:
+1) minimum it should have two classes.
+2) Between the 2 classes there should exist a IS-A relationship.(inheritance)
+- The process of inheriting the member from parent to child then changing its behaviour , such a process is called as OVERIDDING.
+
+-RULES OF OVERIDING:
+
+NOTE:
+- A method signature can be defined as combination of method name and argument. 
+  methodname(argument)
+
+RULE1:
+-To achieve overriding, the parent method signature and child method signature should be same.
+-example14:
+
+class parent{
+    void m1(){
+        System.out.println("inside m1 method-parent");
+    }
+
+} 
+class child extends parent{
+    void m1(){     // rule1: method signature should be same
+        System.out.println("inside m1 method-child");
+    }
+
+} 
+ 
+ class example14 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();   //object is of child ---->mg to tyachya class chya method la prefer karel
+    }
+}
+
+
+//op:inside m1 method-child
+
+-example15:ITS NOT CONCEPT OF OVERIDING.here only inheritance is happening. 
+
+class parent{
+    void m1(){
+        System.out.println("inside m1 method-parent");
+    }
+
+} 
+class child extends parent {
+    void m2(){     // rule1: method signature should be same, not satisfying rule1.
+        System.out.println("inside m1 method-child");
+    }
+
+} 
+ 
+ class example15 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();  
+    }
+}
+
+
+//op:inside m1 method-parent
+
+
+-RULR2A:
+-its possible to override, if the parent method return type and child method return type is same at primitive level.
+-EXAMPLE16:
+class parent{
+        int  m1(){
+        System.out.println("inside m1 method-parent return primitive ");
+        return 10;
+    }
+} 
+class child extends parent {
+
+    int m1(){     // rule1: method signature should be same, not satisfying rule1.
+        System.out.println("inside m1 method-child return primitive"); 
+        return 100;
+    }
+
+} 
+ 
+ class example16 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();  
+    }
+}
+
+
+//op:   inside m1 method-child return primitive
+
+-RULE2B:
+-example17
+-its not possible to override, if the parent method return type and the child method return type is different at primitive level.
+
+class parent{
+        float  m1(){
+        System.out.println("inside m1 method-parent return primitive ");
+        return 10.2f;
+    }
+
+} 
+class child extends parent {
+    int m1(){     
+        System.out.println("inside m1 method-child return primitive");
+        return 100;
+    }
+
+} 
+ 
+ class example17 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();  
+    }
+}
+   errror----------------> return type int is not compatible with float
+
+RULE3a:
+-it is possible to override, if the parent method return type and the child method return type is same at class level/refernce /non-primitive.
+-example18:
+
+class demo{
+
+}
+class parent{
+        demo  m1(){           //parent and child method return reference should be same at class level
+        demo d= new demo();        // 
+        System.out.println("inside m1 method-parent return reference");
+        return d;
+    }
+
+} 
+class child extends parent {
+    demo m1(){     
+        demo d= new demo();
+        System.out.println("inside m1 method-child return reference");
+        return d;
+    }
+} 
+ class example18 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();  
+    }
+}
+
+//op:  inside m1 method-child return reference
+   
+
+
+-RULE3B:
+-It is possible to override, if the parent method return type, and the child method return type is difft at class level.
+-IMP NOTE:
+-IF THE PARENT METHOD IS RETURNING PARENT TYPE, AND CHILD METHOD IS RETURNING CHILD TYPE SUCH RETURN TYPES ARE CALLED AS COVARIENT TYPES.
+-example19:
+
+
+class parent{
+        parent  m1(){                 
+      parent p1= new parent();        
+        System.out.println("inside m1 method-parent return  parent reference");
+        return new parent();
+    }
+
+} 
+class child extends parent {
+    child m1(){     
+        child c1= new child();       //covariant types
+        System.out.println("inside m1 method-child return child  reference");
+        return new child();
+    }
+} 
+ class example19 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();  
+    }
+}
+
+//op:  inside m1 method-child return child reference
+   
+
+
+
+-RULE4:
+-it is not possible to override, if the overridden method is final.
+-EXAMPLE 20:
+class parent{
+
+    //overhidden method
+   final void m1(){                                       //overridden method is final
+        System.out.println("inside m1 method-parent");
+    }
+
+} 
+class child extends parent {
+    //overiding method
+    void m1(){    
+        System.out.println("inside m1 method-child");
+    }
+
+} 
+ 
+ class example20 {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();   //object is of child ---->mg to tyachya class chya method la prefer karel
+    }
+}
+
+ error: m1() in child cannot override m1() in parent
+    void m1(){    
+         ^
+  overridden method is final
+1 error
+
+
+///ASSIGNMENT:OVERIDING METHOD KO FINAL KARO:
+
+
+class parent{
+
+    //overhidden method
+    void m1(){
+        System.out.println("inside m1 method-parent");
+    }
+
+} 
+class child extends parent {
+    //overiding method
+   final  void m1(){    
+        System.out.println("inside m1111111111111111 method-child");
+    }
+
+} 
+ 
+ class example20a {
+    public static void main(String[] args) {
+        child c=new child();
+        c.m1();   //object is of child ---->mg to tyachya class chya method la prefer karel
+    }
+}
+
+//op:   inside m1111111111111111 method-child
+
+-RULE5:
+
+TYPECASTING :
+-It is a process of converting 1 form to another.
+-Tpyecasting can be categorized in one of the approaches- as upcasting and downcasting.
+-UPCASTING is a process when a child object will behave as parent.In this process, the child object will loose its characteristics and will acquire the characcteristics of the parent only.
+-DOWNCASTING is a process, when a child behaving as a parent, will behave back as child.
+-if the child object which is downcasted can acquire not only child class members but can also acquire parent class members.
+-IMP NOTE:
+-only upcasted objects are downcasted.
+-imp note:  direct downcasting is not possible.
+
+
+
+
+
+-example21:
+
+class parent{
+    int a=10;
+
+}
+class child extends parent{
+    float b=10.1f;
+
+}
+class example21 {
+    public static void main(String[] args) {
+        //upcasting
+        parent p=new child();
+        System.out.println(p.a);
+        // System.out.println(p.b);    //ce
+         System.out.println("-----------------------------------");
+         //downcasting
+          child c= (child)p;
+           System.out.println(c.a);
+            System.out.println(c.b);
+    }
+}
+
+
+
+/*
+10
+-----------------------------------
+10
+10.1 
+
+*/
+ 
+
+
+-example22:
+class parent{
+    int a=10;
+    void m1(){
+        System.out.println("parent"+a);
+    }
+}
+class child extends parent{
+    float b=10.1f;
+    void m2(){
+        System.out.println("child"+b);
+    }
+
+}
+class example22 {
+    public static void main(String[] args) {
+        //upcasting
+        parent p=new child();
+         p.m1();
+        // System.out.println(p.b);    //ce
+         System.out.println("-----------------------------------");
+         //downcasting
+          child c= (child)p;
+            c.m1();
+            c.m2();
+    }
+}
+
+
+
+/*
+parent10
+-----------------------------------
+parent10
+child10.1
+*/
+
+
+
+
+
+
+-assignments :
+
+
+
+example23:
+
+class A{
+    int a=10;
+    void m1(){
+        System.out.println("inside m1 method"+a);
+    }
+}
+class B extends A {
+    float b=10.1f;
+    void m2(){
+        System.out.println("inside m2 method"+b);
+    }
+
+}
+class C extends B {
+    char C='f';
+    void m3(){
+        System.out.println("inside m3 method"+C);
+    }
+
+}
+class example23 {
+    public static void main(String[] args) {
+        //A
+        A a1=new C();
+         a1.m1();
+        // System.out.println(p.b);    //ce
+         System.out.println("-----------------------------------");
+         //B
+          B b= (B)a1;
+        b.m2();
+            b.m1();
+             System.out.println("-----------------------------------");
+            //C
+            C c= (C)a1;
+            c.m2();
+            c.m1();
+            c.m3();
+
+            
+
+    }
+}
+
+
+
+/*
+inside m1 method10
+-----------------------------------
+inside m2 method10.1
+inside m1 method10
+-----------------------------------
+inside m2 method10.1
+inside m1 method10
+inside m3 methodf
+*/
+
+
+
+
+example 23a:
+
+
+assssignment
+
+
+class A{
+    int a=10;
+    void m1(){
+        System.out.println("inside m1 method"+a);
+    }
+}
+class B extends A {
+    float b=10.1f;
+    void m2(){
+        System.out.println("inside m2 method"+b);
+    }
+
+}
+class C extends B {
+    char C='f';
+    void m3(){
+        System.out.println("inside m3 method"+C);
+    }}
+ class example23a {
+    public static void main(String[] args){
+       // c wants to be b
+        B b=new C();
+        b.m2();
+        // b wants to be a
+        A a=new B();
+        a.m1();
+        //c wants to be a---->upcasting
+         A a1=new C();
+         a1.m1();
+         
+         //downcasting
+        C c1=(C)a1;        //only upcasted objects are downcasted.
+        c1.m3();
+        c1.m2();
+        c1.m1();
+
+    }
+    
+}
+
+o/p:
+
+inside m2 method10.1
+inside m1 method10
+inside m1 method10
+inside m3 methodf
+inside m2 method10.1
+inside m1 method10
+
+
+
+until now in rule 5 , we haven't implemented the overriding .
+
+
+
+
+
+
+
+
+
+
+
+
+

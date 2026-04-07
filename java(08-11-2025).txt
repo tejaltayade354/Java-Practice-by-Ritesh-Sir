@@ -1,0 +1,249 @@
+java(08-11-2025)
+
+-whatever members defined in java, which has a name is given a  naming standard in java.
+
+-classes:
+
+- according to java standards , every class should start with a capital letter.
+- if a class contains , 2 or more words then each word within the class, the starting letter should be capital.
+- examples:
+1) Demo/Sample- user defined classes 
+2) String/StrinBuffer - predefined classes
+3)FileNotFoundException
+
+-constructors:
+- constructor name should be same as class name.
+-this convention followed by java comes under pascal convention.
+
+-interfaces:
+-it also follows same convention as classes.
+-Examples: 1) Clonable
+           2) AttributedCharacterIterator
+
+- methods;
+-If a mmethod contains single word, then the starting letter should be in lowercase.
+-If a mmethod contains  more than one word, then the starting letter of the 2nd word onwards should be in uppercase.
+-examples:
+1)main, trim, concat i lower case
+2)toString();
+3)toUpperCase()
+
+
+- this approach or convention is from camel Case convention.
+
+-variables:
+- follows same convention as methods.
+
+-packages:
+-every package whatever we create should be in lower case.
+-examples:
+1) java.lang
+2) java.io
+3) java.util
+
+-constants:
+
+- every letter within a constant is represented  in a upper case.
+- if a constant contains 2 or more words , this words are connected with a underscore character("_").
+-examples:
+1)BYTES
+2)MAX_VALUE
+
+
+-package:
+
+-A package can be  defined as a folder structure.
+-the package contains collection of interfaces and classes.
+- in java 8, the total packages supported are 14 wherein the time is the new package.
+- to create a pavckage the syntax is:
+
+ package packagename;
+
+
+ex: package packsample;     
+
+-example1:
+
+class Example1 {
+    public static void main(String[] args) {
+        
+    }
+}
+
+
+/*
+ javac - compile command
+ -d  create the directory structure
+ .  in current directory
+ example1.java- file name
+ */
+
+
+
+
+-Ex2:
+
+-we mot only create a single package but we can also create sub packages.
+- a package name along with class name is fully qualified class.
+
+-www.tcs.com    in reverse        package com.tcs;
+
+
+www.hsbc.tcs.com  in reverse      package com.tcs.hsbc;
+
+www.banking.hsbc.tcs.com  in reverse      package com.tcs.hsbc.banking;
+
+example 2:
+
+package pack.demo;     
+
+class Example2 {
+    public static void main(String[] args) {
+        System.out.println("inside example 2- package demo");
+    }
+}
+
+//to execute the program command is:
+
+//java pack.demo.Example2
+
+/*
+ javac - compile command
+ -d  create the directory structure
+ .  in current directory
+ example2.java- file name
+ */
+
+
+ 
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\PACKAGES> javac -d . Example2.java
+PS C:\Users\Tejal\CCSP12 J AUGUST\PACKAGES> java pack.demo.Example2
+inside example 2- package demo
+
+package com.hdse;
+
+
+class hdse{
+    private int accountbal;
+     hdse(int accountbal){
+          if(accountbal>=10000){
+               this.accountbal=accountbal;
+               System.out.println("account creation successful.");
+          }else{
+            System.out.println("invalid amount, account creation unsuccessful.");
+          }
+     }
+    public  int currentBalance(){
+        return accountbal;
+     }
+
+
+}
+
+class Example3 {
+    public static void main(String[] args){
+        hdse cus1=new hdse(5000);
+        int accountbal=cus1.currentBalance();
+          System.out.println("the current balance is " +accountbal);
+    }
+}
+
+
+op:
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\PACKAGES> java com.hdse.Example3
+invalid amount, account creation unsuccessful.
+the current balance is 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

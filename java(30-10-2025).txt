@@ -1,0 +1,261 @@
+java(30-10-2025)
+
+-split method :
+
+-example21:
+class ex21 {
+    public static void main(String[] args){
+        String s1="this is a example of split method";
+        String[] s2=s1.split(" ");
+        for(int i=0;i<=s2.length;i++)
+        {
+            System.out.println(s2[i]);
+        }
+    }
+}
+
+//public String[] split(String regex)
+
+op:
+
+this
+is
+a
+example
+of
+split
+method
+
+
+-example22:
+
+-What is the difference betn an length() method and length variable?
+--> A length method is responsible to calculate the total no of letters or numbers within a string. Whereas length is used to calculate the size of an ARRAY.
+
+class ex22 {
+    public static void main(String[] args){
+    String s1="TEJAL";
+    System.out.println(s1.length());        //length method: will calculate no of letters in string
+    String[] s2={"TEJAL","have","bestlife"};
+    System.out.println(s2.length);         //length variable: calculates size of the array
+    }
+}
+
+op:
+
+5
+3
+
+
+
+example 23:
+
+compareTo(java.lang.Object) method:
+-this method is used to perform comparison of two strings.
+-the way the compareTo method works is, it will compare each string, each letter Unicode value, with another string,  each unicode value, if both strings are exactly same, then Unicode value is also same. and if both are same, it will return 0. if both are not same, it will return '+' or '-'.
+
+class ex23 {
+    public static void main(String[] args){
+        String s="cyber";
+        String a="cyber";
+        System.out.println(s.compareTo(a));       //will return 0-->as both string are same character
+        String ss="cyber";   //99
+        String aa="ayber";    //97
+        System.out.println(ss.compareTo(aa)); //positive- bcoz (c came first , but in real a comes first and then c )difference betn unicode values of c and a is 2(99,97)
+        String sss="ayber";    //97
+        String aaa="cyber";     //99
+        System.out.println(sss.compareTo(aaa));         //negative (albhabets in order )
+    }
+}
+
+op;
+
+0
+2
+-2
+
+-example 23:
+
+-imp point for collection concept:
+ 
+-q1)On what basis it returns plus or minus?
+
+---> if the first string first letter value is greater than the second string first letter value, then it will return diff of that but positive.
+
+---> but if the first letter first letter Unicode value, is less than the second string first letter value, it will return diff of that but negative.
+
+- example24:
+
+ class ex24 {
+    public static void main(String[] args){
+        String s1= "Cyber";
+        String s2= "cyber";
+        System.out.println(s1.equals(s2));       //case sensitive comparision
+        System.out.println(s1.equalsIgnoreCase(s2));       //case insensitive comparision'
+        System.out.println(s1.compareTo(s2));       //case sensitive comparision
+        System.out.println(s1.compareToIgnoreCase(s2));       //case insensitive comparision
+
+    }
+}
+
+op:
+
+false
+true
+-32
+0
+
+q2) What is the diff betn compareToIgnoreCase and equalsIgnoreCase() ?
+
+--> the comparetoignorecase and the equalsignorecase  will perform the same comparison operation similar to compare to as well a equals method. However this comparision is based on case insensitive comparison.
+
+class ex25 {
+    public static void main(String[] args) {
+        //  StringBuilder stb1= "tech";
+        StringBuilder stb1= new StringBuilder("tech");   // String Builder class object can be created using new keyword.
+        System.out.println(stb1);
+         System.out.println(stb1.toString());
+
+    }
+}
+//public StringBuilder(String);
+op:
+tech
+tech
+
+STRING BUILDER:
+
+-String Builder is also part of java.lang package.
+
+-example25:
+- the tostring() method is overridden in string class, string buffer class, string builder class.
+-string builder objects cant be created using new keyword, but it can be created with the help of new keyword.
+
+class ex26 {
+    public static void main(String[] args) {
+         StringBuilder stb1= new StringBuilder("tech");   // String Builder class object can be created using newc keyword.
+        System.out.println(stb1);
+        stb1.append("providers");
+         System.out.println(stb1);    //mutable string build class bcoz tech is changed to techproviders
+    }
+}
+op
+tech
+techproviders
+
+-example26:
+-String Builder class is also said to be or called as mutable class.
+
+-IQ: What is the difference betn string buffer and stringbuilder?
+---> the string buffer and string builder class are almost same, but the difference is the string buffer methods are synchronized, and string builder methods are not synchronized.
+
+-if a method is synchronized, one thread is able to access one method at any point of time, transactions are safe, but performance is a little lower.
+- if the methods arenot synchronized, multiple threads are able to access the methods, transactions are not safe, but performance is better.(threads are customer, methods are cashier) 
+
+
+
+
+
+
+STRING TOKENIZER CLASs:
+
+-It is part of java.util package.
+-String Tokenizer is primarily used to split a string in the form of tokens.
+
+-A TOKEN can be defined as smallest element within the string is called as Token.
+
+
+- the string tokenizer objects are created using new keyword.
+
+-example27:
+- whenever we using string tokenizer, we have to inform compiler java,  it  is present in java.util. AND  to to do that we have to use a statement import.
+
+- the JVM during the execution, will import the respective class, within the memory and use it for spitting the string.
+- the string tokenizer is responsible to break the string in the form of tokens. and to access this tokens we need to perform 2 steps, 1) we check token element is present or not, If it is present, we will extract the tokens. this can be achieved by 2 methods- hasMoreElments(String);   and nextElement();
+
+
+- the default delimeter, to split the string is by default is space.
+
+
+import java.util.StringTokenizer;
+
+class ex27 {
+    public static void main(String[] args) {
+        String s1="this is string tokenizer example";
+        StringTokenizer st=new StringTokenizer(s1);
+        while(st.hasMoreElements()){          //checks tokens present or not.----> //true
+            System.out.println(st.nextElement());          //extract the tokens from string
+        }
+    }
+}
+
+op:
+
+this
+is
+string
+tokenizer
+example
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.StringTokenizer;
+
+class ex27 {
+    public static void main(String[] args) {
+        String s1="this is string tokenizer example";
+        StringTokenizer st=new StringTokenizer(s1);
+        while(st.hasMoreElements()){          //checks tokens present or not.----> //true
+            System.out.println(st.nextElement());          //extract the tokens from string
+        }
+    }
+}
+
+op:
+
+this
+is
+string
+tokenizer
+example
+
+
+
+
+IQ: To split the string, using string tokenizer based on a specific delimiter, for that we need to use a string tokenizer Two argument constructor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

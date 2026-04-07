@@ -1,0 +1,115 @@
+java(19-11-2025)
+
+limitations of arrays:
+
+1) Arrays by nature are fixed in size.
+2) Size of an array does not change during the runtime.
+3) Arrays do not supports the concept of methods.
+
+hence to overcome, the above limitations, we prefer to go for collections
+
+BENEFITS of COLLECTION:
+
+1) collections are not limited to particular size.
+2) collections can change its size dynamically during run time. 
+3) collections do support the concept of method, hence performing operations becomes easier.
+
+
+-A Collection can be defined as a framework, which is meant to store data or information in an organized manner.
+-collections involves a combination of classes and interfaces.
+
+IQ: what are the differnces betn array and collections?
+-   ARRAY:
+1) ARRAYS ARE FIXED IN SIZE.
+2) MEMORY POINT OF VIEW, ARRAYS ARE NOT GOOD.
+3) ARRYAS DO NOT SUPPORTS THE CONCEPT OF METHODS.
+4) ARRAYS BY NATURE CAN STORE BOTH PRIMITIVE AND OBJECT DATA.
+5) ARRAYS CAN STORE ONLY HOMOGENEOUS DATA.
+6) PERFORMANCE WISE ARRAYS ARE BETTER.
+-  COLLECTION:
+1) COLLECTIONS BY NATURE ARE DYNAMIC.
+2) COLLECTIONS ARE BETTER FROM MEMORY POINT OF VIEW.
+3) COLECTIONS DOES SUPPORT THE CONCEPT OF METHODS.
+4) COLLECTIONS ONLY STORE OBJECT DATA.
+5) COLLECTIONS CAN STORE BOTH HOMOGENEOUS AND HETEROGENEOUS DATA.
+6) COLLECTIONS HAVE LOWER PERFORMANCE COMPARED TO ARRAY.
+
+-Collection framework can be categorized mainly into 3 types:
+1) list
+2) set
+3) map
+
+
+-  collection(I)1.2v<-----list(I)1.2v<-----------ArrayList(C)1.2v
+                                     <-----------LinkedList(C)1.2v
+                                     <-----------Vector(C)1.0v<----------------stack(C)1.0v
+      
+-the  1.0 version collections are legacy classes and  interfaces.
+
+1)LIST COLLECTIONS:
+
+
+-imp note:IQ: AN ARRAY is meant to store homogeneous data hence based on  the type of data, we need to create seperate arrays, wheras in single collection, we can store same type of data, or difft types of data, hence if it is done in 1 collection, then why do we require multiple collections(like linked list, vector, stack)?
+-> Every collection class will have its own characteristics, and will vary from class to class, as well as collection to collection.
+
+
+characteristics of collection classes:
+1) Based on version
+2) Based on homogeneous / heterogeneous data
+3) Based on insertion order
+4) Based on null insertion
+5) Based on duplicates allowed or not allowed.
+6) based on synchronized/ nonsynchronized
+7) based on data structure.
+8) based on cursors.(for extraction of data.)
+
+
+1) ArrayList:
+-  introduced in version 1.2v.
+-  allows both homogeneous / heterogeneous data.
+-  insertion order is maintained.
+-  null insertion is possible.
+-  duplicates are allowed.
+-  methods are nonsyncronized.
+-  data structure by nature is growable data structure.(either expand or contract).
+
+
+assignment:
+
+
+download the intelli j
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

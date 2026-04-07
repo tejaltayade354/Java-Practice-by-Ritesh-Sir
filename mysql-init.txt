@@ -1,0 +1,16 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Tejal@3504';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ XWynaD36l8>h

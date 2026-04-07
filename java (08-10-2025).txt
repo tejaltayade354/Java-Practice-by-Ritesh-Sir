@@ -1,0 +1,151 @@
+java (08-10-2025)
+
+assignment :
+
+class cyber
+{
+    int a=10;
+    void m1() {System.out.println("inside m1 method" +a);}
+}
+class successs extends cyber
+{
+float b=20.5f;
+    void m2() {System.out.println("inside m2 method" +b);}
+}
+class training
+{
+    static void test(cyber c){           // pass declaration of upcasting and then we access m1 method.
+    c.m1();
+    //c.m2();    //------------>invalid
+    }
+}
+class example24 {
+    public static void main(String[] args){
+    training.test(new successs());            //calling test method using classname.method();  ///hhere is short cut of 2 lines
+    //Cyber c=new success();
+    //training.test(c);    ->object->address           ya 2 lines 1 line madhe lihile
+    
+    }
+    
+}
+
+-imp note:
+-without the concept of overriding , it is possible to perform upcasting and downcasting.
+-example 25:
+
+class cyber{
+
+    //overhidden method
+    void m1(){
+        System.out.println("inside m1 method-cyber");
+    }
+
+} 
+class success extends cyber {
+    //overiding method
+       void m1(){    
+        System.out.println("inside m1111111111111111 method-success");
+    }
+
+} 
+ 
+ class example25 {
+    public static void main(String[] args) {
+        cyber c=new success();                   //upcasted statement
+        c.m1();   //object is of child ---->mg to tyachya class chya method la prefer karel
+    }
+}
+
+//op:   inside m1111111111111111 method-success
+
+
+-without the concept of overriding, it is possible to perform upcasting and downcasting by using an upcasted statement.
+-But with the concept of overiding it is not possible to perform upcasting and downcasting.
+-under the concept of overriding, based on the object created, the preference will be given to the same object members.
+
+-example 26:
+class parent{
+    void carkeys(){System.out.println("inside carkeys method");}
+}
+ class child extends parent{
+    void bikekeys(){System.out.println("inside bikekeys method");}
+} 
+ class example26 {
+    public static void main(String[] args)
+    {
+ parent p=new child();  
+ p.carkeys();
+ //p.bikekeys();   ---->    //invalid=child is behaving as parent hence cant access its own members
+    }
+    
+}
+
+//op:
+
+inside carkeys method
+
+-example 27:
+
+class parent{
+    void homekeys(){System.out.println("inside homekeys method- parent");}
+}
+ class child extends parent{
+    void homekeys(){System.out.println("inside homekeys method-child");}
+} 
+ class example27 {
+    public static void main(String[] args)
+    {
+ parent p=new child();  //upcasted statement
+ p.homekeys();               //overriding is done, hence the priority is given child.
+       }
+    
+}
+
+//op:
+
+inside homekeys method-child
+
+
+
+-example 28:
+
+class cyber{
+
+    //overhidden method
+    void m1(){
+        System.out.println("inside m1 method-cyber");
+    }
+     void m2(){
+        System.out.println("inside m2 method-cyber");
+    }
+
+
+} 
+class success extends cyber {
+    //overiding method
+       void m1(){    
+        System.out.println("inside m1111111111111111 method-success");
+    } void m3(){
+        System.out.println("inside m3 method-success");
+    }
+
+
+} 
+ 
+ class example28 {
+    public static void main(String[] args) {
+        cyber c=new success(); //upcasted statement
+        c.m1();  
+        c.m2(); //object is of child ---->mg to tyachya class chya method la prefer karel
+       // c.m3(); is invalid ------>during upcasting object can access only parent memnerss.
+    }
+}
+/*
+      
+inside m1111111111111111 method-success
+inside m2 method-cyber
+ */
+
+
+
+-example 29:

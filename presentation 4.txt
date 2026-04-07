@@ -1,0 +1,626 @@
+presentation 3rd
+
+methods and final keyword:
+
+
+class Main {
+    public static void main(String[] args) {
+        final int a=10;   // final keyword
+        System.out.println(a);
+       // a=100; // we_cant_change
+       System.out.println(a);
+        cars(); // directly
+        Main.cars();   // classname
+        Main m=new Main();
+        m.cars();   ///object creation
+        
+    }
+     static void cars(){
+        
+        System.out.println("INSIDE cars METHOD");
+    }
+}
+
+o/p:
+
+10
+10
+INSIDE cars METHOD
+INSIDE cars METHOD
+INSIDE cars METHOD
+
+
+nonstatic:
+
+only object creation
+
+
+
+
+
+
+
+what are advantages of this and real time example
+ChatGPT said:
+
+Excellent question, Tejal 👏 — this is where you start thinking like a developer, not just a learner.
+Let’s understand the advantages of using a static reference variable like static Main m;
+and see some real-time examples that connect it to real Java programs and projects.
+
+🧩 First, recall what’s happening:
+
+We had this code:
+
+class Main {
+    int a = 10;
+    void m1() {
+        System.out.println(a);
+    }
+    static Main m;
+
+    public static void main(String[] args) {
+        m = new Main();
+        m.m1();
+    }
+}
+
+
+Here:
+
+m is a static reference variable that holds an object of class Main.
+
+We used it to access non-static members (a and m1()).
+
+✅ Advantages of Using Static Reference Variable
+1️⃣ Accessible in static methods (like main)
+
+Static members can be used without creating an object of the class.
+But main() itself is static, so it cannot access non-static members directly.
+By using a static reference, we can create an object once and access it anywhere.
+
+🟢 Example:
+
+class Employee {
+    static Employee e = new Employee();
+    int salary = 50000;
+    
+    void display() {
+        System.out.println("Salary: " + salary);
+    }
+
+    public static void main(String[] args) {
+        e.display();
+    }
+}
+
+
+💡 Here, we didn’t have to create a new object every time —
+the static object e is always available for the whole class.
+
+2️⃣ Memory Efficiency (Object Reuse)
+
+Only one static variable is created in memory, no matter how many objects you create.
+
+Saves memory when one instance can be reused.
+
+🧠 Example:
+In a web application, you might need one database connection object for all users.
+Instead of creating a new connection every time, use:
+
+class Database {
+    static Database db = new Database(); // one shared instance
+}
+
+
+All parts of the program use this single object — saves memory and improves performance.🔹 In short:
+
+“Static reference variables help you share one object across the entire program — saving memory, simplifying access, and enabling global configurations.”
+
+
+
+
+
+
+
+
+
+
+🧩 Your Code
+class Main {
+    int a = 10;
+    Main ref;
+
+    public static void main(String[] args) {
+        Main m = new Main();
+        System.out.println(m.ref.a);
+    }
+}
+
+🔍 Step-by-Step Explanation
+1️⃣ int a = 10;
+
+Non-static variable.
+
+Every object of Main will have its own variable a, initialized with 10.
+
+2️⃣ Main ref;
+
+This is a non-primitive reference variable (of type Main).
+
+But right now, it’s not assigned any object.
+
+So by default, it holds null.
+
+👉 At this point:
+
+m = new Main();
+m.a = 10;
+m.ref = null;
+
+3️⃣ Main m = new Main();
+
+Creates a new Main object in heap memory.
+
+m refers to that object.
+
+Inside that object:
+
+a = 10
+
+ref = null (because you haven’t assigned anything yet)
+
+4️⃣ System.out.println(m.ref.a);
+
+Here’s what happens:
+
+You’re asking Java to print m.ref.a.
+
+But m.ref is null, since you never assigned it an object.
+
+So this is like doing:
+
+null.a
+
+
+And that’s not allowed — you can’t access a variable through null.
+
+⚠️ Output:
+Exception in thread "main" java.lang.NullPointerException
+
+✅ Corrected Version (So It Works)
+
+If you want this to work correctly, you must assign an object to ref first.
+
+class Main {
+    int a = 10;
+    Main ref;
+
+    public static void main(String[] args) {
+        Main m = new Main();   // m created
+        m.ref = new Main();    // ref now refers to another Main object
+        System.out.println(m.ref.a); // Works fine
+    }
+}
+
+✅ Output:
+10
+
+🧠 What’s Happening Now
+
+You have two Main objects:
+
+One created by new Main() → assigned to m
+
+Another created by new Main() → assigned to m.ref
+
+Both have a = 10
+
+So m.ref.a prints 10
+
+💡 Key Concept — “Return by Reference” or “Object Reference”
+
+In Java, objects are always handled through references.
+
+When you write m.ref = new Main();,
+ref now holds the memory address of a new object.
+
+When you access m.ref.a,
+Java follows that reference and gets a from that second object.
+
+So you’re indirectly accessing data from another object — that’s why we say “return/access by reference.”
+
+🧱 Real-World Analogy
+
+Think of m as a person, and ref as a friend’s contact:
+
+If ref is empty (null) → you can’t call the friend → ❌ NullPointerException.
+
+If ref has a valid contact (object) → you can access the friend’s details → ✅ Works fine.
+
+✅ Summary
+Concept	Explanation
+ref	Reference variable of type Main
+Default value of ref	null
+m.ref.a	Accessing variable a through ref
+Problem	ref was null, so NullPointerException
+Fix	Initialize ref with new object (m.ref = new Main();)
+
+Would you like me to extend this example to show how return by reference works between two methods in the same class (based on this same logic)? It will make the idea crystal clear.
+
+You said:
+advantages and real time example
+ChatGPT said:
+
+Perfect, Tejal 👏 — now that you understand what’s happening in this code (object reference inside another object),
+let’s explore its advantages and a few real-time examples where this concept is very useful in actual Java programs.
+
+🧩 Recap of the Code
+class Main {
+    int a = 10;
+    Main ref;
+
+    public static void main(String[] args) {
+        Main m = new Main();   // main object
+        m.ref = new Main();    // second object linked inside first
+        System.out.println(m.ref.a);  // accessing second object’s data
+    }
+}
+
+✅ Concept in Simple Words
+
+Here:
+
+Each Main object can hold a reference to another Main object.
+
+This is like saying:
+
+“An object can contain or point to another object.”
+
+This concept is called object reference chaining or object composition, and it’s a very powerful idea in OOP (Object-Oriented Programming).
+
+🌟 Advantages
+1️⃣ Helps in Building Relationships Between Objects
+
+You can make one object refer to another — just like real-world relationships.
+
+For example:
+
+A Student object can refer to an Address object.
+
+A Company object can refer to a Manager object.
+
+This builds connections between data.
+
+🟢 Example:
+
+class Address {
+    String city = "Pune";
+}
+
+class Student {
+    String name = "Tejal";
+    Address addr;  // reference to Address object
+
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.addr = new Address();   // linking Address object
+        System.out.println(s.name + " lives in " + s.addr.city);
+    }
+}
+
+
+Output:
+
+Tejal lives in Pune
+
+
+💡 One object (Student) is holding another object (Address).
+
+2️⃣ Code Reusability & Modularity
+
+You don’t have to write everything in one class.
+Each class can do its job and can be connected through references.
+
+🧠 Example:
+
+Car class has Engine class reference.
+
+Engine handles power logic, while Car handles user actions.
+
+3️⃣ Data Sharing Between Objects
+
+When objects hold references to each other, they can share or modify data easily.
+
+Example:
+
+class Engine {
+    int power = 120;
+}
+
+class Car {
+    Engine eng;
+    void showPower() {
+        System.out.println("Power: " + eng.power);
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Car c = new Car();
+        c.eng = new Engine();
+        c.showPower();  // Output: Power: 120
+    }
+}
+
+
+Here, Car uses the data of another object (Engine) via reference.
+
+4️⃣ Object Composition (Real-World Programming Practice)
+
+This is used everywhere in Java — for example:
+
+In Spring Boot, beans are injected using references.
+
+In GUI programming (Swing/JavaFX), a Frame contains Button, Label, etc. (all are object references).
+
+In data models, one object often contains others (Customer → Order → Product).
+
+5️⃣ Avoids Duplicate Objects
+
+You can reuse the same object reference multiple times instead of creating new ones, which saves memory and maintains data consistency.
+
+🏢 Real-Time Examples
+Example	Description	Real Concept
+🧑‍🎓 Student–Address Relationship	A Student object has a reference to an Address object	Object Composition
+🚗 Car–Engine Relationship	Car has a reference to an Engine	HAS-A relationship
+🏦 Bank–Customer Relationship	BankAccount class holds a reference to a Customer class	Data linkage
+🌐 Web Applications (Spring Framework)	One service class references a repository class	Dependency Injection
+📦 E-Commerce Application	Order object contains list of Product objects	Object Aggregation
+💡 Summary Table
+Advantage	Explanation
+Builds relationships between objects	Helps link one object to another easily
+Improves modularity	Classes handle separate logic and communicate via references
+Enables data sharing	One object can use or modify data of another
+Supports composition design	Used in all real-world OOP applications
+Reduces redundancy	Reuse objects without recreating them
+🎯 In Short:
+
+“Using object references inside other objects lets you connect, reuse, and organize your program just like real-world relationships — where one thing is made up of or depends on another.”
+
+
+🌟 CONDITIONAL STATEMENTS IN JAVA
+
+Conditional statements are used to make decisions in your program based on certain conditions.
+
+Syntax format:
+
+if (condition) {
+   // code executes if condition is true
+} else {
+   // code executes if condition is false
+}
+
+🧩 1️⃣ Simple if statement
+
+👉 Used when we want to execute a block only if the condition is true.
+
+✅ Example:
+class SimpleIf {
+    public static void main(String[] args) {
+        int age = 20;
+
+        if (age >= 18) {
+            System.out.println("You are eligible to vote.");
+        }
+    }
+}
+
+
+Output:
+
+You are eligible to vote.
+
+🧩 2️⃣ if–else Statement
+
+👉 Used when you have two possibilities (true/false).
+
+✅ Example:
+class IfElseExample {
+    public static void main(String[] args) {
+        int number = 7;
+
+        if (number % 2 == 0) {
+            System.out.println("Even number");
+        } else {
+            System.out.println("Odd number");
+        }
+    }
+}
+
+
+Output:
+
+Odd number
+
+🧩 3️⃣ if–else–if Ladder
+
+👉 Used when you have multiple conditions, one after another.
+
+✅ Example:
+class IfElseIfExample {
+    public static void main(String[] args) {
+        int marks = 75;
+
+        if (marks >= 90) {
+            System.out.println("Grade A");
+        } else if (marks >= 75) {
+            System.out.println("Grade B");
+        } else if (marks >= 50) {
+            System.out.println("Grade C");
+        } else {
+            System.out.println("Fail");
+        }
+    }
+}
+
+
+Output:
+
+Grade B
+
+
+💡 Tip: Java checks conditions one by one from top to bottom until it finds the first true condition.
+
+🧩 4️⃣ Nested if
+
+👉 When one if is written inside another if.
+Useful when you have to check multiple dependent conditions.
+
+✅ Example:
+class NestedIfExample {
+    public static void main(String[] args) {
+        int age = 25;
+        boolean hasLicense = true;
+
+        if (age >= 18) {
+            if (hasLicense) {
+                System.out.println("You can drive.");
+            } else {
+                System.out.println("You must have a license to drive.");
+            }
+        } else {
+            System.out.println("You are too young to drive.");
+        }
+    }
+}
+
+
+Output:
+
+You can drive.
+
+🧩 5️⃣ Switch Statement
+
+👉 Used when you need to compare the same variable against multiple constant values.
+
+✅ Example:
+class SwitchExample {
+    public static void main(String[] args) {
+        int day = 3;
+
+        switch(day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+            default:
+                System.out.println("Invalid day");
+        }
+    }
+}
+
+
+Output:
+
+Wednesday
+
+🔑 Key Points:
+
+switch works with byte, short, int, char, String, and enum.
+
+Each case must end with break to stop execution.
+
+default runs if none of the cases match.
+
+💼 Real-Life Example
+class TicketPrice {
+    public static void main(String[] args) {
+        String type = "student";
+        int price;
+
+        switch(type) {
+            case "child":
+                price = 50;
+                break;
+            case "student":
+                price = 80;
+                break;
+            case "adult":
+                price = 100;
+                break;
+            default:
+                price = 0;
+        }
+
+        System.out.println("Ticket price: " + price);
+    }
+}
+
+
+Output:
+
+Ticket price: 80
+
+🎯 INTERVIEW QUESTIONS (with Answers)
+🔹 Q1. Difference between if-else and switch?
+Feature	if-else	switch
+Works with	Logical conditions (>, <, ==, etc.)	Fixed values (== only)
+Data types	All primitive and boolean	byte, short, int, char, String, enum
+Performance	Slower when many conditions	Faster for multiple constant checks
+Readability	Complex if too many conditions	Cleaner and readable
+🔹 Q2. What happens if we don’t use break in switch?
+
+👉 Java will execute all following cases until a break or end of switch is found.
+(This is called fall-through behavior.)
+
+Example:
+int day = 2;
+switch(day) {
+    case 1: System.out.println("Mon");
+    case 2: System.out.println("Tue");
+    case 3: System.out.println("Wed");
+}
+
+
+Output:
+
+Tue
+Wed
+
+🔹 Q3. Can switch work with String?
+
+✅ Yes (since Java 7)
+
+String fruit = "apple";
+switch(fruit) {
+    case "apple": System.out.println("Red fruit"); break;
+    case "banana": System.out.println("Yellow fruit"); break;
+}
+
+🔹 Q4. What is a nested if? When do we use it?
+
+👉 A nested if is an if inside another if.
+Used when one condition depends on another (like login check, eligibility check).
+
+🔹 Q5. Can we use logical operators in if condition?
+
+✅ Yes.
+
+if(age > 18 && hasLicense)
+    System.out.println("Eligible to drive");
+
+🧠 Summary Table
+Type	Syntax	When to Use
+if	if (condition)	One simple condition
+if-else	if (condition) else	Two possible outcomes
+if-else-if	Multiple else if	Multiple conditions
+Nested if	if inside if	Dependent conditions
+Switch	switch(variable)	Compare variable with multiple constant values

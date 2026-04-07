@@ -1,0 +1,279 @@
+java(14-11-2025)
+
+2) Static inner class:
+
+-example 13:
+
+-the static keyword is not applicable to regular class, but it is applicable to the inner class.
+
+-example14:
+
+-it is possible to access static members of the outer class within the inner class.
+
+//static class Demo { ---------->invalid and gives error
+class Demo {
+    static int a=8;
+static class Sample{         //-------->inner class can be made STATIC.
+   void m1(){
+    System.out.println(a);     //static member of outer class is directly accessible in static class
+   }
+}
+
+}class Example14 {
+     public static void main(String[] args){
+     Demo.Sample s=new Demo.Sample();     //to call m1 method , we created obj of sample class, but sample is inner class in demo outer class, thats why we coded this line.
+     s.m1();
+
+     //new Demo.Sample().m1();
+    }
+}
+
+//op:
+
+8
+
+- example 15:
+
+-in a static inner class, we cannot access non static member of the outer class within the inner class directly.(but we can access using obj creation.)
+-but we can access non static member of outer class in static inner class is using object creation.
+
+//static class Demo { ---------->invalid and gives error->STATIC OUTER CLASS
+class Demo {
+    int a=8;
+static class Sample{         //-------->inner class can be made STATIC.
+   void m1(){
+
+   // System.out.println(a);     //non static member of outer class is NOT directly accessible in static class, HENCE we use OBJECT CREATION.
+Demo d=new Demo();
+System.out.println(d.a);        //nonstatic of outer class is accessed in inner static class.
+}
+}
+}
+class Example15 {
+     public static void main(String[] args){
+     Demo.Sample s=new Demo.Sample();    
+      s.m1();
+
+     
+    }
+}
+
+op:
+
+8
+
+-example 16:
+
+-it is not possible to access the inner class members in the outer class directly.
+-But it is possible to access the inner class members in the outer class with the help of object creation.
+
+//static class Demo { ---------->invalid and gives error->STATIC OUTER CLASS
+class Demo {
+    int a=8;
+
+void m1(){
+Sample s =new Sample();        //object of innerclaas to access nonstatic member of inner class outside inner class.
+System.out.println(a+s.y);        //nonstatic of outer class is accessed in inner static class.
+}
+static class Sample{ 
+    float y=2.1f;        //-------->inner class can be made STATIC.
+}
+}
+class Example15 {
+     public static void main(String[] args){
+     new Demo().m1();   
+      
+
+     
+    }
+}
+
+op:
+
+10.1
+
+-example 17:
+
+-everything static except class demo and example 17., so we can access using directly, without object creation.
+
+//static class Demo { ---------->invalid and gives error->STATIC OUTER CLASS
+class Demo {
+  static  int a=8;
+
+
+static class Sample{ 
+    static float y=2.1f;        
+
+               static void m1(){
+                System.out.println("inside m1");
+                 System.out.println(a+y);          ///staic members in static area --> directly
+          }
+     }
+}
+class Example17 {
+     public static void main(String[] args){
+     Demo.Sample.m1();      //to calll static member of another class in other static area---> we use classname.method(); 
+    }
+}
+
+//op:
+
+inside m1
+10.1
+
+3)Anonymous classes:
+-They are also called as nameless classes.
+-Anonymous class helps to partially reduce the code length.
+
+-example 18:
+-as seen in example 18, it doesn't matter in which class u are implementing the methods, hence the implementation can occur in any of the classes
+
+abstract class Demo{
+    abstract void m1();
+    abstract void m2();
+}
+class Sample extends Demo{
+     void m1(){
+        System.out.println("inside m1");     // consumes tmore lines, hence we use anonymous class, bcoz user only wants implementation of methods , class name is not imp.
+     }
+     void m2(){
+        System.out.println("inside m2");
+     }
+}
+class Example18 {
+    public static void main(String[] args) {
+       Sample s= new Sample();
+       s.m1();
+       s.m2();
+    }
+}
+op:
+
+inside m1
+inside m2
+
+-example 19:
+
+-unknown classes or anonymous classes means, we as a developer or automation tester may not give the name but java compiler internally may give the name. Such classes are technically are called as Anonymous classes.
+
+- ex 19, line no 7:static Sample s=new Sample()
+this line performs multiple tasks:
+1) it will represent to connect the anonymous class implementation with the parent class  sample.
+2) it is also responsible to load the anonymous class object creation in a memory and store the reference in 's'.
+3) the respective line do not represent the object creation of abstract class.
+
+abstract class Sample{
+    abstract void m1();
+    abstract void m2();
+}
+class Example19 {
+     
+    static Sample s=new Sample() {        //anonymous class object
+     void m1(){
+        System.out.println("inside m1");     // consumes tmore lines, hence we use anonymous class, bcoz user only wants implementation of methods , class name is not imp.
+     }
+     void m2(){
+        System.out.println("inside m2");
+     }
+    };
+    public static void main(String[] args) {
+    s.m1();
+    s.m2();
+       
+    }
+}
+//op
+inside m1
+inside m2
+
+-example 20:
+
+- we can execute the methods in interface by connecting the interface to anonymous class by creating object of anonymous class. but the methods in anonymous class , we made them public bcoz their declaration is in interface.and the methods in interface are by default public and abstract. 
+-to access the anonymous ref variable, we need to create objet of example 20 , as ref, then we access using that as ref.i.test();
+
+
+interface Sample{ //its sinterface,hence method implementation is made public
+    abstract void m1();
+    abstract void m2();
+}
+class Example20 {
+     
+     Sample i=new Sample() {        //anonymous class object
+     public void m1(){           //public
+        System.out.println("inside m1");     // consumes more lines, hence we use anonymous class, bcoz user only wants implementation of methods , class name is not imp.
+     }
+     public void m2(){          //public
+        System.out.println("inside m2");
+     }
+    };
+    public static void main(String[] args) {
+    Example20 ref=new Example20();
+    ref.i.m1();
+    ref.i.m2();
+    }
+}
+//op:
+//inside m1
+//inside m2  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

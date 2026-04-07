@@ -1,0 +1,116 @@
+java(27-10-2025)
+-----------------------------------------revision lec  but have 30 oct info
+-example21:          
+
+
+
+-example22:
+
+-What is the difference betn an length() method and length variable?
+--> A length method is responsible to calculate the total no of letters or numbers within a string. Whereas length is used to calculate the size of an ARRAY.
+
+
+
+
+
+compareTo(java.lang.Object) method:
+-this method is used to perform comparison of two strings.
+-the way the compare to method works is, it will compare each string, each letter Unicode value, with another string eah unicd value, if both strings are exactly same, then Unicode value is also same. and if both are same, it will return 0. if both arnt same, it will return '+' or '-'.
+
+-example 23:
+
+-imp point for collection concept:
+ 
+-On what basis it returns plus or minus?
+
+---> if the first string first letter value is greater than the second string first letter value, then it will return diff of that but positive.
+
+---> but if the first letter first letter Unicode value, is less than the seconf string first letter value, it will return fiff of that but negative.
+
+- example24:
+
+q2) What is the diff betn compareToIgnoreCase and equalsIgnoreCase() ?
+
+--> the comparetoignorecase and the equalsignorecase  will perform the same comparison operation similar to compare to as well a sequals method. However this comparision is based on case insensitive comparison.
+
+
+STRING BUILDER:
+
+-Striing Builder is also part of java.lang package.
+
+-example25:
+- the tostring() method is overridden in string class, string buffer class, string builder class.
+-string builder objects cant be created using new keyword, but it can be created with the help of new keyword.
+
+-example26:
+-String Builder class is also said to be or called as mutable class.
+
+-IQ: What is the difference betn string buffer and stringbuilder?
+---> the string buffer and builder class are almost same, but the difference is the string buffer methods are synchronized, and string builder methods are not synchronized.
+
+-if a method is synchronized, one thread is able to access one method at any point of time, transactions are safe, but performance is a little lower.
+- if the methods arenot synchronized, multiple threads are able to access the methods, transactions are not safe, but performance is better.(threads are customer, methods are cashier) 
+
+
+STRING TOKENIZER CLAS:
+
+-It is part of java.util package.
+-String Tokenizer is primarily used to split a string in the form of tokens.
+
+-A TOKEN can be defined as smallest element within the string is called as Token.
+
+
+- the string tokenizer objects are created using new keyword.
+
+-example27:
+- whenever we using string tokenizer, we have to inform compiler java,  this  is present I java.util. AND  to fdo that we have to use a statement import.
+
+- the JVM during the execution, will import the respective clas, within the memory and use it for spitting the string.
+- the string tokenizer is responsible to break the string in the form of tokens. and to access this tokens we need to perform 2 steps, 1) we check token element is present or not, If it is present, we will extract the tokens. this can be achieved by 2 methods- hasMoreElments(String);   and nextElement();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

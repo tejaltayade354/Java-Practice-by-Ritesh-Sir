@@ -1,0 +1,68 @@
+PRESENTATION 2
+
+
+
+BREAK:
+- irrespective of the condition is true or false, break statement will exit the loop.
+-whenever the break statement is encountered, control is sent outside the loop.
+ 
+
+class b1 {
+    public static void main(String[] args) {
+         System.out.println("loop start" );
+        for(int i=5;i<=10;i++){
+            
+            System.out.println(i);
+            if(i==8){
+                System.out.println("end");
+                break;
+                
+            }
+        }
+    }
+}
+
+op:
+loop start
+5
+6
+7
+8
+end
+
+
+continue:
+
+- used to immediately move to next iteration of loop.
+- control is moved to the next iteration  skipping everything below continue statement in loop for that iteration.
+- p2:
+
+class c1 {
+    public static void main(String[] args) {
+         System.out.println("loop start" );
+        for(int i=5;i<=10;i++){
+            
+           
+            if(i==8){
+                 System.out.println("continue:skipped.");
+                continue;
+                 
+                
+            } System.out.println(i);
+      
+        }
+    }
+}
+loop start
+5
+6
+7
+continue:skipped.
+9
+10
+
+// human initials company details.
+support@humaninitials.com
+prachipathak@humaninitials.com
++91 9250010063 
+www.humaninitials.com

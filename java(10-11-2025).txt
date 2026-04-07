@@ -1,0 +1,65 @@
+java(10-11-2025)
+
+
+Access modifiers:
+
+- there are 4 types of access specifiers supported by java. They are-----
+1)public
+2)protected
+3)default 
+4)private
+
+
+1)public:
+- public access modifier is applicable AT class level, variable, constructor and methods level.
+-if a member is made public, we can access that member anywhere in same class, in another classes within same package, as well as  as in another package.
+
+2)protected:
+-The protected access modifier is applicable for variable, method and constructor.
+-The protected Access Modifier is not applicable at class level.
+-If the member is made protected, we can access that member within the same class as well as we can access that member in another class within the same package as ewll as we can also access it in another package but within the child classes.
+
+3)Default Access Modifier:
+
+-There is no keyword called as default Access Modifier.
+-If member is not associated with any access modifier then it is by default understood, it is associated with default access modifier.
+-The default accesss modifier is associated with class, variable, method and constructor.
+-If a member is made default, it can be accessed within a same class as well as we can also access that member in another class within the same package, but we cant access that member in another package.
+
+
+4)private access  modifier:
+-Private access modifier is applicable at variable , methods, constructor,, but not applicable at class level.
+
+-If a member is made private, we can access that within the same class but we cannot access that member in another class even if it is with in the same package as well as it cannot access that member in another package.
+
+q1)which is the most secured modifier?
+-> private
+
+q2)Which is the least secured modifier?
+-> public
+
+q3)which is the most visible modifier?
+-> public
+
+q4)Which is the list visible modifier?
+-> private
+
+-Import keyword:
+
+-the import keyword is meant to import either single class or group of classes.
+-There are two ways to import statement as mention below.
+1) import packageName.class_name;
+2) import packageName.*
+
+Out of the two approaches the class name approach is recommended approach.
+
+
+
+-to access a class or any member within a class, we make that member as public.
+-if class is made public, it doesnot mean that all its member by nature will became public.
+-A java program allows a single package to be created within one java.(only one package to be created.)
+
+
+
+
+

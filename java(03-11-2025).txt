@@ -1,0 +1,259 @@
+java(03-11-2025)
+
+
+-Different types of exception:
+
+IQ: WHAT IS ROOT CLASS TO ALL JAVA CLASSES?
+->  Object class
+
+IQ: what is the root to all exception classes?
+-> throwable(C)
+
+
+IQ: what do u mean by fully checked exception  and partially checked exception?
+--->
+
+1) FULLY CHECKED EXCEPTION.
+- If the root exception is checked, and all its child exception is also checked , there is such n exception called as fully checked exception.
+-example: IO exception
+- below that we have partially checked exception
+
+2) partially checked exception.
+- if the root class or an exception class contains some child class checked and some unchecked , such exceptions are called as partially checked exception.
+
+-example: throwable(C), exception
+
+EXCEPTION HANDLING:
+-Exception handling involves 1) the program should have normal termination.
+                             2) whenever a exception is handled, all statements should be executed.
+
+- How many ways are there to handle the exception?
+-> there are 2 ways to handle the exception:
+ 1) Using the try-catch block
+ 2) Using throws keyword
+
+
+Try-catch block:
+
+-imp note:
+
+-Whichever statements throw or raise an exception, those statements should be part of TRY block.
+-the alternative solutions should be part of CATCH block.
+
+
+-syntax:
+
+ try
+  {
+    statements->generate/raise an exception.   
+}
+catch(type of exception generated)
+{
+alternative solution statements
+}
+
+-example4:
+-using the try catch block, we handle the exception.
+-inside try block- whenever exception occurs the control will go to the catch block.
+- And in catch block , alternative solution is to be provided.
+
+
+
+ class example4 {
+    public static void main(String[] args){
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(10/0);          ///exception occur-------> object created (rhs of obj creation)
+        }
+        catch(ArithmeticException ae){                        //lhs og obj creation
+  System.out.println("inside catch block");
+       System.out.println(10/5);
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+
+op:
+
+starttttttttttttttt
+inside try block
+inside catch block
+2
+endddddddddd
+
+-exceptions by default are treated as classes.
+-All exception classes by nature are part of java.lang package.
+
+-IMP NOTE:
+-Whenever we say, an exception is generated, internally it means an object gets created and that object address will be stored in the ref variable of the catch block.
+
+-if an exception is not generated within try block, then the control will never go from try to catch block.
+
+ class example5 {
+    public static void main(String[] args){
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+        }
+        catch(ArithmeticException ae){
+            System.out.println("inside catch block");
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+
+op:
+
+starttttttttttttttt
+inside try block
+endddddddddd
+
+
+
+-example6:
+
+arrayindexoutofboundsexception
+
+ class example6 {
+    public static void main(String[] args){
+        int[] a={10,20,25};
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(a[20]);
+        }
+        catch(ArrayIndexOutOfBoundsException ae){
+            System.out.println("inside catch block");
+               System.out.println(a[2]);
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+
+//  op:
+
+starttttttttttttttt
+inside try block
+inside catch block
+25
+endddddddddd
+
+- example 7:
+-it is not a recommended practice, to use generic statements after the exception statement.
+-high chances are there, generic statements after exception may not get executed.
+
+class example7 {
+    public static void main(String[] args){
+        int[] a={10,20,25};
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(a[20]);
+System.out.println("eceptionnnnnnnnnnnnnnnnnnnnnn");              //will never executed as control goes to catch block, after the exception occurs
+        }
+        catch(ArrayIndexOutOfBoundsException ae){
+            System.out.println("inside catch block");
+               System.out.println(a[2]);
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+
+//  op:
+
+
+starttttttttttttttt
+inside try block
+inside catch block
+25
+endddddddddd
+
+
+-example 8:
+
+-we cannot use independent try block in java.if we use only try , we get error.
+
+
+class example8 {
+    public static void main(String[] args){
+     
+        try{
+       System.out.println("inside try block");              //error, bcoz try catch are used sobat.
+        }
+    }
+   
+}
+
+
+
+Syntax error, insert "Finally" to complete BlockStatements
+
+
+-example 9:
+- Based on the type of exception raised, the exception has to be handled with the same type.If it is handled with difft type, it wil lead to a mismatch, and will result in an abnormal termination.
+
+
+ class example9{
+    public static void main(String[] args){
+        System.out.println("starttttttttttttttt");
+        try{
+       System.out.println("inside try block");
+       System.out.println(10/0);
+        }
+        catch(NullPointerException ae){
+  System.out.println("inside catch block");
+       System.out.println(10/5);
+        }
+         System.out.println("endddddddddd");
+    }
+   
+}
+
+starttttttttttttttt
+inside try block
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example9.main(example9.java:6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,235 @@
+java(11-11-2025)
+
+-Wrapper classes:
+-Wrapper classes are used to convert primitive data in the form of objects.
+
+q1)What is the need for wrapper classes?
+
+->To increase a security level of each data member, we go for wrapper classes.
+
+imp note:
+-based on total no of primitive data types that many no of wrapper classes are supported by java.
+
+-primitive data type- wrapper class
+byte- Byte
+short-Short
+int Integer
+long -Long
+float-Float
+double-Double
+char- Char
+boolean-Boolean
+
+
+-all wrapper classes come under java.lang package.
+
+-How do we convert primitive data in the form of object?
+-> We can convert using constructor based approach- there also 2 constructor approaches one for int AND for string
+
+public java.lang.Integer(int);
+public java,lang.Integer(String)
+
+
+-example 1:
+
+class Example1{
+    public static void main(String[] args){
+        Integer i1=new Integer(100);
+        System.out.println(i1);
+        Integer i2=new Integer("109"); //only 109 will give numberformatexception, thats why we use "109"
+        System.out.println(i2);
+    }
+}
+//public java.lang.Integer(int);
+//public java.lang.Integer(String) throws java.lang.NumberFormatException
+
+op:
+
+100
+109
+
+
+-example 2:
+
+-whenever we print a ref variable of a wrapper class, it will always print the value, and not the address bcoz toString() method is overridden within the all wrapper classes.
+
+class Example2{
+    public static void main(String[] args){
+        Example2 i1=new Example2();
+        System.out.println(i1);               //prints value-bcoz here toString () is overidden from object class
+        System.out.println(i1.toString());  //object
+        Integer i2=new Integer("109"); //prints value-bcoz here toString () is overidden from Integer class, hence it prints value and not address
+        System.out.println(i2);
+        System.out.println(i2.toString());   //Integer ---> I2 IS INTEGER TYPE, HENCE TOSTRING() METHOD IS PRINTING 109.
+    }
+}
+
+op:
+
+Example2@722c41f4
+Example2@722c41f4
+109
+109
+
+-example3:
+
+class Example3 {
+    public static void main(String[] args){
+       // Integer i1=new Integer("one");------> throws NunberFormatException
+        Integer i2=new Integer("89");
+       // System.out.print(i1);
+          System.out.print(i2);
+    }
+}
+op:
+
+89
+
+-we get NumberFormatException, when the argument is passed in double quotes("") are sequence of letters.
+
+IQ: Which are the minimum and maximum constructors within wrapper classes?
+->  float class have maximum constructor, and Character class has minimum constructor.
+
+all other wrapper classes have the String argument constructor except Character i,e Character(char) , and Float class have 3 arguments-float, double, string
+
+IQ: which wrapper classses has the max constructor?
+-> Float
+
+IQ: which wrapper classses has the min constructor?
+-   Character
+
+-examlpe 4:
+
+class Example4 {
+    public static void main(String[] args){
+       Float f1=new Float(100.5f);
+       Float f2=new Float(200.4);
+       Float f3=new Float("89");
+       Character c1=new Character('x');
+       System.out.print(f1);
+       System.out.print(f2);
+       System.out.print(f3);
+       System.out.print(c1);
+    }
+}
+op:
+100.5
+200.4
+89.0
+x
+
+
+-example 5:
+
+class Example5 {
+    public static void main(String[] args){
+       Float f1=new Float(100.5f);
+       Float f2=new Float(200.4);
+       Float f3=new Float("89");
+       Character c1=new Character('x');
+       System.out.print(f1);
+       System.out.print(f2);
+       System.out.print(f3);
+       System.out.print(c1);
+    }
+}
+100.5
+200.4
+89.0
+x
+
+-all wrapper classes comes under immutable(original values do not get changed) nature.
+
+-imp methods within wrapper class:
+
+1)toString() method:
+
+-this method is overidden in all wrapper classes, hence its not responsible to print the address, but it will be responsible to print the value.
+
+-example 6:
+
+2)valoueOf() method:
+
+-how many ways are there to convert primitive data in the forms of objects?
+->there are 2 ways to convert primitive data in the form of objects:
+1) constructor based approach
+2) valueOf(int)method  based approach:
+- valueOf() method is responsible to return the same class object, such methods are called as factory methods.
+
+class Example6{
+    public static void main(String[] args){
+         Integer i1=Integer.valueOf(100);
+        System.out.println(i1);             
+        System.out.println(i1.toString());
+    }}
+
+    //Integer->
+    //public static Integer valueOf(int);
+
+    op:
+
+    100
+    100
+
+IQ: how do we convert a wrapper object  to primitive data type?
+->  using xxxxxValue() method: xxxxx represents int(xxx), float, double short etc
+
+
+class Example7{
+    public static void main(String[] args){
+        Integer i1=new Integer(100);
+        Integer i2= i1.intValue();     //xxxxValue()-> to convert wrapper obj to primitive
+        System.out.println(i2);      
+        System.out.println(i2.toString());     //invalid, but why giving output.                    
+     }}
+
+     op;
+
+     100
+     100
+
+- Autoboxing converts i2 into an Integer.
+- Integer.toString() returns "100".
+- So it prints 100.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

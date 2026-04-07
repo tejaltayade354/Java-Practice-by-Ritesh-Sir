@@ -1,0 +1,290 @@
+java(15-11-2025)
+
+-A variable at any point of time can store only values but to store multiple value at a time, we go for an array.
+-As every variable has a name, every array also has a name.
+-Whenever we store any values in an array, its is always store in an index order.
+-there are 2 ways to create an array:
+1)In an first approach of an array there are 3 stages: 1. declaration    2.Instantion(object creation)       3. initialization
+
+Type[] Name =new type[size];           //         Type[] Name ---> declaration               Name =new type[size];---------->instantiation
+
+ex1:  int[] a=new int[3];
+
+       a[0]=10;               //this 3 lines are initialization
+       a[1]=20;
+       a[2]=30;
+
+-ARRAY  by nature are homogenous.(one time store value).
+
+class Ex1{
+    public static void main(String[] args){
+        int[] a=new int[3];
+        a[0]=10;
+        a[1]=20;
+        a[2]=30;
+        System.out.println(a[0]);
+        System.out.println(a[1]);
+        System.out.println(a[2]);
+    }
+}
+
+/*
+ op:
+
+10
+20
+30
+ */
+ex-2:
+
+-Depending on the size of an array, we create that many no of statements, we consume lot of memory, hence to avoid that we prefer to go for loops.
+
+
+IQ: DIFFER BETWEEEN LENGTH() METHOD AND LENGTH VARIABLE?
+
+length()-string->num of letters within string
+length -variable->array->size of the array.
+
+-length() method is used to calculate the length of the string which will return no of letters or number or special characters with in a string.
+-but the length variable is used to calculate the size of the array.
+
+class Ex2{
+    public static void main(String[] args){
+        int[] a=new int[3];
+        a[0]=10;
+        a[1]=20;
+        a[2]=30;
+        for(int i=0;i<=2;i++){
+                System.out.println(a[i]);
+        }
+    }
+}
+
+/*
+ op:
+
+10
+20
+30
+
+ */
+
+-example 3:
+
+public class Ex3 {
+    public static void main(String[] args){
+    int[] a=new int[10]; 
+    System.out.println(a.length);       //length variable will calculate the size of an array.(without index)
+  }                                     //length method will calculate the size of string(no of letters in a string )
+}
+
+//op:
+// 10
+
+
+
+
+-example 4;
+
+ class Ex4 {
+    public static void main(String[] args){
+    int[] a=new int[3];
+    a[0]=10;
+    a[1]=20;
+    a[2]=30;
+    for(int i=0; i<a.length; i++){         //
+      System.out.println(a[i]);
+    }
+  }
+}
+
+op:
+
+10
+20
+30
+
+-example 5:
+
+ class Ex5 {
+    public static void main(String[] args){
+    int[] a={10,20,30};       //Instantiation+Initialization
+    
+    for(int i=0; i<a.length; i++){
+      System.out.println(a[i]);
+    }
+  }
+}
+/* 
+op;
+
+10
+20
+30
+
+*/
+
+
+-example 6:
+-Array are not only mean to store primitive data but there are also mean to store object data.
+
+ class Ex6 {
+    public static void main(String[] args){   //storing object data in array.
+    String[] a={"cyber", "tejal","success"};       //we can also store object data,   arrays are not only meant to store primitive data,  
+    for(int i=0; i<a.length; i++){
+      System.out.println(a[i]);
+    }
+  }
+}
+/* 
+op:
+
+cyber
+tejal
+success
+
+*/
+
+-note :
+-Array internally treated as classes,( bcoz we create the object of the array) to create an array, we use new keyword.
+-Array comes under non-primitive data type.
+
+-example 7:
+
+-Control flow statement:
+
+looping-> for
+
+for each loop:
+int [] a ={10,20,30};
+
+for(store the data based on extracted data : from where to extract data/info )
+
+for(int aa : a){
+  System.out.println(aa);
+}
+
+
+-The way for each works is will by default start index 0, and extract the data and store it.
+-While storing the type should be same as extracted data.
+-for each loop will keep an extracted data till the end of the array by using auto increment feature.
+-The for each loop will identify the end of the array with out using any condition.
+
+ class Ex7 {
+public static void main(String[] args){
+    String[] a={"cyber", "tejal","sumsuccccess"}; 
+  //  for(store the data based on extracted data: from where to extract the data) 
+    for (String aa: a){
+       System.out.println(aa);
+    }
+}    
+}/*
+op:
+
+cyber
+tejal
+sumsuccccess
+
+*/
+
+-example 8:
+
+class Ex8 {
+    public static void main(String[] args){
+       int[] a={10,20,30};
+       for(int aa: a){
+        System.out.println(aa);
+       }
+    }
+}
+
+/*
+
+op:
+
+10
+20
+30
+
+*/
+
+
+-example 9:
+flipkart
+
+
+-example 10:
+
+-if we do not initialize the array then the java will initialize the default value.
+-if it is primitive array then it initialize with 0 value.
+-If it is an object array then it is  initialized with null value.
+
+class Demo{
+
+}
+class Ex10 {
+    public static void main(String[] args) {
+        int[] a=new int[3];
+        for(int aa: a){
+            System.out.println(aa);
+        }
+          String[] s=new String[3];
+  //  for(store the data based on extracted data: from where to extract the data) 
+    for (String ss: s){
+       System.out.println(ss);
+    }
+    Demo[] d=new Demo[3];
+    for(Demo dd: d){
+        System.out.println(dd);
+    }
+    }
+}
+
+op:
+
+0
+0
+0
+null
+null
+null
+null
+null
+null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

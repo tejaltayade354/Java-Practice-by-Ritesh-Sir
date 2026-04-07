@@ -1,0 +1,131 @@
+JAVA LECTURE (22-08-2025)
+
+VARIABLE 
+FLOAT 
+
+float var =10.5f; search
+
+program:
+class demo 22
+   {
+      public static void main(String[] args)
+         {
+              double d1= 150.123;
+              System.out.println(d1)
+              double d2= 250.123D;
+              System.out.println(d1)
+              double d3= 350.123d;
+              System.out.println(d3)
+         }
+    }
+
+TYPECASTING:
+typecasting is a process of converting ONE FORM TO ANOTHER FORM(integer value to float).
+-WE can convert the int value to float , but cant convert the float value to integer,as it will throw compilation error.
+ 
+CHARACTER DATATYPE:
+A character can be represented by a single letter, number, special character within a pair of single quotes such type of data is called as character data.
+ 
+ prog:
+ class Demo24
+   {
+       public static void main (String[] args)
+
+           {
+              char var1 = 'a';
+              char var2 = '1';
+              char var3 = '#';
+
+              System.out.println(var1):
+              System.out.println(var2):
+              System.out.println(var3):
+
+            }
+   }
+
+ character datatype consumes 2 bytes of memory.
+
+NOTE:IQ
+
+ques)) a character datatype consumes 1 byte of memory in c++ technology, then why java consumes 2 bytes for a character datatype?
+ --->   c/c++ technology by default supports only English language,  but java supports  not only English but also other languages. hence java consumes more memory than c/c++.
+ -every language will  give a unique value to every letter, number,  as well as special character. this unique values in c++  called as ASCII values. AS well as  in java it is called as Unicode values.
+ 
+prog:
+ class Demo25
+{
+ public static void main (String[} args
+  {
+      char var1 = 'a';
+      char var2 = 'b';
+      char var3 = 'A';
+     
+      System.out.println(var1);         //char
+      System.out.println((int)var1);    // UNICODE-->INT
+      System.out.println(var2);
+      System.out.println((int)var2);
+      System.out.println(var3);
+      System.out.println((int)var3);
+   }
+}
+
+OUTPUT:
+
+
+IQ))
+
+
+
+
+class Demo26
+{
+ public static void main (String[} args
+  {
+      int x= 'a';
+      System.out.println(x);         //numeric--> 97
+      char y= 98;
+      System.out.println(y);         // char--> b
+   }
+}
+
+
+
+BOOLEAN DATATYPE:
+A boolean datatype can only store two types of values, TRUE  and FALSE. A Boolean datatype will consume 1 bit of memory, but its size is not precisely defined.
+
+prog:
+class Demo27
+{
+ public static void main (String[} args
+  {
+      Boolean status1=true;
+      System.out.println(status1);    
+      Boolean status1=false;
+      System.out.println(status2);      
+  }
+}
+
+o/p:
+true
+false
+
+ NOTE:
+in c/c++ technology 0 represents false, any other number represents true. Whereas in java , it is strictly typed lang; based on the type of the variable, only that type of data can be stored.
+
+class Demo28
+{
+ public static void main (String[} args
+  {
+      Boolean status1=0;
+      
+      System.out.println(status1);      
+  }
+}
+
+
+OPERATERS
+
+CONTROL FLOW STATEMENTS
+1) Conditional 
+2) looping 
+3) Transfer

@@ -1,0 +1,222 @@
+Java lecture(1-09-2025)
+
+entry control loop:
+loops like for loop and while loop, which checks the condition at the start,  hence such loops are called as entry control loop.
+
+DO-WHILE LOOP:
+
+SYNTAX:
+ do{
+  //statemebnts
+}
+while(condition);
+
+
+write a java program to print numbers from 1 to 5 using the do-while loop.
+
+
+class  dowhile1
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		do
+		{System.out.println("DO-while"  +i);
+		i++;
+		}
+		while (i<=5);
+		
+	}
+}
+
+
+the condition in do while is only checked, after the statements are executed.
+
+
+loops which checks the condition at ends is called as exit control loops. example: do- while loop.
+
+
+regardless whether the condition is true or false, the statements within the do while will atleast  get executed once.
+
+class  dowhile1
+{
+	public static void main(String[] args) 
+	{
+		int i=6;
+		do
+		{System.out.println("DO-while"  +i);   // it executes at least once
+		i++;
+		}
+		while (i<=5);    // false condition ; 6 <=5 is false
+		
+	}
+}
+   
+
+write a  java prog to print numbers in descending order. ( 5 t0 1).
+
+class  dowhile2
+{
+	public static void main(String[] args) 
+	{
+		int i=5;
+		do
+		{System.out.println("DO-while"  +i);
+		i--;
+		}
+		while (i>=1);
+		
+	}
+}
+
+
+class  dowhile3
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		do
+		{ i++;
+                System.out.println("DO-while"  +i);    // infinite loop
+		i--;
+		}
+		while (i>=1);
+		
+	}
+}
+
+if we do not set any condition in do while, then the compiler will never set any condition; hence it is mandatory within the while loop.
+
+class  dowhile2
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		do
+		{System.out.println("DO-while"  +i);
+		i++;
+		}
+		while (  ); // error
+		
+	}
+}
+
+
+statements are not allowed in the do while condition.
+class  dowhile2
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		do
+		{System.out.println("DO-while"  +i);
+		i++;
+		}
+		while ( System.out.println("DO-while" ) ); // error
+		
+	}
+}
+
+
+
+ASSIGNMENTS
+
+- Write a java program ---1) to print even and odd numbers from 1 to 10.
+                          2) to find if a number is prime or not. no divisible by 1 or only itself.
+                          3) to find a factorial of a given number. use concate operater.
+
+
+
+
+TRANSFER STATEMENTS:
+
+-TO transfer the control from one area to another area, we go for transfer statements.
+-It involves below statements:
+
+goto *(OUTDATED STATEMNTS): Goto statements are considered as bad coding practice, bcoz they bring lot of complications, hence java has given alternatives mechanisms.
+
+return :(explained in methods and constructors.)
+
+try-catch: (Exception and exception handling)
+
+brake:
+
+-brake statements are only meant to breake the control, either from print statement or from loop. 
+-they are used only and only used within the condition.
+class  break1
+{
+	public static void main(String[] args) 
+	{
+		int i=3;
+			if(i==3)
+			System.out.println("The value of i" +i);
+			break;  //error denar
+		
+		
+	}
+}
+
+
+continue
+- this statement acts like skipping statement.
+- it is responsible for skipping the statements and move the java control at the end of the for loop.( not outside the for loop)
+class  continue1
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=5; i++)
+		{
+			System.out.println(i);
+			if(i==3)
+			System.out.println("The value of i" +i);
+			continue;  // skip
+		}
+		System.out.println(i);
+	}
+}
+
+LOCAL VARIABLES:
+-variables which are declared within a method or constructor or blocks are called as local variables.
+-
+
+class localvariaable
+{
+	public static void main(String[] args) 
+	{
+		int i=1;  // local variable
+		// directly accessible.
+		{System.out.println(a);
+				
+	}
+}
+
+how do we access local variables in java?----------------> directly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

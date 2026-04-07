@@ -1,0 +1,277 @@
+java (09-10-2025)
+
+
+
+-RULE5:
+
+
+-it is possible to override  non-static methods as it is bounded by objects. But its not possible to override static methods as they are bounded by classes.
+-example30:
+ class parent{
+   static void m1(){
+        System.out.println("inside m1-parent");
+   }
+   void m2(){
+     System.out.println("inside m2-parent");
+   }
+ }
+ class child extends parent{                        //static methods are not part of overidding as they belongs to classes
+static void m1(){
+     System.out.println("inside m1-child");
+   }
+   void m2(){
+     System.out.println("inside m2-child");
+   }
+} 
+ class example30 {
+    public static void main(String[] args){
+parent p=new child();       
+p.m1();                      //m1 parent method op->bcoz  overiding is not concept for static methods.
+p.m2();                       //method signature is same, hence overiding, and priority will be given to child members.
+    }
+}
+
+
+//op:
+//inside m1-parent
+//inside m2-child
+
+-RULE 6:
+
+-ACCESS MODIFIERS:
+
+-To access a members from one package into another package, we need to take the help of access modifiers.
+-Access modifiers defines how to access members within the same package as well as different package.
+-they can be categorized into 4 types:
+1)public
+2)protected
+3)default
+4)private
+
+1)PUBLIC ACCESS MODIFIERS:
+-If a member is made public, we can access it within the same class, in another class within the same package and in another packages as well.
+
+
+2)PROTECTED ACCESS MODIFIERS
+-If a member is made protected, we can access that member anywhere within the same class and e can also access the member in another class within the same package, as well as we can also access that member in another package but within the child class.
+
+3)DEFAULT ACCESS MODIFIERS
+-There is no default keyword for access modifier.
+-If a member is not prefixed with any modifier, then it is supposed to have default access.
+-If a member is made default, then we can access that member within the same class , we can also access that member within another class in same package ,but we cant access default member in another package.
+
+4)PRIVATE ACCESS MODIFIER
+-If a member is made private, then we can access that member anywhere within the same class.
+-We cant accesss  hat member in another class, even if it is within the same package, as well as we cant access that member in another package.
+
+
+q1) out of all modifiers, which one is the most visible access modifier?
+->  public
+
+q2) out of 4  modifier,  which one is least visible?
+->  private
+
+q3) which one is the most secured modifier?
+->  private
+
+q4) out of all the modifiers, which one is the most least modifier?         //how?
+-> public
+
+
+
+-RULE 6:
+
+
+-it is not possible to override private methods bcoz they cant be inherited in child.
+
+-example 31:
+
+ class parent{
+   private  void m1(){                            //private members are not inherited by child thats why they are not overided.
+        System.out.println("inside m1-parent");
+   }
+   
+ }
+ class child extends parent{                      
+void m1(){
+     System.out.println("inside m1-child");
+   }
+} 
+ class example31 {
+    public static void main(String[] args){
+parent p=new child();       
+p.m1();               //error yeil       
+    }
+}
+
+/* 
+error: m1() has private access in parent
+p.m1();
+ ^
+1 error
+*/
+
+-RULE7:
+A:
+-It is possible to override, if the parent and child method access level is same.(EXAMPLE32)
+-it is possible to override, if the parent method access level and child method access level is in the increasing order then its possible to override.(ex1: protected public, ex2:default, protected.)(EXAMPLE33)
+
+example 32:
+
+ class parent{
+  public void m1(){                           //public->same access modifiers means overiding is possible when members access level is same
+        System.out.println("inside m1-parent");
+   }
+   
+ }
+ class child extends parent{                      
+public void m1(){                             //here also public
+     System.out.println("inside m1-child");
+   }
+} 
+ class example32 {
+    public static void main(String[] args){
+parent p=new child();       
+p.m1();           //child ko priority milega.     
+    }
+}
+
+/* 
+
+OP:
+inside m1-child
+
+*/
+
+
+example33:
+
+
+
+ class parent{
+  protected void m1(){                           //protected->protected AM has smaller range of accessing members than public                //WE CAN USE DEFAULT ALSO
+        System.out.println("inside m1-parent");
+   }
+   
+ }
+ class child extends parent{                      
+public void m1(){                             //here - public ACESS MODIFIER (AM) HAS wider range.
+     System.out.println("inside m1-child");
+   }                                                 //if accessing range is in increasing order then it is possible to overide.              //WE CAN USE PROTECTES ALSO
+} 
+ class example33 {
+    public static void main(String[] args){
+parent p=new child();       
+p.m1();           //child ko priority milega.     
+    }
+}
+
+/* 
+
+OP:
+ inside m1-child
+ 
+*/
+
+
+-RULE 7B:
+
+-its not possible to overide, if the parent method access level and the child method access level is in the decreasing/narrow order.
+
+example34:
+
+ class parent{
+  protected void m1(){                                                //protected AM is having more acesss . AND default is having less, its decreasing order/narrow order
+        System.out.println("inside m1-parent");
+   }
+   
+ }
+ class child extends parent{                      
+ void m1(){                            
+     System.out.println("inside m1-child");
+   }
+} 
+ class example34 {                                     //the parent method access level and child method access level  order is narrower hence cant overidden.    
+    public static void main(String[] args){
+parent p=new child();       
+p.m1();           
+    }
+}
+
+
+
+
+/* 
+ error: m1() in child cannot override m1() in parent
+ void m1(){                            
+      ^
+  attempting to assign weaker access privileges; was protected
+1 error
+*/
+
+RULE8:
+
+-variables are not part of overiding or polymorphic behaviour, but they are considered as a part of inheritance.
+
+example35:
+
+ class parent{
+  int a=10;                                                      //priority given to parent , as there is no overiding concept.
+ }
+ class child extends parent{                      
+int a=100;
+} 
+ class example35 {                                                   //variables are not part of oveeridding.  
+    public static void main(String[] args){
+parent p=new child();       
+System.out.println(p.a);      
+    }
+}
+
+/* 
+
+op:
+
+10
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+abstraction : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,233 @@
+Java(03-10-2025)
+
+5) Hybrid Inheritance:
+- combination of 2 or more inheritances are called as hybrid inheritance.
+-  DIAMOND PROBLEM:
+-. combination of hierarchical and multiple inheritance is hybrid inheritance example, also called diamond problem.
+-  such a combination of hybrid inheritance is not supported by java. Such type of inheritance is called as Diamond Problem in java.
+-  example5:
+
+
+
+
+-example6:
+hybrid inheritance example: hirarchial and single inheritance combination.
+
+class A{
+    void m1(){
+        System.out.println("Inside m1 method");
+    }
+}
+class B extends A
+{
+    void m2(){
+        System.out.println("Inside m2 method");
+    }
+}
+
+class C extends A{
+    void m3(){                  // HIERARCHICIAL INHERITANCE AS B and C class is inheriting class A.
+        System.out.println("Inside m3 method");
+    }
+}
+class D extends C     // single inheritance
+{
+}
+class E extends B         // single inheritance 
+{
+}
+class example6 {
+    public static void main(String[] args){
+        D d=new D();
+        d.m1(); d.m3();
+        E e=new E();
+        e.m2(); e.m1();
+    }
+    
+}
+
+o/p:
+
+Inside m1 method
+Inside m3 method
+Inside m2 method
+Inside m1 method
+
+-example7:
+-static variables and methods(both static member) are part of inheritance.
+
+class demo {
+   static char a='x';
+   static void m1(){
+    System.out.println("Inside m1 method");
+   }
+}class sample extends demo
+{   static void m2(){
+     System.out.println("Inside m2 method");
+}
+}
+class example7 {
+    public static void main(String[] args){
+        sample s=new sample();
+        s.m2();
+        s.m1();
+        System.out.println(s.a);
+    }
+
+    
+}
+
+o/p:
+Inside m2 method
+Inside m1 method
+x
+
+
+
+example8:
+
+FINAL METHODS:
+
+-IQ: How do we avoid inheritance?
+-->  by making the class as final, we can avoid inheritance. If a class is made final it will not allow its members to be inherited.
+
+final class demo {    // 
+   static char a='x';
+   static void m1(){
+    System.out.println("Inside m1 method");
+   }
+}class sample extends demo       //we cant inherit class demo as we used final keyword // gives error
+{   static void m2(){
+     System.out.println("Inside m2 method");
+}
+}
+class example8 {
+    public static void main(String[] args){
+        sample s=new sample();
+        s.m2();
+        s.m1();
+        System.out.println(s.a);
+    }
+
+    
+}
+
+
+example9:
+
+assignment:
+make child class final
+
+ // ASSIGNMENT:MAKE CHILD CLASS AS FINAL.WHAT WILL BE OUTPUT?--->YES WE CAN, BUT CHILD CLASS CANT BE INHERITED BY GRANDCHILD CLASS, WHEN CHILD CLASS IS MADE FINAL.
+ 
+ class demo {
+    void m1(){
+        System.out.println("inside m1 method- demo class");
+    }
+}
+ final class sample extends demo{  //CHILD CLASS CAN inherit parent class but if we create grandchild class then child class cant be inherited                                                            //                                                           //by grandchild class bcoz we prefixed child class with final keyword.
+    void m2(){
+        System.out.println("inside m2 method- sample class");
+    }
+}
+ class example9{
+    public static void main(String[] args){
+     sample s=new sample();
+     s.m1();
+     s.m2();
+
+    }
+ }
+
+O/P:
+
+inside m1 method- demo class
+inside m2 method- sample class
+
+
+SUPER keyword:
+-it is used to store the parent class or the super class object address.
+-super keyword only works under the concept of inheritance.
+
+IQ: why to use super keyword?
+-> to differ between instance variable of parent class and instance variable of child class, when the variable names are same, we use super keyword.
+
+
+
+exampl10:
+class demo {    
+    int x=10;      // instance variable of parent classs having same name
+}
+class sample extends demo    
+{   int x=100;            // instance variable  of child class  having same name
+     void m1(int x){     //local variable also having  same name
+   
+     System.out.println("Inside m1 method" );
+     System.out.println(x );
+     System.out.println(this.x );  //this keyword->// differ ben local variable and instance variable within the same class, HAVING SAME variables name.
+     System.out.println(super.x );  //super keyword//it will differ betn parent instance variable and child instance variable, when instance variables hAVE SAME NAME.
+      
+
+}
+}
+class example10 {
+    public static void main(String[] args){
+        sample s=new sample();
+        
+        s.m1(1000);
+       
+    }
+
+    
+}
+
+o/p:
+
+1000
+100
+10
+
+
+OBJECT CLASS:
+-if a class in java, doesn't extends any other class, then by default it will extends object class.
+-There is no similarity or connection between object class and object creation.
+
+IQ: Where exactly the object class present?
+->  The object class is present in a package called as java.lang  , A package according to java is a folder structure.
+
+Note:
+
+-OBJECT CLASS, STRING CLASS, SYSTEM CLASS ARE ALL PART OF java.lang package.
+
+
+TQ: Which is the default package associated with every java program?
+->  java.lang
+
+IMP NOTE:(example9)
+-whenever we use a class for object creation WITHIN A java program during compilation, the compiler  will first check the object class, within the same program , if not found it will go to the java.lang package, which is also called as default package, if it is found well and good, if not then compiler throw error, cant find the symbol.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

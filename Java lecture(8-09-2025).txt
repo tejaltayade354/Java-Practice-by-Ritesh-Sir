@@ -1,0 +1,95 @@
+Java lecture(8-09-2025)
+
+
+class example12
+static x=100;
+
+{ public static void main(String[] args) {
+   flaot y=200.5;
+System.out.println("directly y" +y);
+System.out.println("directly x" +x);
+System.out.println("directly x +classname.x);
+}
+}
+
+
+NOTE:
+-whever JVM comes for execution, the first thing it performs is , its splits the RAM into two parts, stack and heap.
+-After splitting stack and heap, the control is given to class loaders along with other components like JIT just in time compiler.
+- The other components, including JIT and class cloaders are part of the JVM.
+-The class loaders are responsible to load the static members within the static pool.
+-During the class loading, JIT will not only monitor but will also initialize during this particular period.
+-The static members wherever loaded is called as the static tool, and is given the same name as class name
+-Once the loading happens JVM Control enters the stCAK AREA.The first thing jvm fnds is name, if the name is present it will start the execution. if not present then not start the execution.
+- The main method will be loaded within the stack.	When its loaded, it will create loacal variables within the stack area.
+- the stack always follows LIFO Approach.
+-Once the main method, performs the operation, the control will be given back to jvm. the main method comes under the static area by giving the control to jvm.
+And based on execution the jvm will shutdown, by coming to the end of stack area.
+
+IQ:
+Why is main made as static?
+first the static pool should have main method, bcoz the main in stack will look for the main method in static pool, but the main method will be in static pool if it is declared static.
+
+
+Whenever JVM COMES FOR EXECUTION, TO START THE EXECUTION, IT LOOKS FOR MAIN, ANnd to llok for main it enters into an static pool area, if the main is made static only then it will be available, inside the static pool and will help to start the exeution. but if the main is not made static, JVM will not be able to find it. and will not be possible to start the execution, hemce its mandatory the main method should be static.
+
+class example13{
+public static void main(String[] args)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

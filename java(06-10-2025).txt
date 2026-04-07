@@ -1,0 +1,452 @@
+java(06-10-2025)
+
+
+POLYMORPHISM:
+- POLY-many, multiple
+- MORPHISMS- forms, behavior.
+
+
+-an object having more than 1 behavior , this process comes under polymorphism.
+
+
+POLYMORPHISM can be categorized into 2 types-
+1) compile time/static binding/early binding polymorphism
+2) runtime/dynamic /late binding polymorphism.
+
+1) compile time/static binding/early binding polymorphism:
+- compile time polymorphism can be achieved with the help of overloading.
+- overloading can be categorized into 3 types:  1)method overloading          2)constructor overloading    3)operator overloading.
+
+1)method overloading:
+
+
+- RULE1:
+- to achieve method overloading, method name should remain the same, but should vary in NO OF ARGUMENTS.
+
+-example1: rule 1 satiisfy
+
+ class demo{
+    void m1()
+    {  
+          System.out.println("inside m1  method 0 arg ");
+}
+    void m1(int a)
+    {    
+        System.out.println("inside m1 method  1 arg");
+}
+ }
+ class example1 {
+    public static void main(String[] args){
+    demo d=new demo();
+    d.m1(10);
+    }
+}
+
+o/p:
+
+inside m1 method  1 arg   
+
+       
+
+example 2:
+-method name difft , not satisfying the rule1.
+
+class demo{
+    void m1()
+    {  
+          System.out.println("inside m1  method 0 arg ");
+}
+    void m2(int a)
+    {    
+        System.out.println("inside m1 method  1 arg");            // method name changes, not satisfying the rule1.
+}
+ }
+ class example2 {
+    public static void main(String[] args){
+    demo d=new demo();
+    d.m1();
+    }
+}
+
+o/p:
+inside m1 method  0 arg   
+
+
+
+-RULE2:
+- method name should remain the same, can have same no of argument but should vary in the TYPE of the argument.
+
+example3: satisfying 2nd rule.
+
+ class demo{
+    void m1(float b)           //same no of argu, but vary in type of argu( below int and here float)
+    {  
+          System.out.println("inside m1  method float  arg ");
+}
+    void m1(int a)
+    {    
+        System.out.println("inside m1 method  int arg");
+}
+ }
+ class example3 {
+
+    public static void main(String[] args){
+    demo d=new demo();
+    d.m1(10);
+   // d.m1(2.3f);
+    }
+}
+ 
+o/p:
+
+inside m1 method  int arg                    
+
+example4: satisfies rule 1 and rule 2.
+- main class hamesha seperate hona chahiye,  business logic class different hona hi chahiye.
+- To achieve overloading only 1 class is sufficient, but for calling main class(2nd class needed).
+
+ class demo{
+    void m1(float b)
+    {  
+          System.out.println("inside m1  method float  arg ");
+}
+ void m1(char c, boolean d )             //satisfies rule 1,2 --> vary in no of argu, and type of argument
+    {  
+          System.out.println("inside m1  method char/ boolean arg ");
+}
+    void m1(int a)
+    {    
+        System.out.println("inside m1 method  int arg");
+}
+ }
+ class example4 {
+
+    public static void main(String[] args){
+    demo d=new demo();
+    d.m1(10);
+   // d.m1(2.3f);
+    }
+}
+/* 
+o/p:
+
+inside m1 method  int arg                     */
+
+
+example5:
+- we can also achieve overloading , with respect to not only single class, but with multiple classes.
+//business class logics
+ class demo{
+    void m1(float b)
+    {  
+          System.out.println("inside m1  method float  arg ");
+}
+ }
+class sample extends demo{          //multiple classes 
+ void m1(char c, boolean d )             //satisfies rule 1,2 --> vary in no of argu, and type of argument
+    {  
+          System.out.println("inside m1  method char/ boolean arg ");
+}
+    void m1(int a)
+    {    
+        System.out.println("inside m1 method  int arg");
+}
+ }
+//controller
+ class example5 {
+
+    public static void main(String[] args){
+    sample s=new sample();
+    s.m1(10);
+   s.m1(2.3f);
+   s.m1('t',true);
+    }
+}
+/* 
+o/p:
+
+inside m1 method  int arg
+inside m1  method float  arg
+inside m1  method char/ boolean arg           */
+
+
+-RULE3:
+-To achieve method overloading, method name should remain the same, can have same no of arguments, as well as same type of arguments, but should vary SEQUENCE of arguments.
+
+example6: satisfies RULE 3rd.
+
+ class demo{
+    void m1(float b, int a)    
+    {  
+          System.out.println("inside m1  method float   / int arg ");
+}
+    void m1(int a, float b)           //RULE3: same no of arguments, types of arguments, but vary in sequence of argu
+    {    
+        System.out.println("inside m1 method  int / float arg");
+}
+ }
+ class example6 {
+
+    public static void main(String[] args){
+    demo d=new demo();
+    d.m1(10,4.0f);
+   
+    }
+}
+
+
+//O/P:
+
+//inside m1 method  int arg
+
+example 7:
+//business logic class
+ class flipkart{
+    void payment(int debit)
+    {
+        System.out.println("logics to make payment by debit card");
+    }
+    void payment(String upi)
+    {
+        System.out.println("logics to make payment by upi");
+    }
+    void payment()
+    {
+        System.out.println("logics to make payment by cash");
+    }
+ }
+
+//controller class
+ class example7 {
+    public static void main(String[] args){
+        flipkart customer1=new flipkart();
+        customer1.payment(45632);          //this will call debit wali method
+    }
+    
+}
+
+
+//o/p:logics to make payment by debit card
+
+
+2)constructor overloading  :
+
+RULE1:
+- constructor name should remain the same, but should vary in the NO OF ARGUMENT .
+- EXAMPLE8:SATISFIES rule 1.
+   
+ class demo{
+     demo()
+    {  
+          System.out.println("inside  0 arg ");
+}
+    demo(int a)
+    {    
+        System.out.println("inside 1 arg  constructor");
+}
+ }
+ class example8 {
+    public static void main(String[] args){
+    demo d=new demo();
+    
+    }
+}
+
+
+/* 
+o/p:
+inside  0 arg    
+
+*/
+
+RULE2:
+- constructor name should remain the same, can have same no of  arguments, but should vary in the TYPE of arguments.
+
+
+- EXAMPLE9:
+ class demo{
+     demo(float b)
+    {  
+          System.out.println("inside  float arg constructor");
+}
+    demo(int a)
+    {    
+        System.out.println("inside int  constructor");
+}
+ }
+ class example9 {
+    public static void main(String[] args){
+    demo d=new demo(5.3f);
+    
+    }
+}
+
+
+/* 
+o/p:
+inside  float arg constructor     
+
+*/
+
+
+
+
+-EXAMPLE10: SAtisfies rule 1---> vary no of arguments, 2 RULES->types of arguments .
+
+ class demo{
+     demo(float b)
+    {  
+          System.out.println("inside  float arg constructor");
+}
+     demo(char x, boolean y)
+    {    
+        System.out.println("inside char boolean argu  constructor");
+}
+ 
+    demo(int a)
+    {    
+        System.out.println("inside int  constructor");
+}
+ }
+ class example10 {
+    public static void main(String[] args){
+    demo d=new demo('s', true);
+    
+    }
+}
+
+
+/* 
+o/p:
+inside char boolean argu  constructor
+
+*/
+
+example11:
+
+ class hdfc{
+    hdfc(String cusname, int mob){
+        System.out.println("savings account created successfully");
+    }
+     hdfc(String cusname, int mob, String companyname ){
+        System.out.println("current account created successfully");
+    }
+ }
+ class example11 {
+    public static void main(String[] args){
+        hdfc c1=new hdfc("TEJJJJ",789654231);
+        hdfc c2=new hdfc("TUTUTU",745689822, "TEJ_SUNB");
+
+    }
+}
+//OP:
+//savings account created successfully
+//current account created successfully
+
+
+
+RULE3:
+- constructor name should remain the same, can have same no of arguments, same no of TYPE of arguments, but VARY in the SEQUENCE OF ARGUMENTS.
+
+-assignment: EXAMPLE11a: SAtisfies rule 3
+
+class hdfc{
+    hdfc(String cusname, int mob){
+        System.out.println("savings account created successfully");
+    }
+     hdfc( int mob, String cusname ){
+        System.out.println("current account created successfully");
+    }
+ }
+ class example11a {
+    public static void main(String[] args){
+        hdfc c1=new hdfc("TEJJJJ",789654231);
+        hdfc c2=new hdfc(745689822, "TUTUTU");
+
+    }
+}
+//OP:
+//savings account created successfully
+//current account created successfully
+
+
+
+
+
+
+
+3) OPERATOR OVERLOADING:
+- Java does not support operator overloading except the '+' operator. The plus operator either perform addition or concatenation.
+- the plus operator will perform addition, if both the inputes to the operator is numeric.
+- the plus operator will behave as concatenation , if both or single input contains a string argument.
+
+example12:
+
+
+class example12 {
+    public static void main(String[] args){
+
+    
+    System.out.println("OPERATOR Overloading CONCEPT");
+    System.out.println(70 +70);         // addition
+    System.out.println(70+ "start");           // NUM+STRING->CONCATINATION
+    System.out.println("mysuccess"+ "start");           // string+STRING->CONCATINATION
+
+
+}}
+
+op:
+
+140
+70start
+mysuccessstart
+
+
+
+-what is the output of the following prog?
+-example13:
+
+ class example13 {
+    public static void main(String[] args){
+
+    
+    System.out.println("OPERATOR Overloading CONCEPT");
+    System.out.println("start" +70);         //STRING+NUM----> CONCATINATION
+    System.out.println(70+50+ "start");           //NUM+NUM(PLUS ADDITION)  AND NUM+STRING->CONCATINATION
+    System.out.println(10+50+ "start" +90+10);      //FIRST ADDITION, THEN 60+"START"-> CONCAT, THEN AGAIN '60START'+90->CONCAT(60START90), AGAIN SAME, o/p.
+
+}}
+
+/*
+ O/P:
+
+ OPERATOR OVERIDING CONCEPT
+start70
+120start
+60start9010
+
+ */
+
+2) RUNTIME POLYMORPHISM/DYNAMIC/LATE BINDING:
+-  TO achieve runtime polymorphism, we need to implement overriding.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

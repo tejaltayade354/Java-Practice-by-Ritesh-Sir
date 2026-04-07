@@ -1,0 +1,378 @@
+java(06-11-2025)
+
+
+- the throws keyword is used AT THE METHOD DECLARATION level .
+- The throws keyword, while delegating the exception will delegate to the immediate caller method.
+- the throws keyword actually gives confidence to the compiler, by informing that if there is a an unexpected event , it will be handled by JVM.
+
+
+-example 28:
+
+class example28 {
+     static void rtoofficer(){
+        System.out.println("inside rto officer");
+        try {
+            Thread.sleep(3000);          //sleeps for 3 min
+            System.out.println("approve and upload the documents");
+       
+        } catch (InterruptedException e) {
+        System.out.println("Try alternative solution");
+        }
+    }
+     static void rtoagent(){
+        System.out.println("inside rto agent");
+            rtoofficer();
+    }
+    static void rtooffice(){
+        System.out.println("inside rto office");
+         rtoagent();
+    }
+    public static void main(String[] args){
+        System.out.println("start");
+        rtooffice();
+         System.out.println("end");
+}
+}
+
+op:
+
+
+start
+inside rto office
+inside rto agent
+inside rto officer
+approve and upload the documents
+end
+
+
+-example 29:
+EXCEPTIONS ARE HANDLED DURING RUNTIME.
+
+class example29 {
+     static void rtoofficer() //throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent(){
+        System.out.println("inside rto agent");
+        rtoofficer();                 //if throws is not used then we, get the exception at line 4, but if usedthen line 8
+    }
+    static void rtooffice(){
+        System.out.println("inside rto office");
+         rtoagent();
+    }
+    public static void main(String[] args){
+        System.out.println("start");
+        rtooffice();
+         System.out.println("end");
+}
+}
+
+if commented-->without throws
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> javac example29.java
+example29.java:4: error: unreported exception InterruptedException; must be caught or declared to be thrown
+        Thread.sleep(3000);          //sleeps for 3 min
+                    ^
+1 error
+
+-now we removed the comment for throws InterruptedException at line 2 then we get:
+
+
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> javac example29.java
+example29.java:9: error: unreported exception InterruptedException; must be caught or declared to be thrown
+            rtoofficer();
+                      ^
+1 error
+
+
+-example 30:
+
+class example30 {
+     static void rtoofficer() throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent(){
+        System.out.println("inside rto agent");             
+    try{
+        rtoofficer();  
+    } 
+    catch(InterruptedException ie){
+    }
+    }
+    static void rtooffice(){
+        System.out.println("inside rto office");
+         rtoagent();
+    }
+    public static void main(String[] args){
+        System.out.println("start");
+        rtooffice();
+         System.out.println("end");
+}
+}
+
+op:
+
+start
+inside rto office
+inside rto agent
+inside rto officer
+end
+
+
+-example 31:
+
+class example29 {
+     static void rtoofficer() throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent() throws InterruptedException{
+        System.out.println("inside rto agent");
+        rtoofficer();                 //if throws is not used then we, get the exception at line 4, but if usedthen line 8
+    }
+    static void rtooffice(){
+        System.out.println("inside rto office");
+         rtoagent();              //line 12 causes exception
+    }
+    public static void main(String[] args){
+        System.out.println("start");
+        rtooffice();
+         System.out.println("end");
+}
+}
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> javac example31.java                                              
+example31.java:12: error: unreported exception InterruptedException; must be caught or declared to be thrown    
+         rtoagent();              //line 12 causes exception
+                 ^
+1 error
+
+
+-example 32:
+
+class example32 {
+     static void rtoofficer() throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent() throws InterruptedException{
+        System.out.println("inside rto agent");
+        rtoofficer();                 //if throws is not used then we, get the exception at line 4, but if usedthen line 8
+    }
+    static void rtooffice(){
+        System.out.println("inside rto office");
+        try{ 
+            rtoagent();              //line 12 causes exception
+    }
+    catch(InterruptedException ae){
+
+    }}
+    public static void main(String[] args){
+        System.out.println("start");
+        rtooffice();
+        System.out.println("end");
+}
+}
+
+op:
+start
+inside rto office
+inside rto agent
+inside rto officer
+end
+
+
+-example33:
+class example33 {
+     static void rtoofficer() throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent() throws InterruptedException{
+        System.out.println("inside rto agent");
+        rtoofficer();                 
+    }
+    static void rtooffice() throws InterruptedException{
+        System.out.println("inside rto office");
+         rtoagent();              //line 12 causes exception
+    }
+    public static void main(String[] args){
+        System.out.println("start");
+        rtooffice();
+         System.out.println("end");
+}
+}
+
+PS C:\Users\Tejal\CCSP12 J AUGUST\EXCEPTIONS> javac example33.java                                              
+example33.java:16: error: unreported exception InterruptedException; must be caught or declared to be thrown    
+        rtooffice();
+                 ^
+1 error
+
+-example34:
+
+class example34 {
+     static void rtoofficer() throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent() throws InterruptedException{
+        System.out.println("inside rto agent");
+        rtoofficer();                 
+    }
+    static void rtooffice() throws InterruptedException{
+        System.out.println("inside rto office");
+         rtoagent();              //line 12 causes exception
+    }
+    public static void main(String[] args){
+        System.out.println("start");
+        try {
+        rtooffice();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+         System.out.println("end");
+}
+}
+
+op:
+
+start
+inside rto office
+inside rto agent
+inside rto officer
+end
+
+-example35:
+
+class example35 {
+     static void rtoofficer() throws InterruptedException
+       { System.out.println("inside rto officer");
+        Thread.sleep(3000);          //sleeps for 3 min
+     }
+     static void rtoagent() throws InterruptedException{
+        System.out.println("inside rto agent");
+        rtoofficer();                 
+    }
+    static void rtooffice() throws InterruptedException{
+        System.out.println("inside rto office");
+         rtoagent();              //line 12 causes exception
+    }
+    public static void main(String[] args) throws InterruptedException{
+        System.out.println("start");
+        rtooffice();
+         System.out.println("end");
+}
+}
+op:
+
+start
+inside rto office
+inside rto agent
+inside rto officer
+end
+
+
+-EXAMPLE 36;
+
+the throws keyword, can throw multiple exceptions at  any point of time.(eka time lach multiple exceptions).
+
+
+import   java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import   java.io.IOException;
+
+class example36{
+     static void readfromfile() throws FileNotFoundException, IOException{
+        System.out.println("inside readfromfile");
+        FileInputStream fis=new FileInputStream("C:\\example.txt\"");
+        fis.read();
+     }
+     public static void main(String[] args) throws FileNotFoundException, IOException{
+        readfromfile();
+        
+     }
+
+}
+
+-example 37:
+
+
+class example37 {
+     static void rtoofficer() throws ArithmeticException{
+        System.out.println("inside rto officer");
+        System.out.println(10/0);
+     }
+    public static void main(String[] args){
+        System.out.println("start");
+        rtoofficer();
+         System.out.println("end");
+}
+}
+
+//op:
+
+/* 
+
+
+// if we comment throws--------> op
+
+
+start
+inside rto officer
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at example37.rtoofficer(example37.java:4)
+        at example37.main(example37.java:8)
+
+//if we write throws then also same op
+
+        */
+
+
+
+
+-checked exception can be delegated or can be handled, unchecked exceptions can only be handled, cannot be delegated.
+
+
+-exceptions can be generated during the compile time or runtime, but they can only be handled during runtime.
+
+- what is the difference between , try-catch block and throws keyword?
+-> the try-catch block:
+1) used to handle the exception.
+2) try catch is a block.
+3) try-catch can be used at ana implementation level.
+4) it is used within method, constructor and blocks.
+5) it can generate difft types of exception, but at any point of time , it can generate only 1 exception.
+
+the throws keyword:
+1) it delegates the exception.
+2) throws is a keyword.
+3) but throws keyword can be used at declaration level.
+4) throws keyword can be used at method and constructor level .
+5) throws  keyword can throw multiple exceptions at a time.
+
+- the throw keyword:
+
+
+-the throw keyword,  is responsible to customize predefined exception info.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

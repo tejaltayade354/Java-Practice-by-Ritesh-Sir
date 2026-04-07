@@ -1,0 +1,440 @@
+java(04-10-2025)
+
+
+
+IQ: what is the root class to all java class?
+->  Object class
+
+example10a:
+
+/*class object{      //root class->supports common operations which are executed multiple times(in every prog)           //default class in java.lang package
+   
+public String toString();
+
+} */
+class example10a {
+    public static void main(String[] args){
+    example10a ref = new example10a();
+    System.out.println(ref);                    //first checks object class is present or not in the current prog, then check java.lang for toString() .
+                                   //whwnever we prints a ref , we are printing the address , now to print the address first compiler internally calls toString() method from object class, 
+    System.out.println(ref.toString());   //address printing 2nd way
+    //there is no difference in addresses by both ways
+}
+}
+
+
+o/p:
+
+example11a@722c41f4  //classname+hexadecial is hashcode.
+example11a@722c41f4
+
+
+
+note:
+IQ: WHENEVER WE PRINT A REFERENCE VARIABLE. it prints the address, how does it printed?
+->  whenever we print a ref variable of a class, it will internally call toString() method. And that toString() method will be called from the object class.
+
+IQ: Can u give one of the reasons, why java has root class called as object class?
+->  For multiple classes to print the address, which is a common operation across all the classes, hence to support that with the help of toString() method, the object class is made as root class.
+
+example11:
+class demo
+{
+    demo()
+    {
+    System.out.println("Inside 0 arg constructor-demo");   
+    }
+}
+class sample extends demo
+{
+    sample()
+    {
+    super();           //super statement: calls parent class constructor, only works under the concept of inheritance
+    System.out.println("Inside 0 arg constructor-sample");   
+    }
+}
+
+class example11 {
+    public static void main(String[] args){
+    sample s=new sample();
+  
+    }
+}
+
+op:
+
+Inside 0 arg constructor-demo
+Inside 0 arg constructor-sample
+
+
+SUPER STATEMENT:
+
+-the super statement is responsible to call the super class or base class constructor.
+-The super statement will only work under the concept of inheritance.
+
+
+
+example12:
+-if we do not write super statement then the compiler will set the super statement.
+
+class demo
+{
+    demo()
+    {
+    System.out.println("Inside 0 arg constructor-demo");   
+    }
+}
+class sample extends demo
+{
+    sample()
+    {
+    //super();-------> if we dont set super statement, then compiler will default sets super statement.
+    System.out.println("Inside 0 arg constructor-sample");   
+    }
+}
+
+class example12 {
+    public static void main(String[] args){
+    sample s=new sample();
+  
+    }
+}
+
+op:
+
+Inside 0 arg constructor-demo
+Inside 0 arg constructor-sample
+
+
+example13:
+-whenever the compiler sets the super statement, it will always be responsible to call the parent class xero argument constructer.
+
+class demo
+{
+    demo(int a)       //1 argu cons
+    {
+    System.out.println("Inside 1 arg constructor-demo");   
+    }
+}
+class sample extends demo
+{
+    sample()          // cant call 1 argu cons, gives er
+    {
+    //super();-------> if we dont set super statement, then compiler will default sets super statement, but only calls 0 argument constructor of parent class
+    System.out.println("Inside 0 arg constructor-sample");   
+    }
+}
+
+class example13 {
+    public static void main(String[] args){
+    sample s=new sample();
+  
+    }
+}
+
+ggggggggggggggggggggives errrrrrrrrrror.
+
+
+
+example14:
+-Regardless of the no of child class constructors, the parent class zero argument constructors will get executed based on  no of child class constructor.
+
+class demo
+{
+    demo()
+    {
+    System.out.println("Inside 0 arg constructor-demo");   
+    }
+}
+class sample extends demo
+{
+    sample()
+    {
+    System.out.println("Inside 0 arg constructor-sample");   
+    }
+    sample(int a)
+    {
+    System.out.println("Inside 1 arg constructor-sample");   
+    }
+}
+
+class example14 {
+    public static void main(String[] args){
+    sample s=new sample();       //calls 0 cons of both classes
+    sample s1=new sample(10);      // calls the 0 argument and 1 argum child class constructor.
+   
+    }
+}
+
+o/p:
+Inside 0 arg constructor-demo
+Inside 0 arg constructor-sample
+Inside 0 arg constructor-demo
+Inside 1 arg constructor-sample
+
+example15:
+-zero argument child class constructor can call 1 argument parent class constructor.
+
+class demo
+{
+    demo(int a)
+    {
+    System.out.println("Inside 1 arg constructor-demo");   
+    }
+}
+class sample extends demo
+{
+    sample()
+    {
+    super(10);
+    System.out.println("Inside 0 arg constructor-sample");   
+    } 
+}
+class example15 {
+    public static void main(String[] args){
+    sample s=new sample();
+    }
+}
+
+o:p
+
+Inside 1 arg constructor-demo
+Inside 0 arg constructor-sample
+
+example16:
+-super statement should always be the first statement within the constructor.
+class demo
+{
+    demo(int a)
+    {
+    System.out.println("Inside 1 arg constructor-demo");   
+    }
+}
+class sample extends demo
+{
+    sample()
+    {
+    //super(10);
+    System.out.println("Inside 0 arg constructor-sample");   
+    super(10);          // call to super must be first statement in constructor
+    } 
+}
+class example16 {
+    public static void main(String[] args){
+    sample s=new sample();
+    }
+}
+
+giiiiiiiiiiiiiiives errrrrrrrrrror
+
+
+
+example17:
+ass:
+under the constructor of inheritance, in the child class create a constructor which  uses this keyword, super keyword, this statement and super statement.
+
+class demo{
+demo(){
+    this(3);
+    System.out.println("inside o agumnet");
+}
+demo(int a){
+    
+    System.out.println("inside 1 agumnet");
+}
+}
+class sample extends demo
+{
+    sample(){
+    this(3);        // calls constructor within same class
+    System.out.println("inside o agumnet");
+}
+sample(int b){
+    super();             // calls parent class constructor
+    System.out.println("inside 1 agumnet");
+}
+}
+class example17{
+    public static void main(String[] ars){
+        new sample();
+    }
+}
+
+o/p:
+inside 1 agumnet
+inside o agumnet
+inside 1 agumnet
+inside o agumnet
+
+note:
+-constructors are not part of inheritance. bcoz constructor creation rule is not satisfied----------> that means constructor name must be always same to class name, is not satisfied.
+
+
+example18:
+
+instance blocks in inheritance:
+-under the concept of inheritance, whenever the child class constructor is called, it will first give the preference to the parent class constructor.
+-when the control goes to the parent class constructor, it will check if instance block in parent class is present or not, if present it will execute and only then execute the parent constructor.
+-After that the control comes to the child constructor, the child constructor also checks whether instance block is present or not, if present it will execute  and only then it will execute the child class constructor.
+
+
+-even instance blocks are not part of inheritance.
+
+
+
+class demo{
+    {
+        System.out.println("inside nonstatic block of class  demo");          //1       preference to parent ko first dete hei.
+    }
+    demo(){
+        System.out.println("inside 0 arg demo cons");                          //2
+    }
+}
+class sample extends demo{
+    {
+        System.out.println("inside nonstatic block of class  sample");         //3
+    }
+    sample(){
+        System.out.println("inside 0 arg sample cons");                     //4
+    }
+}
+class example18{
+    public static void main(String[] args)
+    {
+        sample sample=new sample();
+    }
+}
+o/p:
+inside nonstatic block of class  demo
+inside 0 arg demo cons
+inside nonstatic block of class  sample
+inside 0 arg sample cons
+
+
+
+example19:
+- even the static blocks are not part of inheritance, bcoz they are not stored inside the memory, and they are loaded during class loading time.
+
+
+
+    
+
+class demo{
+    static{
+        System.out.println("inside static block of class  demo");                     //1
+    }
+    demo(){
+        System.out.println("inside 0 arg demo cons");
+    }
+}
+class sample extends demo{
+    static{
+        System.out.println("inside static block of class  sample");
+    }
+    sample(){
+        System.out.println("inside 0 arg sample cons");
+    }
+}
+class example19 {
+    public static void main(String[] args)
+    {
+        sample s=new sample();
+    }
+} 
+
+o/p:
+inside static block of class  demo
+inside static block of class  sample
+inside 0 arg demo cons
+inside 0 arg sample cons
+
+
+
+
+inheritance summary:
+-only variables and methods are part of inheritance.
+-Static blocks, non static blocks, constructors are not part of inheritance.
+
+
+
+POLYMORPHISM:
+- POLY-many, multiple
+- MORPHISMS- forms, behavior.
+
+
+an object having more than 1 behavior , this process comes under polymorphism.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

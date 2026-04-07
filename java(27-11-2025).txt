@@ -1,0 +1,85 @@
+java(27-11-2025)
+
+
+-Comparator is an interface, which is part of java.util package.
+
+-3 constructor are present in ArrayList class of java.util package
+  public java.util.ArrayList(); default capacity-> 10
+ public java.util.ArrayList(int);
+ public java.util.ArrayList(Collection);
+  
+
+IQ: How do we add one collection to another?
+-> There are 2 approaches to add 1 collection to another:
+1) using addAll() method of collection.
+2) Constructor based Approach
+
+
+package collection.list;
+import java.util.ArrayList;
+
+public class ArrayList26 {
+    public static void main(String[] args){
+        ArrayList al=new ArrayList();
+        al.add(100); al.add(200); al.add(300);
+        System.out.println(al);
+        //2 WAYS TO ADD COLLECTION IN ANOTHER COLLECTION----->1)addAll(al) approach   2)constructor based  approach
+        ArrayList al2=new ArrayList();
+        al2.add('b'); al2.add('m'); al2.add('w');
+        al2.addAll(al);                          //      1st way
+        System.out.println(al2);
+        ArrayList al3=new ArrayList(al2);      //2nd way
+        al3.add(true); al3.add(false);
+        //      2nd way;
+        System.out.println(al3);
+
+    }
+}
+
+/*
+op:
+
+[100, 200, 300]
+[b, m, w, 100, 200, 300]
+[b, m, w, 100, 200, 300, true, false]
+
+
+ */
+
+
+
+2) Linked List:
+
+-Linked List version is 1.2 version.
+-it allows both homogeneous and heterogeneous dat.
+-insertion order is maintained.
+-null insertion possible.
+-duplicates are allowed.
+-methods are not Synchronized .
+- Data structure is based on double linked list.
+-cursors are applicable to Linkedlist are 2- iterator, list iterator.
+
+double linked list:remider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

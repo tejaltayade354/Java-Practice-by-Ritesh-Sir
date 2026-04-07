@@ -1,0 +1,186 @@
+Java lecture(1-09-2025)
+
+NOTE:
+- single statements or multiple statements are allowed in increment and decrement statements.
+
+class   For9
+{
+	public static void main(String[] args) 
+	{
+
+		for(int i=1;i<=5;System.out.println("one"),System.out.println("two"))           
+
+                {   System.out.println(i);
+                       i++;
+                }
+        }
+}
+
+
+IQ: what is the output of the following code?
+
+
+class   For10
+{
+	public static void main(String[] args) 
+	{
+
+		for( ; ; )
+                {   System.out.println("Hello");
+                      
+                }
+        }
+}
+
+-EXPLANATION:the above code will enter in infinite loop, bcoz , NONE of the stages are mandatory as well as compiler set the condition as TRUE.
+
+
+
+2) NESTED FOR LOOP
+-A for loop within another for loop is called as  nested for loop.
+
+   
+
+class   For8
+{
+	public static void main(String[] args) 
+	{
+
+		for(int i=0;i<=2;i++)          
+
+                {  
+                   for(int j=0;j<=1;j++)  
+                    {
+                      System.out.println(" *");
+                }
+                   System.out.println( );
+
+        }
+}
+
+
+
+question1:
+
+class  Nestedloop1   //Asiiignment1
+{
+	public static void main(String[] args) 
+	{
+		for(int i =3;i>=1;i--){
+			for(int j=1;j<=i;j++){
+				System.out.print(" *");
+			}
+			System.out.println( );
+		}
+	}
+}
+
+
+ * * *
+ * *
+ *
+
+
+question2:
+
+class  Nestedloop2        //assignment2
+{
+	public static void main(String[] args) 
+	{
+		for(int i=3;i>=1;i--){
+			for(int j=1;j<=i;j++)
+			{
+				System.out.print(" " +j);
+			}
+		System.out.println( );
+		}
+	}
+}
+
+ 1 2 3
+ 1 2
+ 1
+
+3) WHILE LOOP:
+- if the while condition is true, then the statements within the while wil get executed.If the condition is false, then the statements within the while will not get executed.
+
+SYNTAX:
+ while(condition){
+//statements;
+}
+
+
+ques: write a java prog to display nos from 1 to 5 using while loop.
+
+class  while2
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		while(i<=5){
+			System.out.println("The value of i is" +i);
+			 i++;
+		}
+		
+	}
+}
+
+ques: write a java prog to check if no  5 is present while iterating the descending order from 1 to 10.
+
+class  while3
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		while(i>=1){
+			System.out.println( i);
+			 if (i==5)
+                         {
+                         System.out.println("The value of i is" +i);
+                         i--;
+                          }  
+		}
+		
+	}
+}
+
+
+NOTE:
+in a while loop, it is mandatory to set the condition. if we do not set the condition then the compiler will never set the condition.
+
+
+class  while3
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		while( ){
+			System.out.println("The value of i is" +i);
+			 i++;
+		}
+		
+	}
+}
+
+
+
+- WE  cant use statements in while condition. it will throw an error.
+class  while3
+{
+	public static void main(String[] args) 
+	{
+		int i=1;
+		while(System.out.println("kya yaar tu nhi hoga execute"))
+                   {
+
+			System.out.println("The value of i is" +i);
+			 i++;
+		}
+		
+	}
+}
+
+
+
+
+

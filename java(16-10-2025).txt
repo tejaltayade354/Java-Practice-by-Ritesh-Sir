@@ -1,0 +1,67 @@
+Marker interfaces:
+-Marker interfaces are empty interfaces, they are meant to perform special operations, and power to perform special operations, is given by JVM during the run time.
+
+-examples of marker interfaces:
+1)clonable inside java.lang(will be taken after exception handling)
+
+2) RandonAccess inside java.util(during collections)
+
+3) Serialiazable inside java.io( during topic called- file io)
+
+-example28:
+
+-A variable declared within an interface is by nature public, static and final.
+
+SUMMARY:
+- Within a interface, we can create variables, methods, but we cant create constructors, nonstatic blocks, and static blocks.
+
+
+
+ENCAPSULATION:
+
+-Encapsulation is a process of binding a members together, to ensure it is protected; this process is called as encapsulation.
+
+-In a normal encapsulation, there are chances that other classes may be able to access the data members by object creation or classname, this will involve manupilation of other class data members, and this process of encapsulation, may not be secured, hence we go for tightly bound encapsulation.---->(private access modifier use karto)
+
+-By making the data members private , we can achieve tightly bound encapsulation.
+
+-IQ: Can u write or explain an example of data hinding?
+---> If a class contains, private data members and public getters and setters method, such classes are called as java neam classes./object class/business class.
+
+-IQ:IMP IMP IMP :
+
+-SINGLE TON DESIGN PATTERN:
+
+-It is a process, which ensures at any point of time, we can only create one object, if we try to create multiple objects, it should not allow, but it should return the address of the same object.
+
+-   CAn u explain single ton design pattern?
+--> To create a single ton design pattern, 1) we need to make dat members as private, 2) by making the constructor as private(to avoid obj creation.)  3)by using public setter or getter method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

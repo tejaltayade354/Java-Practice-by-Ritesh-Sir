@@ -1,0 +1,232 @@
+JAVA LECTURE(24-08-2025)
+
+SWITCH STATEMENT:
+
+Program:
+
+ class switch1
+   {
+	public static void main(String[] args) 
+	{
+		System.out.println("Start @ cyber success");
+        int a=2;
+		switch(a)
+		{
+			case 1:
+				System.out.println("inside case1");
+			break;
+			case 2:
+				System.out.println("inside case2");
+			break;
+			default:
+				System.out.println("indefault");
+			break;
+			
+		}
+               System.out.println("Stop @CyberSuccess.");
+	}
+   }
+
+-In a switch statement, there is no condition matching.
+-here, the way it works is, the argument within the switch is matched or mapped with the  case lable, if the matching happens then the respected statements within the case get executed, and after which due to the break statement the control will be broken, which, which means control is outside the switch statement.
+-if the switch argument does not match any of the cases, then by default it will match the default case.
+Program:
+
+class switch2
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                int a=5;
+                switch(a)
+                     {
+                      case 1: System.out.println("Insise case 1");
+                              break;
+                      case 2: System.out.println("Insise case 2");
+                              break;
+                      default: System.out.println("Insise Default");
+                              break;
+
+                     }
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+
+IO:   Are cases mandatory within the switch statement?
+--->> No,
+
+Program:
+
+class switch3
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                int a=1;
+                switch(a)
+                     {
+                       default: System.out.println("Insise Default");
+                       break;
+
+                     }
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+
+IQ:  is default case is mandatory within switch statement?
+--->  NO, 
+          
+      class switch4
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                int a=3;
+                switch(a)
+                     {
+                      case 1: System.out.println("Insise case 1");
+                              break;
+                      case 2: System.out.println("Insise case 2");
+                              break;
+                     }
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+
+IQ: WHAT IS OUTPUT OF FOLLOWING CODE?
+
+ class switch5
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                int a=3;
+                switch(a)
+                 {
+                 } // THE PROGRAM WILL COMPILE AND EXECUTED.
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+NOTE:
+
+-Statemnts are allowed within the switch, but independent statements have to either within the case, or should be either within the default without that it will through and error.
+class switch6
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                int a=3;
+                switch(a)
+                 {
+                    System.out.println("Inside switch.");
+
+                 } // shows error.
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+
+
+IQ:  Which are valid and invalid arguments within switch statement?
+-->  valid: int, byte, short, char, and non primitive datattype:string
+     invalid:long, float, double, Boolean.
+
+
+class Switch6
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("Start@ cs");
+                
+                char='g';
+                
+
+                switch(signal)
+                     {
+                      case r: System.out.println("STOP");
+                              break;
+                      case g: System.out.println("GO");
+                              break;
+                      case y: System.out.println("SLOW DOWN");
+                              break;
+                      default: System.out.println("Invalid statement.");
+                              break;
+
+                     }
+               System.out,println("Stop @CyberSuccess.");
+	}
+}
+
+switch 7  program:
+ without brake statement, and int x=2, 
+then switch(x)
+
+-AS break statements are not mandatory, without break also the program will be compiled and executed.
+- Without break statement whichever case it goes and matches, from that case onwords it will execute till the end of the switch statement.
+
+
+NOTE:
+
+we can use default and cases anywhere within switch statement.
+
+
+class switch8
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                int x=2;
+                switch(x)
+                     {
+                      default: System.out.println("Insise Default");  // we can use default and cases anywhere within switch statement.
+                              break;
+                      case 1: System.out.println("Insise case 1");
+                              break;
+                      case 2: System.out.println("Insise case 2");
+                              break;
+                     }
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+
+-program:
+class switch9
+{
+ 	public static void main(String[] args)
+ 	{
+ 		System.out.println("Start @ cyber success");
+                String str=" Cyber";
+                switch(str)
+                     {
+                     
+                      case "Cyber": System.out.println("Insisde Cyber");
+                                       break;
+                      case "Success": System.out.println("Insise Success");
+                                       break;
+                      default: System.out.println("Insise Default");  
+                                       break;
+                     }
+               System.out,println("Stop @CyberSuccess.");
+ 	}
+}
+
+
+from java 1.5 version onwards it was allowed to use string as a valid argument to switch.
+
+NOTE:
+
+-Based on switch argument, the case label should also be of same type.
+
+
+
+
+
+
+
+
+
